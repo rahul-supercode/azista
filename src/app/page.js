@@ -1,5 +1,6 @@
 import About from "@/components/home/components/About";
 import Hero from "@/components/home/components/Hero";
+import HostedPayloads from "@/components/home/components/HostedPayloads";
 import Missions from "@/components/home/components/Missions";
 import OpticalPayloads from "@/components/home/components/OpticalPayloads";
 import SatelliteBus from "@/components/home/components/SatelliteBus";
@@ -24,6 +25,7 @@ export default function HomePage() {
       <Missions />
       <OpticalPayloads />
       <SatelliteBus />
+      <HostedPayloads />
     </>
   );
 }

@@ -1,0 +1,104 @@
+/* Dark 1512 × 674 band (Figma: section-6). */
+.section {
+  overflow: hidden;
+  padding-block: 24px;
+  background: var(--foreground);
+  color: #fff;
+}
+
+/* Light corners mark a 1412 × 525 box, 40px below the band's top. */
+.frame {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px 48px;
+}
+
+/* 700 × 509 slot; the PNG is exactly 2× that. */
+.media {
+  position: relative;
+  aspect-ratio: 700 / 509;
+  width: 100%;
+  isolation: isolate;
+}
+
+.image {
+  object-fit: contain;
+}
+
+/* Soft white glow behind the satellite (2416px incl. blur), centred where
+ * Figma has it: 31% across, 44% down the image slot. */
+.glow {
+  position: absolute;
+  top: calc(44.2% - 1208px);
+  left: calc(31% - 1208px);
+  z-index: -1;
+  max-width: none;
+  pointer-events: none;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.intro {
+  max-width: 455px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 40px;
+  }
+
+  .frame {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+  }
+}
+
+/*
+ * Desktop: Figma's exact placement inside the 1412px box — image 35px in
+ * and 30px down (overhanging the bottom corners), text column from 835px,
+ * heading cap 159px down. Columns keep these proportions as it narrows.
+ */
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 40px 109px;
+  }
+
+  .frame {
+    grid-template-columns: 35fr 700fr 100fr 455fr 122fr;
+    align-items: start;
+    gap: 0;
+    height: 525px;
+    padding: 0;
+  }
+
+  .media {
+    grid-column: 2;
+    margin-top: 30px;
+  }
+
+  .text {
+    grid-column: 4;
+    margin-top: 159px;
+  }
+
+  .title {
+    margin-bottom: 27px;
+  }
+
+  .intro {
+    margin-bottom: 50px;
+  }
+}

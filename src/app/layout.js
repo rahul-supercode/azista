@@ -1,5 +1,6 @@
 import { Bebas_Neue, Schibsted_Grotesk } from "next/font/google";
 
+import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import { siteConfig } from "@/config/site";
@@ -58,6 +59,7 @@ export default function RootLayout({ children }) {
           <main id="main-content" className={styles.main}>
             {children}
           </main>
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

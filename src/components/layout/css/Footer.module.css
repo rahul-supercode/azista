@@ -1,0 +1,161 @@
+/* Black 1512 × 550 footer (Figma: Group 1000011438). */
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #000;
+  /* Covers the sub-pixel seam against the dark section above it. */
+  box-shadow: 0 -1px 0 #000;
+  color: #fff;
+}
+
+/*
+ * Light-streak photo, bottom right (Figma: 1363 × 423). The file's left
+ * 118px (8.7%) is white, so it's clipped away; the rest starts pure black.
+ */
+.background {
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  z-index: -1;
+  width: 90%;
+  height: 423px;
+  object-fit: cover;
+  object-position: right bottom;
+  clip-path: inset(0 0 0 8.7%);
+  pointer-events: none;
+}
+
+.muted {
+  opacity: 0.6;
+}
+
+/* Block so the cap-height trim applies (it has no effect on inline boxes). */
+.link {
+  display: block;
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    opacity: 1;
+  }
+}
+
+/* ── Top: logo + social, over a 20% white rule ─────────────────────────── */
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 24px;
+  border-bottom: 0.4px solid rgb(255 255 255 / 0.2);
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.socialLink {
+  display: block;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .socialLink:hover {
+    opacity: 0.7;
+  }
+}
+
+/* ── Middle: address + link columns ────────────────────────────────────── */
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 24px;
+  padding-block: 48px;
+  border-bottom: 0.4px solid rgb(255 255 255 / 0.2);
+}
+
+.address {
+  grid-column: 1 / -1;
+  max-width: 358px;
+  font-style: normal;
+}
+
+.heading {
+  margin-bottom: 27px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ── Bottom: legal links + copyright ───────────────────────────────────── */
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 31px 47px;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 30px;
+}
+
+@media (min-width: 768px) {
+  .main {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/*
+ * Desktop: Figma's column positions across the 1412px content box —
+ * address · Company at 477 · EO Payloads at 664 · Satellite Bus at 858 ·
+ * Missions at 1024 — kept proportional as it narrows.
+ */
+@media (min-width: 1280px) {
+  /* Social icons sit 39px in from the edge, centred 61px down (logo: 52). */
+  .top {
+    align-items: flex-start;
+    padding-block: 23px 25px;
+  }
+
+  .social {
+    margin: 28px 39px 0 0;
+  }
+
+  .main {
+    grid-template-columns: 477fr 187fr 194fr 166fr 388fr;
+    gap: 0;
+    min-height: 354px;
+    padding-block: 58px 0;
+  }
+
+  .address {
+    grid-column: auto;
+  }
+
+  .column .heading {
+    margin-bottom: 33px;
+  }
+}

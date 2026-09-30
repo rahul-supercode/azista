@@ -9,11 +9,7 @@ import TextField from "@/components/ui/TextField";
 
 import styles from "../css/DatasheetDialog.module.css";
 
-/**
- * Drawer that slides in from the right with the datasheet request form
- * (Figma: Form, 2977:15758). A native modal <dialog>: focus is trapped, Esc
- * closes it and the page behind is inert. A click on the backdrop closes it.
- */
+/** Figma: Form (2977:15758). */
 export default function DatasheetDialog({ ref, product }) {
   const titleId = useId();
 
@@ -21,14 +17,13 @@ export default function DatasheetDialog({ ref, product }) {
     ref.current?.close();
   }
 
-  // Only the backdrop reports the <dialog> itself as the click target.
   function onClick(event) {
     if (event.target === event.currentTarget) closeDialog();
   }
 
   function onSubmit(event) {
     event.preventDefault();
-    // TODO: send the lead (new FormData(event.currentTarget)) to the CRM.
+    // TODO: send the form data to the CRM.
     if (product?.datasheet) {
       const link = document.createElement("a");
       link.href = product.datasheet;

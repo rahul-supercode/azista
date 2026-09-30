@@ -1,14 +1,11 @@
 import Image from "next/image";
 
 import bulletTriangle from "@/assets/icons/bullet-triangle.svg";
-import ringDashed from "@/assets/icons/platform-ring-dashed.png";
-import ringInner from "@/assets/icons/platform-ring-inner.svg";
-import ringMiddle from "@/assets/icons/platform-ring-middle.svg";
+import OrbitRings from "@/components/shared/components/OrbitRings";
 import Button from "@/components/ui/Button";
 
 import styles from "../css/PlatformPanel.module.css";
 
-/** One platform tab: image over orbit rings, description, specs and CTA. */
 export default function PlatformPanel({ platform }) {
   const { name, description, image, specs } = platform;
 
@@ -16,11 +13,10 @@ export default function PlatformPanel({ platform }) {
     <div className={styles.panel}>
       {image && (
         <div className={styles.media}>
-          <div aria-hidden="true" className={styles.rings}>
-            <Image src={ringDashed} alt="" className={styles.ringDashed} />
-            <Image src={ringMiddle} alt="" className={styles.ringMiddle} />
-            <Image src={ringInner} alt="" className={styles.ringInner} />
-          </div>
+          <OrbitRings
+            sizes="(min-width: 1280px) 26vw, (min-width: 768px) 405px, 65vw"
+            className={styles.rings}
+          />
           <div className={styles.imageSlot}>
             <Image
               src={image.src}

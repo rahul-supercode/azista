@@ -6,7 +6,6 @@ import plus from "@/assets/icons/plus.svg";
 
 import styles from "./css/NavDropdown.module.css";
 
-// Hover only opens the floating desktop panel, never the mobile menu.
 const HOVER_QUERY = "(hover: hover) and (min-width: 1280px)";
 
 function isHoverPointer(event) {
@@ -16,11 +15,9 @@ function isHoverPointer(event) {
 }
 
 /**
- * The label links to the section's page; the plus/minus button toggles the
- * menu (touch and keyboard), and on desktop a mouse hover opens it too.
- * Expands inline on mobile, fades in as a panel under the header on desktop.
- * Stays mounted so it can animate; `inert` keeps the closed menu out of the
- * tab order and accessibility tree.
+ * Disclosure menu: expands inline on mobile, fades in as a panel under the
+ * header on desktop. Stays mounted so it can animate; `inert` keeps the
+ * closed menu out of the tab order and accessibility tree.
  */
 export default function NavDropdown({
   id,

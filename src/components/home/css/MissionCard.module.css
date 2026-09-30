@@ -1,4 +1,3 @@
-/* 1130 × 620 on desktop; taller below it so the title and specs fit. */
 .card {
   position: relative;
   isolation: isolate;
@@ -46,10 +45,6 @@
   }
 }
 
-/*
- * Desktop: title top-left (70px in, 80px down); specs start 60.5% across,
- * either level with the title or 57px above the bottom edge.
- */
 @media (min-width: 1280px) {
   .card {
     padding: 80px 70px;

@@ -3,9 +3,8 @@ import Image from "next/image";
 import styles from "../css/MissionCard.module.css";
 
 /**
- * Figma: Section3 › AFR / Focus / Panorama. `theme` sets the text colour for
- * the image behind it; `specsAt` places the spec list beside the title
- * ("top") or in the lower half ("bottom").
+ * `theme`: text colour for the image behind it. `specsAt`: "top" (beside the
+ * title) or "bottom".
  */
 export default function MissionCard({
   title,

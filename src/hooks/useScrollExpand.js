@@ -7,13 +7,7 @@ import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * Scroll-scrubbed "open up" entrance (after icomat.co.uk's carousel): while
- * the element's top travels from the bottom of the viewport to the top, it
- * grows from 80% to full size, fades in, and its 20% clip-path inset opens
- * to the edges. Server-rendered state is the final one, so it reads fine
- * without JS or with reduced motion. Returns a ref for the element.
- */
+/** Scroll-scrubbed grow-in entrance. Returns a ref for the element. */
 export function useScrollExpand() {
   const ref = useRef(null);
 

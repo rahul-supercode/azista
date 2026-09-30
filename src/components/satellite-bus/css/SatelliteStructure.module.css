@@ -1,4 +1,3 @@
-/* Muted band (Figma: Section-4, 1512 × 836). */
 .section {
   padding-block: 64px;
   background: var(--muted);
@@ -15,7 +14,6 @@
   gap: 40px;
 }
 
-/* 556 × 540 tile; the image is the product + shadow on transparent. */
 .media {
   position: relative;
   aspect-ratio: 556 / 540;
@@ -37,7 +35,6 @@
   interpolate-size: allow-keywords;
 }
 
-/* Animates open/closed where supported; elsewhere it simply toggles. */
 .item::details-content {
   height: 0;
   overflow: clip;
@@ -81,7 +78,6 @@
   }
 }
 
-/* Plus turns into minus while open. */
 .icon {
   position: relative;
   flex-shrink: 0;
@@ -163,10 +159,6 @@
   }
 }
 
-/*
- * Desktop: tile and accordion on Figma's 556 · 41 · 716 columns, both 80px
- * below the heading's cap.
- */
 @media (min-width: 1280px) {
   .section {
     padding-block: 83px 77px;

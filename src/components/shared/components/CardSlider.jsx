@@ -1,26 +1,25 @@
 "use client";
 
-import { Children, useCallback, useEffect, useRef, useState } from "react";
+import Splide from "@splidejs/splide";
+import { Children, useEffect, useRef } from "react";
 
 import styles from "../css/CardSlider.module.css";
 
-// A drag past this share of a slide's width moves to the neighbour.
-const DRAG_THRESHOLD = 0.15;
-// Pointer travel (px) before a press counts as a drag rather than a click.
-const DRAG_SLOP = 6;
-// How much of the drag is applied past the first/last slide.
-const EDGE_RESISTANCE = 0.3;
-// Quiet time (ms) after the last wheel event before snapping to a slide.
-const WHEEL_SETTLE_MS = 140;
+// Quiet time (ms) that ends a trackpad / wheel gesture.
+const WHEEL_QUIET_MS = 120;
+// Once a swipe has reached SWIPE_PEAK px per event, dropping below
+// MOMENTUM_TAIL means only momentum is left, so it snaps without waiting.
+const SWIPE_PEAK = 8;
+const MOMENTUM_TAIL = 2;
+// A swipe past this share of a slide's width moves to the neighbour.
+const SWIPE_THRESHOLD = 0.1;
+// Travel (px) before a gesture is locked to horizontal or vertical.
+const AXIS_LOCK = 10;
 
 /**
- * Horizontal card slider (after turionspace.com's mission slider): the
- * first card sits on the content's left edge, middle cards are centred with
- * their neighbours peeking in, and the last card sits on the right edge.
- * Moves by dragging/swiping, trackpad swipes, the arrow keys, or clicking a
- * peeking card.
- * `slideLabels` names each child for screen readers; `cursorLabel`, if set,
- * is a visual hint that follows the mouse over the cards.
+ * Splide carousel with the active card centred and the ends aligned to the
+ * page container. `slideLabels` names each child for screen readers;
+ * `cursorLabel` is an optional hint that follows the mouse over the cards.
  */
 export default function CardSlider({
   label,
@@ -31,140 +30,146 @@ export default function CardSlider({
   const slides = Children.toArray(children);
   const count = slides.length;
 
-  const edgesRef = useRef(null);
-  const viewportRef = useRef(null);
+  const rootRef = useRef(null);
   const trackRef = useRef(null);
-  const offsetRef = useRef(0);
-  const dragRef = useRef(null);
   const cursorRef = useRef(null);
-  const [index, setIndex] = useState(0);
+  const slideAriaRef = useRef(null);
 
-  /** Track translation that puts slide `i` in place, clamped to the edges. */
-  const offsetFor = useCallback(
-    (i) => {
-      const edges = edgesRef.current;
-      const viewport = viewportRef.current;
-      const items = trackRef.current?.children;
-      if (!edges || !viewport || !items?.length) return 0;
-
-      const origin = viewport.getBoundingClientRect().left;
-      const content = edges.getBoundingClientRect();
-      const slide = items[i];
-      const last = items[count - 1];
-
-      const centred =
-        (viewport.clientWidth - slide.offsetWidth) / 2 - slide.offsetLeft;
-      const max = content.left - origin;
-      const min = content.right - origin - (last.offsetLeft + last.offsetWidth);
-      return Math.min(max, Math.max(min, centred));
-    },
-    [count],
-  );
-
-  const applyOffset = useCallback((x, animate) => {
+  useEffect(() => {
+    const root = rootRef.current;
     const track = trackRef.current;
-    if (!track) return;
-    offsetRef.current = x;
-    track.style.transition = animate ? "" : "none";
-    track.style.transform = `translate3d(${x}px, 0, 0)`;
-  }, []);
+    if (!root || !track) return;
 
-  // Glide to the active slide; re-place it instantly whenever the layout changes.
-  const placedRef = useRef(false);
-  useEffect(() => {
-    applyOffset(offsetFor(index), placedRef.current);
-    placedRef.current = true;
-  }, [index, offsetFor, applyOffset]);
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-    const observer = new ResizeObserver(() =>
-      applyOffset(offsetFor(index), false),
+    // `destroy()` strips these, so restore them before a remount (e.g. the
+    // development double effect run). Splide keeps existing slide labels.
+    const items = [...track.querySelectorAll(".splide__slide")];
+    slideAriaRef.current ??= items.map((li) => li.getAttribute("aria-label"));
+    root.tabIndex = 0;
+    items.forEach((li, i) =>
+      li.setAttribute("aria-label", slideAriaRef.current[i]),
     );
-    observer.observe(viewport);
-    return () => observer.disconnect();
-  }, [index, offsetFor, applyOffset]);
 
-  const goTo = useCallback(
-    (i) => {
-      const next = Math.min(count - 1, Math.max(0, i));
-      // Same index (e.g. a short drag): glide back into place.
-      if (next === index) applyOffset(offsetFor(index), true);
-      setIndex(next);
-    },
-    [count, index, offsetFor, applyOffset],
-  );
+    const splide = new Splide(root, {
+      type: "slide",
+      autoWidth: true,
+      focus: "center",
+      trimSpace: true,
+      gap: "10px",
+      // Defined in CSS so the ends line up with the page container.
+      padding: { left: "var(--edge)", right: "var(--edge)" },
+      speed: 800,
+      easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      // Stronger than the default (600) so a short, moderate swipe advances.
+      flickPower: 1000,
+      flickMaxPages: 1,
+      waitForTransition: false,
+      updateOnMove: true,
+      arrows: false,
+      pagination: false,
+      keyboard: "focused",
+      slideFocus: false,
+      label,
+    });
+    splide.on("click", (slide) => splide.go(slide.index));
+    splide.mount();
 
-  // ── Trackpad / horizontal wheel ───────────────────────────────────────
-  // Horizontal wheel deltas (two-finger swipes, Magic Mouse, Shift+wheel)
-  // move the track directly; once the gesture and its inertia go quiet, it
-  // snaps to the nearest slide. Vertical scrolling is left to the page.
-  // Attached natively because React's wheel listener is passive and can't
-  // stop the browser's own back/forward swipe.
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-    let settle;
+    // Horizontal trackpad / Shift+wheel swipes (Splide's own wheel option
+    // only reads vertical deltas): the track follows the fingers, then snaps
+    // to a slide. Each gesture is locked to one axis once it gets going, so
+    // vertical scrolling is left to the page.
+    const { Controller, Move, Slides } = splide.Components;
+    let gesture = null;
+    let quiet;
 
-    function onWheel(event) {
-      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
-      event.preventDefault();
-
-      const start = offsetFor(0);
-      const end = offsetFor(count - 1);
-      const x = Math.min(
-        start,
-        Math.max(end, offsetRef.current - event.deltaX),
-      );
-      applyOffset(x, false);
-
-      clearTimeout(settle);
-      settle = setTimeout(() => {
-        let nearest = 0;
-        for (let i = 1; i < count; i++) {
-          if (Math.abs(offsetFor(i) - x) < Math.abs(offsetFor(nearest) - x)) {
-            nearest = i;
-          }
-        }
-        goTo(nearest);
-      }, WHEEL_SETTLE_MS);
+    function snap() {
+      const { start, from } = gesture;
+      const moved = from - Move.getPosition();
+      let dest = Controller.toDest(Move.getPosition());
+      const width = Slides.getAt(start).slide.offsetWidth;
+      if (dest === start && Math.abs(moved) > width * SWIPE_THRESHOLD) {
+        dest = Math.min(
+          Controller.getEnd(),
+          Math.max(0, start + Math.sign(moved)),
+        );
+      }
+      Controller.go(dest, true);
+      gesture.done = true;
     }
 
-    viewport.addEventListener("wheel", onWheel, { passive: false });
+    function onWheel(event) {
+      const scale = event.deltaMode === 1 ? 16 : 1; // lines → px
+      const dx = event.deltaX * scale;
+      const size = Math.abs(dx);
+
+      clearTimeout(quiet);
+      quiet = setTimeout(() => {
+        if (gesture?.axis === "x" && !gesture.done) snap();
+        gesture = null;
+      }, WHEEL_QUIET_MS);
+
+      // Momentum only ever shrinks, so growing deltas mean a new swipe.
+      const newSwipe = gesture?.done && size > gesture.last * 1.5 + 2;
+      if (!gesture || newSwipe) {
+        gesture = { axis: null, sx: 0, sy: 0, peak: 0, last: 0, done: false };
+      }
+      // Swipes rarely start straight, so decide the axis on total travel.
+      if (!gesture.axis) {
+        gesture.sx += size;
+        gesture.sy += Math.abs(event.deltaY * scale);
+        if (gesture.sx + gesture.sy < AXIS_LOCK) return;
+        gesture.axis = gesture.sx >= gesture.sy ? "x" : "y";
+        if (gesture.axis === "x") {
+          Move.cancel();
+          gesture.start = splide.index;
+          gesture.from = Move.getPosition();
+        }
+      }
+      if (gesture.axis !== "x") return;
+      // Also stops the browser's own back/forward swipe.
+      event.preventDefault();
+      gesture.last = size;
+      if (gesture.done) return;
+
+      gesture.peak = Math.max(gesture.peak, size);
+      if (gesture.peak >= SWIPE_PEAK && size < MOMENTUM_TAIL) {
+        snap();
+        return;
+      }
+      const [a, b] = [Move.getLimit(false), Move.getLimit(true)];
+      const x = Move.getPosition() - dx;
+      Move.translate(Math.min(Math.max(a, b), Math.max(Math.min(a, b), x)));
+    }
+    track.addEventListener("wheel", onWheel, { passive: false });
+
+    // Off-screen slides are clipped by the track, so native lazy loading
+    // waits until they slide in and they pop in mid-glide. Once the slider
+    // nears the screen, load every slide's images.
+    const loader = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        loader.disconnect();
+        for (const img of track.querySelectorAll("img[loading=lazy]")) {
+          img.loading = "eager";
+        }
+      },
+      { rootMargin: "100% 0px" },
+    );
+    loader.observe(track);
+
     return () => {
-      clearTimeout(settle);
-      viewport.removeEventListener("wheel", onWheel);
+      clearTimeout(quiet);
+      track.removeEventListener("wheel", onWheel);
+      loader.disconnect();
+      splide.destroy();
     };
-  }, [count, offsetFor, applyOffset, goTo]);
-
-  function onKeyDown(event) {
-    if (event.key === "ArrowLeft") goTo(index - 1);
-    else if (event.key === "ArrowRight") goTo(index + 1);
-    else return;
-    event.preventDefault();
-  }
-
-  // ── Drag / swipe ──────────────────────────────────────────────────────
-
-  function onPointerDown(event) {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-    dragRef.current = {
-      id: event.pointerId,
-      startX: event.clientX,
-      startY: event.clientY,
-      base: offsetRef.current,
-      dx: 0,
-      active: false,
-    };
-  }
+  }, [label]);
 
   // ── Cursor label ──────────────────────────────────────────────────────
 
   function moveCursor(event) {
     const cursor = cursorRef.current;
     if (!cursor || event.pointerType !== "mouse") return;
-    const box = viewportRef.current.getBoundingClientRect();
+    const box = trackRef.current.getBoundingClientRect();
     const x = event.clientX - box.left - cursor.offsetWidth / 2;
     const y = event.clientY - box.top - cursor.offsetHeight / 2;
     // `translate` (not `transform`) so the scale-in happens around its centre.
@@ -181,93 +186,42 @@ export default function CardSlider({
     cursorRef.current?.removeAttribute("data-visible");
   }
 
-  function onPointerMove(event) {
-    moveCursor(event);
-    const drag = dragRef.current;
-    if (!drag || drag.id !== event.pointerId) return;
-    const dx = event.clientX - drag.startX;
-    const dy = event.clientY - drag.startY;
-
-    if (!drag.active) {
-      if (Math.abs(dx) < DRAG_SLOP && Math.abs(dy) < DRAG_SLOP) return;
-      // Mostly vertical: let the page scroll instead.
-      if (Math.abs(dy) > Math.abs(dx)) {
-        dragRef.current = null;
-        return;
-      }
-      drag.active = true;
-      event.currentTarget.setPointerCapture(event.pointerId);
-    }
-
-    drag.dx = dx;
-    const atStart = index === 0 && dx > 0;
-    const atEnd = index === count - 1 && dx < 0;
-    const eased = atStart || atEnd ? dx * EDGE_RESISTANCE : dx;
-    applyOffset(drag.base + eased, false);
-  }
-
-  function onPointerUp(event) {
-    const drag = dragRef.current;
-    if (!drag || drag.id !== event.pointerId) return;
-    if (!drag.active) {
-      dragRef.current = null;
-      return;
-    }
-    const width = trackRef.current.children[index].offsetWidth;
-    const step = Math.abs(drag.dx) > width * DRAG_THRESHOLD;
-    goTo(step ? index - Math.sign(drag.dx) : index);
-    // Keep the flag until the click that follows this pointerup is swallowed.
-    requestAnimationFrame(() => {
-      dragRef.current = null;
-    });
-  }
-
-  function onClickCapture(event) {
-    if (dragRef.current?.active) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+  // A click focuses the slider (so arrow keys work after it) without the
+  // browser scrolling it into view, which jumps the page and cancels the drag.
+  function focusWithoutScroll(event) {
+    if (event.button !== 0) return;
+    event.preventDefault();
+    rootRef.current.focus({ preventScroll: true });
   }
 
   return (
     <div
+      ref={rootRef}
       role="region"
-      aria-roledescription="carousel"
       aria-label={label}
+      aria-roledescription="carousel"
       tabIndex={0}
-      onKeyDown={onKeyDown}
-      className={styles.slider}
+      onMouseDown={focusWithoutScroll}
+      className={`splide ${styles.slider}`}
     >
-      {/* Zero-height marker whose box gives the content's left/right edges. */}
-      <div className="container">
-        <div ref={edgesRef} />
-      </div>
-
       <div
-        ref={viewportRef}
-        className={styles.viewport}
-        onPointerDown={onPointerDown}
-        onPointerEnter={showCursor}
-        onPointerLeave={hideCursor}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
-        onClickCapture={onClickCapture}
+        ref={trackRef}
+        className={`splide__track ${styles.track}`}
+        onPointerEnter={cursorLabel ? showCursor : undefined}
+        onPointerLeave={cursorLabel ? hideCursor : undefined}
+        onPointerMove={cursorLabel ? moveCursor : undefined}
       >
-        <div ref={trackRef} className={styles.track}>
+        <ul className={`splide__list ${styles.list}`}>
           {slides.map((slide, i) => (
-            <div
+            <li
               key={slideLabels[i]}
-              role="group"
-              aria-roledescription="slide"
               aria-label={`${i + 1} of ${count}: ${slideLabels[i]}`}
-              onClick={i === index ? undefined : () => goTo(i)}
-              className={`${styles.slide} ${i === index ? "" : styles.inactive}`}
+              className={`splide__slide ${styles.slide}`}
             >
               {slide}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
         {cursorLabel ? (
           <span
             ref={cursorRef}
@@ -278,10 +232,6 @@ export default function CardSlider({
           </span>
         ) : null}
       </div>
-
-      <p aria-live="polite" className="sr-only">
-        {`Slide ${index + 1} of ${count}: ${slideLabels[index]}`}
-      </p>
     </div>
   );
 }

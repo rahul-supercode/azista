@@ -1,0 +1,55 @@
+.root {
+  --lens-w: 160px;
+  --lens-h: 142px;
+  --lens-left: 43.1%;
+  --lens-top: 54.25%;
+
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  contain: paint;
+}
+
+.sharp,
+.lens {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Sharp copy, clipped to the lens. LensReveal.jsx animates --lens-x/-y. */
+.sharp {
+  inset: 0;
+  clip-path: inset(
+    var(--lens-y, var(--lens-top))
+      calc(100% - var(--lens-x, var(--lens-left)) - var(--lens-w))
+      calc(100% - var(--lens-y, var(--lens-top)) - var(--lens-h))
+      var(--lens-x, var(--lens-left))
+  );
+  will-change: clip-path;
+}
+
+.lens {
+  top: var(--lens-y, var(--lens-top));
+  left: var(--lens-x, var(--lens-left));
+  width: var(--lens-w);
+  height: var(--lens-h);
+}
+
+.frame {
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .root {
+    --lens-w: 250px;
+    --lens-h: 222px;
+  }
+}
+
+/* Figma: 338 × 300 at (652, 434) in a 1512 × 800 frame. */
+@media (min-width: 1280px) {
+  .root {
+    --lens-w: 338px;
+    --lens-h: 300px;
+  }
+}

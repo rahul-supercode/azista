@@ -1,9 +1,4 @@
-/**
- * Satellite structure accordion (Figma: Section-4). Only Solar Panel – FR4
- * has content in the design so far.
- * TODO: add content (and images, if they differ) for Aluminium Honeycomb and
- * Solar Panel – CFRP.
- */
+// TODO: add content for Aluminium Honeycomb and Solar Panel – CFRP.
 export const structures = [
   { id: "aluminium-honeycomb", name: "Aluminium Honeycomb" },
   { id: "solar-panel-cfrp", name: "Solar Panel – CFRP" },
@@ -23,7 +18,6 @@ export const structures = [
   },
 ];
 
-// Open on load, as in the design.
 export const defaultStructureId = "solar-panel-fr4";
 
 export const structureImage = {

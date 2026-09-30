@@ -1,11 +1,9 @@
 .section {
   padding-bottom: 80px;
   background: var(--muted);
-  /* Covers the sub-pixel seam against the Events band above (same colour). */
   box-shadow: 0 -1px 0 var(--muted);
 }
 
-/* Heading left, "View all" right (Figma: 23px lower than the heading). */
 .header {
   display: flex;
   align-items: flex-start;
@@ -19,7 +17,6 @@
   margin-top: 8px;
 }
 
-/* Three 457 × 292 stories, 20px apart. */
 .grid {
   display: grid;
   gap: 40px;
@@ -52,13 +49,11 @@
   }
 }
 
-/* Figma: stories 75px below the heading's cap top; 120px to the next band. */
 @media (min-width: 1280px) {
   .section {
     padding-bottom: 120px;
   }
 
-  /* The offset "View all" (45px) sets the row height, not the 35px heading. */
   .header {
     margin-bottom: 30px;
   }

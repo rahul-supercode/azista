@@ -2,7 +2,6 @@
 
 import { useDatasheetRequest } from "@/hooks/useDatasheetRequest";
 
-/** Opens the datasheet request drawer for one product. */
 export default function DatasheetButton({
   name,
   datasheet,

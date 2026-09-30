@@ -1,7 +1,3 @@
-/*
- * Full-height drawer on the right, 560px wide (Figma: Form, 659px). Slides in and
- * out; `display`/`overlay` are kept discrete so the exit can animate too.
- */
 .dialog {
   position: fixed;
   inset: 0 0 0 auto;
@@ -87,7 +83,6 @@
   max-width: 358px;
 }
 
-/* Rules 80px apart, as in Figma. */
 .fields {
   display: flex;
   flex-direction: column;
@@ -99,7 +94,6 @@
   margin-top: 70px;
 }
 
-/* Tablet up: Figma spacing — close 49px from the top, first label at 121px. */
 @media (min-width: 768px) {
   .panel {
     padding: 110px 50px 64px;

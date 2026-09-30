@@ -1,0 +1,45 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 64px 80px;
+  background: var(--foreground);
+  /* Covers the sub-pixel seam with the section above. */
+  box-shadow: 0 -1px 0 var(--foreground);
+  color: var(--color-3);
+}
+
+.lines {
+  z-index: -1;
+  object-fit: cover;
+  object-position: top;
+  pointer-events: none;
+}
+
+.heading {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 64px 96px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 46px 112px;
+  }
+
+  .list {
+    gap: 0;
+    margin-top: 60px;
+  }
+}

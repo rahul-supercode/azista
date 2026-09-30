@@ -3,7 +3,7 @@ import Events from "@/components/home/components/Events";
 import Experience from "@/components/home/components/Experience";
 import Hero from "@/components/home/components/Hero";
 import HostedPayloads from "@/components/home/components/HostedPayloads";
-import MissionCta from "@/components/home/components/MissionCta";
+import MissionCta from "@/components/shared/components/MissionCta";
 import Missions from "@/components/home/components/Missions";
 import News from "@/components/home/components/News";
 import OpticalPayloads from "@/components/home/components/OpticalPayloads";

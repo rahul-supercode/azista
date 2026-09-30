@@ -4,7 +4,6 @@
   flex-direction: column;
 }
 
-/* Visually hidden until focused with the keyboard. */
 .skipLink {
   position: fixed;
   top: 16px;

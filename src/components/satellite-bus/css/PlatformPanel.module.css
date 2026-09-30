@@ -5,10 +5,6 @@
   padding-top: 24px;
 }
 
-/*
- * 526 × 502.6 box (Figma: Frame 1410156261). Rings and image are placed in
- * percentages of it so the composition scales as one piece.
- */
 .media {
   position: relative;
   width: min(100%, 526px);
@@ -18,37 +14,11 @@
 
 .rings {
   position: absolute;
-  inset: 0;
-  opacity: 0.6;
-}
-
-.ringDashed,
-.ringMiddle,
-.ringInner {
-  position: absolute;
-  height: auto;
-  aspect-ratio: 1;
-}
-
-.ringDashed {
   top: 11.95%;
   left: 11.67%;
   width: 76.66%;
 }
 
-.ringMiddle {
-  top: 18%;
-  left: 17.1%;
-  width: 65.79%;
-}
-
-.ringInner {
-  top: 24.05%;
-  left: 23.16%;
-  width: 53.68%;
-}
-
-/* 429 × 374 slot. */
 .imageSlot {
   position: absolute;
   top: 12.79%;
@@ -100,7 +70,6 @@
   margin-top: 50px;
 }
 
-/* Tablet up: specs as label / value columns. */
 @media (min-width: 768px) {
   .specs {
     gap: 20px;
@@ -121,10 +90,6 @@
   }
 }
 
-/*
- * Desktop: image and text side by side on Figma's 526 · 69 · 815 columns;
- * the text starts 76px below the image box.
- */
 @media (min-width: 1280px) {
   .panel {
     display: grid;

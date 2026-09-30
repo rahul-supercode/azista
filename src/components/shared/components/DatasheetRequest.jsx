@@ -6,10 +6,6 @@ import { DatasheetRequestContext } from "@/hooks/useDatasheetRequest";
 
 import DatasheetDialog from "./DatasheetDialog";
 
-/**
- * Shares one datasheet request drawer between every `DatasheetButton` inside
- * it, so a grid of products renders a single dialog.
- */
 export default function DatasheetRequest({ children }) {
   const dialogRef = useRef(null);
   const [product, setProduct] = useState(null);

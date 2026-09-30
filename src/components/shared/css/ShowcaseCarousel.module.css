@@ -1,4 +1,3 @@
-/* Full-bleed 1512 × 760 frame (Figma: Frame 1410156736). */
 .frame {
   position: relative;
   aspect-ratio: 1512 / 760;
@@ -12,7 +11,6 @@
   inset: 0;
 }
 
-/* Later slides start hidden; each is wiped in when it becomes active. */
 .slide:not(:first-child) {
   clip-path: inset(0% 0% 100% 0%);
 }
@@ -21,7 +19,6 @@
   object-fit: cover;
 }
 
-/* Title + link, 60px down on desktop (Figma: 50/60); panels share a cell. */
 .panels {
   position: relative;
   z-index: 3;
@@ -59,7 +56,6 @@
   max-width: 532px;
 }
 
-/* Dark image behind: white text, link and tabs. */
 .panels,
 .tab {
   transition: color 600ms ease;
@@ -83,7 +79,7 @@
   background: #fff;
 }
 
-/* ── Tabs: label over a progress track, 60px above the bottom edge ────── */
+/* ── Tabs ─────────────────────────────────────────────────────────────── */
 
 .tabsBar {
   position: absolute;
@@ -132,7 +128,6 @@
   opacity: 1;
 }
 
-/* The autoplay timer: its animationend advances the carousel. */
 .fill {
   position: absolute;
   inset: 0;
@@ -155,7 +150,6 @@
   }
 }
 
-/* No autoplay with reduced motion: the underline just marks the active tab. */
 @media (prefers-reduced-motion: reduce) {
   .fill {
     animation: none;

@@ -1,15 +1,12 @@
-/* Dark 1512 × 561 band (Figma: Section-7). */
 .section {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   background: var(--foreground);
-  /* Covers the sub-pixel seam against the dark section above it. */
   box-shadow: 0 -1px 0 var(--foreground);
   color: #fff;
 }
 
-/* Heading cap 116px down; link 43px below it; 194px to the bottom. */
 .content {
   display: flex;
   flex-direction: column;
@@ -20,73 +17,6 @@
 
 .title {
   max-width: 691px;
-}
-
-/* ── Orbits: 746 × 512 slot on the right edge, centred 25px below middle ── */
-
-.orbitSlot {
-  position: absolute;
-  top: calc(50% + 25px);
-  right: 0;
-  z-index: -1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 746px;
-  height: 512px;
-  translate: 0 -50%;
-  pointer-events: none;
-}
-
-.orbits {
-  position: relative;
-  flex: none;
-  width: 512px;
-  height: 746px;
-  overflow: hidden;
-  rotate: 90deg;
-}
-
-.orbit {
-  position: absolute;
-  max-width: none;
-}
-
-.inner {
-  top: -451.02px;
-  left: 234.31px;
-  width: 986.973px;
-  height: 986.973px;
-}
-
-.outer {
-  top: -557.3px;
-  left: 122.95px;
-  width: 1209.674px;
-  height: 1209.674px;
-}
-
-.dashed {
-  top: -663.6px;
-  left: 23px;
-  opacity: 0.4;
-}
-
-.dot {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-}
-
-/* Small screens: shrink the orbits into the lower-right corner. */
-@media (max-width: 767.98px) {
-  .orbitSlot {
-    top: auto;
-    bottom: 0;
-    scale: 0.6;
-    transform-origin: bottom right;
-    translate: none;
-  }
 }
 
 @media (min-width: 768px) {

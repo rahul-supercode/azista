@@ -3,13 +3,11 @@
   background: var(--muted);
 }
 
-/* Figma's box is 532px; 525 keeps its line breaks with the web font's metrics. */
 .title {
   max-width: 525px;
   margin-bottom: 40px;
 }
 
-/* 267 × 256 cards, 19px apart (Figma: Group 1000011432). */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -39,7 +37,7 @@
   opacity: 0.6;
 }
 
-/* ── Next event (dark card) ───────────────────────────────────────────── */
+/* ── Next event ───────────────────────────────────────────────────────── */
 
 .featured {
   grid-column: 1 / -1;
@@ -54,7 +52,6 @@
   align-items: center;
 }
 
-/* 15px / 23px, 60% — date and place, 25px apart; booth 41px below. */
 .meta {
   font-size: 0.9375rem;
   line-height: 1.4375rem;
@@ -99,7 +96,6 @@
   }
 }
 
-/* Figma: 100px below the section above, cards 166px below the heading. */
 @media (min-width: 1280px) {
   .section {
     padding-block: 100px 120px;

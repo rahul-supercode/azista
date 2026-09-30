@@ -1,9 +1,4 @@
-/**
- * Satellite platforms shown as tabs (Figma: Section-2). Only Azista 100 has
- * content in the design so far.
- * TODO: add description, specs and image for LEOS-50, 100HP Agile and
- * 100HP Heavy.
- */
+// TODO: add description, specs and image for LEOS-50, 100HP Agile and 100HP Heavy.
 export const platforms = [
   { id: "leos-50", name: "LEOS-50" },
   {
@@ -41,5 +36,4 @@ export const platforms = [
   { id: "100hp-heavy", name: "100HP Heavy" },
 ];
 
-// The tab selected on load, as in the design.
 export const defaultPlatformId = "azista-100";

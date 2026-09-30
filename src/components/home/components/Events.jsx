@@ -3,14 +3,12 @@ import Link from "next/link";
 
 import styles from "../css/Events.module.css";
 
-// Where to find the team next (Figma: the dark card).
 const NEXT_EVENT = {
   date: "April 13-16, 2026",
   place: "Colorado Springs, CO",
   booth: "Booth #542",
 };
 
-// Logo boxes are 54px tall; widths follow Figma.
 const EVENTS = [
   {
     name: "National Space Symposium",

@@ -11,10 +11,7 @@ import {
   structures,
 } from "../data/structures";
 
-/**
- * Figma: Section-4 (2977:16276). Exclusive accordion built on <details
- * name>: one item open at a time, no client JS, all content in the HTML.
- */
+/** Figma: Section-4 (2977:16276). */
 export default function SatelliteStructure() {
   return (
     <section

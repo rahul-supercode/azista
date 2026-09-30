@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import cornerFineWhite from "@/assets/icons/corner-fine-white.svg";
 import cornerFine from "@/assets/icons/corner-fine.svg";
 import cornerLight from "@/assets/icons/corner-light.svg";
 import corner from "@/assets/icons/corner.svg";
@@ -12,12 +13,12 @@ const TONES = {
   red: { src: corner, size: 15.5 },
   light: { src: cornerLight, size: 15.5 },
   fine: { src: cornerFine, size: 10.4 },
+  fineLight: { src: cornerFineWhite, size: 10.4 },
 };
 
 /**
- * Box marked by a corner at each corner (Figma: About, Hosted Payloads,
- * Subsystems). `tone`: "red" (15px, 1px, on light), "light" (15px, 0.5px
- * white, on dark) or "fine" (10px, 0.8px red, on light).
+ * Box marked by a corner at each corner. `tone`: "red", "light" (on dark),
+ * "fine" or "fineLight" (fine, on dark).
  */
 export default function CornerFrame({
   tone = "red",

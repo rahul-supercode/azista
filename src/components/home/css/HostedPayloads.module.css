@@ -1,12 +1,25 @@
-/* Dark 1512 × 674 band (Figma: section-6). */
 .section {
+  position: relative;
+  isolation: isolate;
   overflow: hidden;
   padding-block: 24px;
   background: var(--foreground);
   color: #fff;
 }
 
-/* Light corners mark a 1412 × 525 box, 40px below the band's top. */
+/* Fades the glow out before the section edge so it doesn't end in a hard
+   line against the next section. Sits above the glow (both z-index -1, this
+   one later) and below the content. */
+.section::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: 160px;
+  background: linear-gradient(transparent, var(--foreground));
+  pointer-events: none;
+}
+
 .frame {
   display: flex;
   flex-direction: column;
@@ -14,20 +27,16 @@
   padding: 32px 16px 48px;
 }
 
-/* 700 × 509 slot; the PNG is exactly 2× that. */
 .media {
   position: relative;
   aspect-ratio: 700 / 509;
   width: 100%;
-  isolation: isolate;
 }
 
 .image {
   object-fit: contain;
 }
 
-/* Soft white glow behind the satellite (2416px incl. blur), centred where
- * Figma has it: 31% across, 44% down the image slot. */
 .glow {
   position: absolute;
   top: calc(44.2% - 1208px);
@@ -66,11 +75,6 @@
   }
 }
 
-/*
- * Desktop: Figma's exact placement inside the 1412px box — image 35px in
- * and 30px down (overhanging the bottom corners), text column from 835px,
- * heading cap 159px down. Columns keep these proportions as it narrows.
- */
 @media (min-width: 1280px) {
   .section {
     padding-block: 40px 109px;

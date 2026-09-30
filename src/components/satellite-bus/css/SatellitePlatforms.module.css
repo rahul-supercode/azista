@@ -1,4 +1,3 @@
-/* Dark band (Figma: Section-2, 1512 × 1047). */
 .section {
   padding-block: 50px 76px;
   background: var(--foreground);
@@ -34,10 +33,6 @@
   }
 }
 
-/*
- * Desktop: heading and intro on Figma's 526 · 69 · 815 columns, the intro
- * 55px below the heading's top; tabs 100px under the heading.
- */
 @media (min-width: 1280px) {
   .section {
     padding-block: 83px 130px;

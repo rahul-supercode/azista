@@ -8,7 +8,6 @@
   }
 }
 
-/* Figma: 120px below the Missions cards. */
 @media (min-width: 1280px) {
   .section {
     margin-top: 120px;

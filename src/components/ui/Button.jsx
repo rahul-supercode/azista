@@ -16,7 +16,7 @@ import styles from "./css/Button.module.css";
  * Figma: Button-2 → `primary`, Button-1 → `framed`, Button-3 → `link`.
  * `framed-light` is the header CTA: white fill and brackets, for dark backgrounds.
  * `arrow-light` is a bare white arrow + label link, for dark backgrounds.
- * `download` is the red fill with a download icon (Figma: datasheet form).
+ * `download` is the red fill with a download icon.
  * Renders a `next/link` when given `href`, otherwise a `<button>`.
  */
 const VARIANT_CLASSES = {

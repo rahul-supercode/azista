@@ -1,0 +1,136 @@
+/* Figma: a 1512 × 1515 frame. */
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: 80px;
+  background: var(--foreground);
+  color: var(--color-3);
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+}
+
+.eyebrow {
+  opacity: 0.6;
+}
+
+.earth {
+  position: relative;
+  aspect-ratio: 1512 / 880;
+  margin-top: 16px;
+}
+
+.earthImage {
+  z-index: -1;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Fades the lower half of the Earth into the section. */
+.earth::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 46.8%;
+  z-index: -1;
+  height: 56.4%;
+  background: linear-gradient(rgb(26 26 26 / 0), var(--foreground) 59.615%);
+}
+
+.satellite {
+  position: absolute;
+  top: 3.2%;
+  left: 56.4%;
+  z-index: 1;
+  width: 26%;
+}
+
+.satelliteImage {
+  width: 100%;
+  height: auto;
+}
+
+.clock {
+  position: relative;
+  margin-top: -7.6%;
+}
+
+/*
+ * Figma: Rectangle 14255, over the rings and under the satellite and clock.
+ * The layer is rotated 180°, so its 180deg fill reads bottom-to-top here:
+ * solid under the clock, clearing towards the docked satellite.
+ */
+.section::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 119px;
+  z-index: -1;
+  height: 448px;
+  background: linear-gradient(
+    0deg,
+    rgb(26 26 26 / 0) 0%,
+    var(--foreground) 51.44%
+  );
+  pointer-events: none;
+}
+
+/* Rings are the bottom layer, behind the Earth; only their lower part shows. */
+.orbit {
+  --orbit-gap: 0deg;
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: -2;
+  width: 84.85%;
+  aspect-ratio: 1283 / 679;
+  overflow: hidden;
+  translate: -50% 0;
+}
+
+/*
+ * Hides --orbit-gap degrees either side of the bottom of the rings;
+ * SatelliteDescent animates it to 0 so they draw in from both sides and
+ * join under the satellite. Fully drawn without JS.
+ */
+.rings {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  mask-image: conic-gradient(
+    from 180deg,
+    transparent var(--orbit-gap),
+    #000 calc(var(--orbit-gap) + 0.5deg),
+    #000 calc(359.5deg - var(--orbit-gap)),
+    transparent calc(360deg - var(--orbit-gap))
+  );
+}
+
+.dock {
+  width: 26.43%;
+  aspect-ratio: 399.6 / 326.7;
+  margin: 61px auto 2.84vw;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 104px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-top: 117px;
+  }
+
+  .header {
+    gap: 31px;
+  }
+}

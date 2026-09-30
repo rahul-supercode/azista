@@ -13,11 +13,8 @@ const SHOW_NEAR_TOP = 120;
 const SCROLL_SLOP = 8;
 
 /**
- * Fixed header frame that adapts to what's behind it: transparent over dark
- * sections (Figma: 2910:1920), dark translucent fill everywhere else
- * (Figma: 2910:1636). The mobile menu always gets the dark fill.
- * Slides away on scroll down and back on scroll up; stays put near the top
- * and while a menu is open.
+ * Fixed header: transparent over dark sections, dark fill elsewhere. Hides on
+ * scroll down, returns on scroll up.
  */
 export default function HeaderShell({ children }) {
   const headerRef = useRef(null);

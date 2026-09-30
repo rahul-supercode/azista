@@ -1,4 +1,3 @@
-/* Figma: Frame 1410156749, 120px below the structure band. */
 .section {
   padding-block: 64px;
 }
@@ -18,7 +17,6 @@
   gap: 20px;
 }
 
-/* 458 × 243 card: 67px icon box, title 40px below, description 12px below. */
 .card {
   padding: 30px 20px 40px;
   background: #f3f3f3;
@@ -36,7 +34,6 @@
   height: 67px;
 }
 
-/* Black icons at rest; the white-drawn one is inverted to match. */
 .icon,
 .iconLight {
   transition: filter 300ms ease-out;
@@ -81,7 +78,6 @@
   }
 }
 
-/* Desktop: heading in the first of three 457px columns, cards in the rest. */
 @media (min-width: 1280px) {
   .section {
     padding-block: 120px;

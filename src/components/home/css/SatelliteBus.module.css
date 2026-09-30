@@ -1,4 +1,3 @@
-/* 1512 × 648 band over a faint grid (Figma: Bg lines). */
 .section {
   position: relative;
   isolation: isolate;
@@ -32,7 +31,6 @@
   margin-bottom: 40px;
 }
 
-/* 463 × 470 slot; the PNG is exactly 2× that. */
 .media {
   position: relative;
   width: min(463px, 100%);
@@ -44,10 +42,6 @@
   object-fit: contain;
 }
 
-/*
- * Tablet up: side by side. Columns keep Figma's proportions across the
- * 1412px content box: 119 gutter · 595 text · 463 image · 235 rest.
- */
 @media (min-width: 768px) {
   .inner {
     display: grid;

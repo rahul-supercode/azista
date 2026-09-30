@@ -1,10 +1,3 @@
-/*
- * Design tokens (Figma: Azista – Internal › Section 4).
- * Only the 4 Figma colors are used; the role names below reuse them.
- *
- * Breakpoints (media queries can't read custom properties, so they're written
- * out in each file): tablet 768px, desktop 1280px.
- */
 :root {
   --color-1: #ff0000;
   --color-2: #1a1a1a;
@@ -18,7 +11,6 @@
   --primary-foreground: var(--color-3);
   --border: var(--color-4);
   --ring: var(--color-2);
-  /* Translucent dark fill for the header bar, menus and dropdowns. */
   --surface-dark: rgb(26 26 26 / 0.6);
 
   --font-sans:
@@ -107,10 +99,6 @@ button {
 
 /* ── Layout ────────────────────────────────────────────────────────────── */
 
-/*
- * Page-width wrapper shared by every section: the 1512px design frame with
- * its 50px side gutters, narrowing to 24px on tablet and 16px on mobile.
- */
 .container {
   width: 100%;
   max-width: 1512px;
@@ -141,8 +129,7 @@ button {
   white-space: nowrap;
 }
 
-/* ── Text styles (Figma: heading-1…3, text-1…6) ────────────────────────── */
-/* Large styles scale down fluidly and hit the exact design size on desktop. */
+/* ── Text styles ──────────────────────────────────────────────────────── */
 
 .heading-1 {
   font-family: var(--font-display);
@@ -217,12 +204,10 @@ button {
   letter-spacing: -0.02em;
 }
 
-/* Trims line-height space above cap height / below baseline (Figma "vertical trim"). */
 .text-trim-cap {
   text-box: trim-both cap alphabetic;
 }
 
-/* Keep the page still behind modal dialogs (e.g. the datasheet drawer). */
 html:has(dialog[open]) {
   overflow: hidden;
 }

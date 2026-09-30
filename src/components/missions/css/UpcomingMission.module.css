@@ -1,0 +1,135 @@
+.mission {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  max-width: 577px;
+  aspect-ratio: 577 / 534.7;
+  overflow: hidden;
+}
+
+/* Figma shows the renders mirrored. */
+.image {
+  object-fit: cover;
+  scale: -1 1;
+}
+
+.crop {
+  object-position: 58% 0;
+}
+
+/* Darkens the render towards one corner (Figma: 139° / 231°, mirrored). */
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    220.82deg,
+    rgb(26 26 26 / 0.72) 36.8%,
+    var(--foreground) 69.848%
+  );
+}
+
+.reverse .media::after {
+  background: linear-gradient(
+    128.56deg,
+    rgb(26 26 26 / 0.72) 44.937%,
+    var(--foreground) 79.497%
+  );
+}
+
+.badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  padding: 15px 44px;
+  background: rgb(26 26 26 / 0.3);
+  backdrop-filter: blur(19px);
+  font-weight: 500;
+  white-space: nowrap;
+  translate: -50% -50%;
+}
+
+.description {
+  max-width: 449px;
+  margin-top: 24px;
+  opacity: 0.6;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px 32px;
+  margin-top: 40px;
+}
+
+.spec {
+  display: contents;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .mission {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .reverse {
+    flex-direction: row-reverse;
+  }
+
+  .media {
+    flex: 0 0 48%;
+  }
+}
+
+/* Two halves of the container: Figma offsets each block within its half. */
+@media (min-width: 1280px) {
+  .mission,
+  .reverse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .media {
+    width: 577px;
+  }
+
+  .details {
+    padding-left: 10px;
+  }
+
+  .reverse .media {
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 30px;
+  }
+
+  .reverse .details {
+    grid-column: 1;
+    grid-row: 1;
+    padding-left: 119px;
+  }
+
+  .description {
+    margin-top: 30px;
+  }
+
+  .specs {
+    grid-template-columns: 148px 1fr;
+    column-gap: 18px;
+    margin-top: 40px;
+  }
+}

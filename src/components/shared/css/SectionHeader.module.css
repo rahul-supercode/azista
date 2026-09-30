@@ -19,11 +19,6 @@
   }
 }
 
-/*
- * Desktop: the intro is pinned top-right without adding height, so the
- * header is exactly the heading's cap height (56px) and the 62px margin puts
- * the content 118px below it, as in Figma.
- */
 @media (min-width: 1280px) {
   .header {
     position: relative;

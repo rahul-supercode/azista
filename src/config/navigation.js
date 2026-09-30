@@ -1,4 +1,3 @@
-/** Product links shared by the header dropdowns and the footer columns. */
 const eoPayloadLinks = [
   { label: "Fineview Series", href: "/eo-payloads/fineview" },
   { label: "Vista Series", href: "/eo-payloads/vista" },

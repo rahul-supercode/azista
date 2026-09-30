@@ -5,7 +5,6 @@ import DatasheetButton from "@/components/shared/components/DatasheetButton";
 
 import styles from "../css/SubsystemCard.module.css";
 
-/** Product tile, name, one-line description and datasheet button. */
 export default function SubsystemCard({ subsystem }) {
   const { name, description, image, alt, datasheet } = subsystem;
 

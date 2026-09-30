@@ -2,7 +2,6 @@
   margin-top: 48px;
 }
 
-/* Full-viewport box inside the red corner frame. */
 .frame {
   display: flex;
   flex-direction: column;

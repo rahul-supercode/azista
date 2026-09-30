@@ -1,10 +1,6 @@
 import styles from "../css/SectionHeader.module.css";
 
-/**
- * Section heading with a short intro on the right (Figma: Missions, Optical
- * Payloads, …). On desktop the content below starts 118px under the
- * heading's cap top, however many lines the intro wraps to.
- */
+/** Section heading with a short intro on the right. */
 export default function SectionHeader({ id, title, children }) {
   return (
     <div className={`container ${styles.header}`}>

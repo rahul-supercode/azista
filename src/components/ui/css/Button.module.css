@@ -31,7 +31,6 @@
   color: #000;
 }
 
-/* Arrow + label, white, no fill or underline (Figma: Section-7 "Contact us"). */
 .arrowLight {
   gap: 16px;
   color: #fff;
@@ -68,7 +67,7 @@
   max-width: none;
 }
 
-/* ── Button-1: label between two corner brackets ──────────────────────── */
+/* ── Button-1 ─────────────────────────────────────────────────────────── */
 
 .framedLabel {
   margin-inline: -3px;
@@ -92,7 +91,6 @@
     scale 200ms ease-out;
 }
 
-/* Corners spread outward on hover/focus. */
 .framed:focus-visible .bracket {
   scale: 1.1;
 }

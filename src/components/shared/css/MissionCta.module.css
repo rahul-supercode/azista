@@ -1,4 +1,3 @@
-/* 1512 × 531 band over a dark motion-blur photo (Figma: Frame 1410156559). */
 .section {
   position: relative;
   isolation: isolate;
@@ -35,7 +34,6 @@
   }
 }
 
-/* Figma: eyebrow cap 132px down, heading 30px below it, button 63px below. */
 @media (min-width: 1280px) {
   .content {
     min-height: 531px;

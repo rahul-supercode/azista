@@ -11,14 +11,8 @@ import { useScrollExpand } from "@/hooks/useScrollExpand";
 import styles from "../css/ShowcaseCarousel.module.css";
 
 /**
- * Full-bleed image carousel (after icomat.co.uk's): opens up as it scrolls
- * into view, then auto-advances — the active tab's underline fills as a
- * timer and the next slide wipes down over the current one while its image
- * settles. Autoplay pauses while the carousel is off screen, hovered or
- * focused, and stops for good once a tab is chosen.
- *
- * slides: [{ label, title, href, image, imageAlt, dark? }] — `dark` switches
- * the text and tabs to white for a dark image.
+ * `slides`: `[{ label, title, href, image, imageAlt, dark? }]`; `dark` makes
+ * the text and tabs white.
  */
 export default function ShowcaseCarousel({ label, slides }) {
   const id = useId();
@@ -41,29 +35,34 @@ export default function ShowcaseCarousel({ label, slides }) {
     return () => observer.disconnect();
   }, [frameRef]);
 
-  // Raise the newly active image above the rest and wipe it down over the
-  // previous one while it settles into place. `shownRef` is the slide on
-  // screen: the wipe only runs when it changes, so effect re-runs (e.g.
-  // React's dev double-invoke) don't replay it.
+  // Raise the newly active image above the previous one and wipe it down
+  // while it settles into place. `shownRef` is the slide on screen: the wipe
+  // only runs when it changes, so effect re-runs (e.g. React's dev
+  // double-invoke) don't replay it. Z-indexes stay at 0–2 so the slides never
+  // climb above the text and tabs.
   const shownRef = useRef(0);
-  const zRef = useRef(1);
   useGSAP(
     () => {
       if (index === shownRef.current) return;
+      const previous = slideRefs.current[shownRef.current];
       shownRef.current = index;
       const slide = slideRefs.current[index];
       if (!slide) return;
-      // Finish any interrupted wipe underneath so no slide stays half-clipped.
       for (const other of slideRefs.current) {
-        // Only slides already shown (they carry a z-index) sit underneath.
-        if (!other || other === slide || !other.style.zIndex) continue;
+        if (!other || other === slide) continue;
+        // Finish any interrupted wipe so the slide underneath isn't half-clipped.
         gsap.killTweensOf([other, other.querySelector("img")]);
-        gsap.set(other, { clipPath: "inset(0% 0% 0% 0%)" });
         gsap.set(other.querySelector("img"), { yPercent: 0 });
+        if (other === previous) {
+          gsap.set(other, { clipPath: "inset(0% 0% 0% 0%)" });
+          other.style.zIndex = "1";
+        } else {
+          gsap.set(other, { clipPath: "inset(0% 0% 100% 0%)" });
+          other.style.zIndex = "0";
+        }
       }
       gsap.killTweensOf([slide, slide.querySelector("img")]);
-      zRef.current += 1;
-      slide.style.zIndex = String(zRef.current);
+      slide.style.zIndex = "2";
       gsap.fromTo(
         slide,
         { clipPath: "inset(0% 0% 100% 0%)" },
@@ -96,8 +95,6 @@ export default function ShowcaseCarousel({ label, slides }) {
       aria-roledescription="carousel"
       aria-label={label}
       className={styles.carousel}
-      onPointerEnter={() => setHeld(true)}
-      onPointerLeave={() => setHeld(false)}
       onFocus={() => setHeld(true)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setHeld(false);

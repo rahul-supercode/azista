@@ -1,9 +1,5 @@
-/**
- * Subsystem cards (Figma: Section-3). Images are the Figma tiles (product and
- * shadow on transparent, background in CSS) exported at 2×.
- * TODO: add `datasheet` URLs; the request form downloads it once submitted.
- * TODO: Payload Power & Data Handling reuses the PCDU photo, as in Figma.
- */
+// TODO: add `datasheet` URLs.
+// TODO: replace the Payload Power & Data Handling photo (Figma reuses the PCDU one).
 export const subsystems = [
   {
     name: "Battery",

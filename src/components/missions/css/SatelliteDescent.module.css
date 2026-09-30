@@ -1,0 +1,22 @@
+.craft {
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* Slow bob, as if drifting in orbit; runs alongside the scroll path. */
+.drift {
+  animation: drift 7s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+
+  50% {
+    translate: 0 -10px;
+    rotate: 1.5deg;
+  }
+}

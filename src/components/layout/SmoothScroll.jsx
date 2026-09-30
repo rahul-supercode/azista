@@ -13,10 +13,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 const SMOOTHNESS = 1.2;
 
 /**
- * Site-wide GSAP ScrollSmoother. Page scroll stays native (window.scrollY,
- * anchors and ScrollTriggers keep working); the content just eases after it.
- * Fixed elements such as the header must render outside this wrapper. Off
- * for reduced motion; touch devices keep their native scrolling.
+ * Site-wide GSAP ScrollSmoother. Fixed elements such as the header must
+ * render outside it.
  */
 export default function SmoothScroll({ children }) {
   const pathname = usePathname();

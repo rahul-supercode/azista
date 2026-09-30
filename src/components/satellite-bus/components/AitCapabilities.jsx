@@ -7,7 +7,6 @@ import vibration from "@/assets/icons/ait-vibration.svg";
 
 import styles from "../css/AitCapabilities.module.css";
 
-// `light`: the Figma icon is drawn in white (for the dark hover state).
 const CAPABILITIES = [
   {
     title: "EMI/EMC Testing",
@@ -33,7 +32,7 @@ const CAPABILITIES = [
   },
 ];
 
-/** Figma: Frame 1410156749 (3002:3). Cards turn dark on hover. */
+/** Figma: Frame 1410156749 (3002:3). */
 export default function AitCapabilities() {
   return (
     <section aria-labelledby="ait-heading" className={styles.section}>

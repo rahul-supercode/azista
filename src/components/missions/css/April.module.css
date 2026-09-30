@@ -1,0 +1,92 @@
+.section {
+  overflow: hidden;
+  padding-block: 80px;
+  background: var(--color-3);
+  color: var(--foreground);
+}
+
+.heading {
+  max-width: 684px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Two copies of the list slide left forever; one copy's width per loop. */
+.strip {
+  --gap: 10px;
+
+  display: flex;
+  gap: var(--gap);
+  width: max-content;
+  margin-top: 40px;
+  animation: scroll 60s linear infinite;
+}
+
+.track {
+  display: flex;
+  gap: var(--gap);
+}
+
+.item {
+  position: relative;
+  width: 80vw;
+  aspect-ratio: 735 / 402;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.intro {
+  max-width: 630px;
+  opacity: 0.8;
+}
+
+@keyframes scroll {
+  to {
+    translate: calc(-50% - var(--gap) / 2) 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 104px;
+  }
+
+  .item {
+    width: 60vw;
+  }
+
+  .footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 131px 120px;
+  }
+
+  .strip {
+    margin-top: 81px;
+  }
+
+  .item {
+    width: 735px;
+  }
+
+  .footer {
+    margin-top: 50px;
+  }
+}

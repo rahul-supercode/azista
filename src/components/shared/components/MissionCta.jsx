@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 
 import styles from "../css/MissionCta.module.css";
 
-/** Figma: Frame 1410156559 (2910:603). */
+/** Figma: Frame 1410156559 (2910:603); also Missions "6" (3002:1510). */
 export default function MissionCta() {
   return (
     <section

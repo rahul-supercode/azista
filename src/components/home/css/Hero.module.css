@@ -15,7 +15,6 @@
   object-fit: cover;
 }
 
-/* Two stacked bottom gradients, as in the design, to lift the heading. */
 .section::after {
   content: "";
   position: absolute;

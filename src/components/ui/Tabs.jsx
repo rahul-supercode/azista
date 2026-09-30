@@ -6,11 +6,7 @@ import styles from "./css/Tabs.module.css";
 
 const STEP = { ArrowRight: 1, ArrowLeft: -1 };
 
-/**
- * Accessible tabs (WAI-ARIA tabs pattern, automatic activation). Every panel
- * is rendered so its content stays in the server HTML; inactive ones are
- * `hidden`. `tabs` is `[{ id, label, panel }]`.
- */
+/** `tabs`: `[{ id, label, panel }]`. */
 export default function Tabs({ label, tabs, defaultId, className = "" }) {
   const baseId = useId();
   const [activeId, setActiveId] = useState(defaultId ?? tabs[0].id);

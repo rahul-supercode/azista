@@ -2,18 +2,18 @@
   position: relative;
 }
 
-/* How far each corner sits outside the box so its stroke lands on the edge. */
 .red {
   --corner-offset: -0.5px;
 }
 
 .light,
-.fine {
+.fine,
+.fineLight {
   --corner-offset: 0px;
 }
 
-/* The fine SVG is drawn as a top-right corner; flip it to top-left first. */
-.fine .corner {
+.fine .corner,
+.fineLight .corner {
   scale: -1 1;
 }
 
@@ -23,7 +23,6 @@
   pointer-events: none;
 }
 
-/* The SVG is the top-left corner; the others mirror it. */
 .topLeft {
   top: var(--corner-offset);
   left: var(--corner-offset);

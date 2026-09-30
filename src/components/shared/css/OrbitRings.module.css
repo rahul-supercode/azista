@@ -1,0 +1,26 @@
+/* Rings share one grid cell so they stay concentric at any size. */
+.rings {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.rings img {
+  grid-area: 1 / 1;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.dashed {
+  width: 100%;
+}
+
+.middle {
+  width: 85.82%;
+}
+
+.inner {
+  width: 70.02%;
+}

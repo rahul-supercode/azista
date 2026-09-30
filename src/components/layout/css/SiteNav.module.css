@@ -1,4 +1,4 @@
-/* ── Hamburger (below desktop) ─────────────────────────────────────────── */
+/* ── Hamburger ────────────────────────────────────────────────────────── */
 
 .menuButton {
   position: relative;
@@ -42,7 +42,7 @@
   transform: rotate(-45deg);
 }
 
-/* ── Nav: dropdown panel below desktop, inline row on desktop ──────────── */
+/* ── Nav ──────────────────────────────────────────────────────────────── */
 
 .nav {
   display: none;

@@ -1,0 +1,115 @@
+.section {
+  padding-block: 64px 80px;
+  background: var(--muted);
+}
+
+/* Figma's box is 532px; 525 keeps its line breaks with the web font's metrics. */
+.title {
+  max-width: 525px;
+  margin-bottom: 40px;
+}
+
+/* 267 × 256 cards, 19px apart (Figma: Group 1000011432). */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 256px;
+  padding: 30px 16px;
+  border: 0.4px dashed rgb(0 0 0 / 0.2);
+  background: #f5f6f9;
+  text-align: center;
+}
+
+.logo {
+  height: 54px;
+  object-fit: contain;
+}
+
+.name {
+  max-width: 160px;
+  opacity: 0.6;
+}
+
+/* ── Next event (dark card) ───────────────────────────────────────────── */
+
+.featured {
+  grid-column: 1 / -1;
+  padding-bottom: 29px;
+  background: var(--foreground);
+  color: #fff;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 15px / 23px, 60% — date and place, 25px apart; booth 41px below. */
+.meta {
+  font-size: 0.9375rem;
+  line-height: 1.4375rem;
+  opacity: 0.6;
+}
+
+.meta + .meta {
+  margin-top: 14px;
+}
+
+.booth {
+  margin-top: 30px;
+}
+
+.connect {
+  display: inline-flex;
+  padding-bottom: 10px;
+  border-bottom: 0.8px solid #fff;
+  font-size: 1.0625rem;
+  line-height: 1.0625rem;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .connect:hover {
+    opacity: 0.7;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 80px 96px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 19px;
+  }
+
+  .featured {
+    grid-column: auto;
+  }
+}
+
+/* Figma: 100px below the section above, cards 166px below the heading. */
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 100px 120px;
+  }
+
+  .title {
+    margin-bottom: 49px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

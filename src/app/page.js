@@ -1,4 +1,5 @@
 import About from "@/components/home/components/About";
+import Events from "@/components/home/components/Events";
 import Experience from "@/components/home/components/Experience";
 import Hero from "@/components/home/components/Hero";
 import HostedPayloads from "@/components/home/components/HostedPayloads";
@@ -28,6 +29,7 @@ export default function HomePage() {
       <SatelliteBus />
       <HostedPayloads />
       <Experience />
+      <Events />
     </>
   );
 }

@@ -1,0 +1,100 @@
+/* Figma: Frame 1410156749, 120px below the structure band. */
+.section {
+  padding-block: 64px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  max-width: 358px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* 458 × 243 card: 67px icon box, title 40px below, description 12px below. */
+.card {
+  padding: 30px 20px 40px;
+  background: #f3f3f3;
+  color: #000;
+  transition:
+    background-color 300ms ease-out,
+    color 300ms ease-out;
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 67px;
+  height: 67px;
+}
+
+/* Black icons at rest; the white-drawn one is inverted to match. */
+.icon,
+.iconLight {
+  transition: filter 300ms ease-out;
+}
+
+.iconLight {
+  filter: invert(1);
+}
+
+.cardTitle {
+  margin-top: 40px;
+}
+
+.description {
+  max-width: 410px;
+  margin-top: 12px;
+  opacity: 0.6;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    background: var(--foreground);
+    color: #fff;
+  }
+
+  .card:hover .icon {
+    filter: invert(1);
+  }
+
+  .card:hover .iconLight {
+    filter: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 100px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: heading in the first of three 457px columns, cards in the rest. */
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 120px;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
+    align-items: start;
+  }
+
+  .grid {
+    grid-column: 2 / 4;
+  }
+}

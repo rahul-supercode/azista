@@ -1,0 +1,195 @@
+/* Muted band (Figma: Section-4, 1512 × 836). */
+.section {
+  padding-block: 64px;
+  background: var(--muted);
+}
+
+.title {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* 556 × 540 tile; the image is the product + shadow on transparent. */
+.media {
+  position: relative;
+  aspect-ratio: 556 / 540;
+  background: #f5f6f9;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ── Accordion ─────────────────────────────────────────────────────────── */
+
+.accordion {
+  border-top: 0.4px solid rgb(26 26 26 / 0.2);
+}
+
+.item {
+  border-bottom: 0.4px solid rgb(26 26 26 / 0.2);
+  interpolate-size: allow-keywords;
+}
+
+/* Animates open/closed where supported; elsewhere it simply toggles. */
+.item::details-content {
+  height: 0;
+  overflow: clip;
+  transition:
+    height 400ms ease,
+    content-visibility 400ms allow-discrete;
+}
+
+.item[open]::details-content {
+  height: auto;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 20px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+.name {
+  color: #000;
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .summary:hover .name {
+    opacity: 1;
+  }
+}
+
+/* Plus turns into minus while open. */
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 21px;
+  height: 21px;
+}
+
+.plus,
+.minus {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity 300ms ease-out,
+    rotate 300ms ease-out;
+}
+
+.minus {
+  opacity: 0;
+  rotate: -90deg;
+}
+
+.item[open] .plus {
+  opacity: 0;
+  rotate: 90deg;
+}
+
+.item[open] .minus {
+  opacity: 1;
+  rotate: 0deg;
+}
+
+.content {
+  padding-block: 20px 40px;
+}
+
+.itemTitle {
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.description {
+  max-width: 696px;
+  opacity: 0.6;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.features img {
+  flex-shrink: 0;
+}
+
+.features span {
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 80px;
+  }
+
+  .title {
+    margin-bottom: 60px;
+  }
+
+  .media {
+    width: min(556px, 100%);
+    align-self: center;
+  }
+}
+
+/*
+ * Desktop: tile and accordion on Figma's 556 · 41 · 716 columns, both 80px
+ * below the heading's cap.
+ */
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 83px 77px;
+  }
+
+  .title {
+    margin-bottom: 80px;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 556fr 41fr 716fr 99fr;
+    align-items: start;
+    gap: 0;
+  }
+
+  .media {
+    grid-column: 1;
+    align-self: start;
+    width: 100%;
+  }
+
+  .accordion {
+    grid-column: 3;
+  }
+}

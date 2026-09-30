@@ -1,0 +1,49 @@
+/* The label's cap top sits 37px above the 0.4px rule (Figma: Line 1367). */
+.field {
+  position: relative;
+  padding-top: 6px;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 0 0 19px;
+  border: 0;
+  border-bottom: 0.4px solid rgb(0 0 0 / 0.2);
+  border-radius: 0;
+  background: none;
+  color: var(--foreground);
+  transition: border-color 200ms ease;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom-color: var(--foreground);
+}
+
+.input:focus-visible {
+  border-bottom-color: var(--foreground);
+}
+
+.label {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  color: var(--foreground);
+  opacity: 0.6;
+  transform-origin: left top;
+  pointer-events: none;
+  transition:
+    translate 200ms ease,
+    scale 200ms ease;
+}
+
+.required {
+  color: var(--primary);
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  translate: 0 -20px;
+  scale: 0.75;
+}

@@ -1,0 +1,72 @@
+/*
+ * Tab row for dark backgrounds (Figma: Section-2 platform tabs). A hairline
+ * runs under the row; the selected tab gets a solid 1px line above it.
+ * Mobile: tabs scroll sideways. Desktop: spread across the row.
+ */
+.list {
+  display: flex;
+  gap: 50px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 0.4px solid rgb(255 255 255 / 0.2);
+}
+
+.tab {
+  position: relative;
+  flex-shrink: 0;
+  padding-bottom: 10px;
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+.tab::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: calc(100% + 10px);
+  height: 1px;
+  background: currentColor;
+  translate: -50% 0;
+  scale: 0 1;
+  transition: scale 300ms ease-out;
+}
+
+.tab[aria-selected="true"] {
+  opacity: 1;
+}
+
+.tab[aria-selected="true"]::after {
+  scale: 1 1;
+}
+
+@media (hover: hover) {
+  .tab:hover {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .list {
+    justify-content: space-between;
+    padding-inline: 46px;
+  }
+
+  .tab {
+    padding-bottom: 24px;
+  }
+}
+
+/* Desktop: the selected line is 353px at the 1512px design width. */
+@media (min-width: 1280px) {
+  /* Edge tabs' lines would overhang the row; keep them inside it. */
+  .list {
+    overflow-x: clip;
+  }
+
+  .tab::after {
+    width: min(353px, 23.35vw);
+  }
+}

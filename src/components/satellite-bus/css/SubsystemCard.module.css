@@ -1,0 +1,69 @@
+/*
+ * 457px wide at desktop: 457 × 420 tile, name 40px below, description 43px
+ * below that, then a rule and the datasheet button (Figma: Section-3 cards).
+ */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 457 / 420;
+  background: #f5f6f9;
+  transition: background-color 500ms ease-out;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* The tile deepens on hover. */
+@media (hover: hover) {
+  .media:hover {
+    background: #e8ecf1;
+  }
+}
+
+.title {
+  margin-top: 24px;
+  color: #000;
+}
+
+.description {
+  max-width: 384px;
+  margin-top: 16px;
+  opacity: 0.6;
+}
+
+.datasheet {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #f3f3f3;
+  color: #000;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .datasheet:hover {
+    opacity: 0.7;
+  }
+}
+
+@media (min-width: 1280px) {
+  .title {
+    margin-top: 40px;
+  }
+
+  .description {
+    margin-top: 24px;
+  }
+
+  .datasheet {
+    margin-top: 40px;
+  }
+}

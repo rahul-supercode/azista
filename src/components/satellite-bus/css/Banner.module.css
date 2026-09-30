@@ -1,0 +1,94 @@
+/*
+ * 1512 × 743 band over a faint grid (Figma: Bg lines). The satellite PNG is
+ * the full 1512 × 1397 composition; the band clips whatever falls below it.
+ */
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: 134px; /* fixed header (16 + 70) + 48 */
+}
+
+.lines {
+  z-index: -1;
+  object-fit: cover;
+  object-position: top;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.intro {
+  max-width: 457px;
+  opacity: 0.8;
+}
+
+.scrollCue {
+  display: block;
+  margin-top: 40px;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .scrollCue:hover {
+    opacity: 0.8;
+  }
+}
+
+/* Mobile and tablet: in flow below the text, tucked up under it. */
+.satellite {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -12%;
+  pointer-events: none;
+}
+
+.end {
+  position: absolute;
+  bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .satellite {
+    margin-top: -24%;
+  }
+}
+
+/* Desktop: fixed band, text on the left, satellite anchored to its top. */
+@media (min-width: 1280px) {
+  .section {
+    height: 743px;
+    padding-top: 0;
+  }
+
+  .content {
+    height: 100%;
+    padding-top: 227px;
+    padding-bottom: 30px;
+  }
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .scrollCue {
+    margin-top: auto;
+  }
+
+  .satellite {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+  }
+}

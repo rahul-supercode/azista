@@ -1,0 +1,79 @@
+/* Figma: Section-3, 153px below the platforms band. */
+.section {
+  padding-block: 64px 80px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.intro {
+  max-width: 627px;
+  opacity: 0.6;
+}
+
+.grid {
+  display: grid;
+  gap: 48px 20px;
+}
+
+/* The CTA takes a tile's place: same 457 × 420 box, corner marks inset. */
+.ctaCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 457 / 420;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  width: min(396px, 100%);
+  height: 277px;
+}
+
+.ctaTitle {
+  max-width: 292px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 100px 120px;
+  }
+
+  .header {
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 60px;
+  }
+}
+
+/* Desktop: three 457px columns, 20px apart; rows 690px apart. */
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 153px 150px;
+  }
+
+  .header {
+    gap: 30px;
+    margin-bottom: 80px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 70px;
+  }
+}

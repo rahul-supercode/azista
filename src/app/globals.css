@@ -221,3 +221,8 @@ button {
 .text-trim-cap {
   text-box: trim-both cap alphabetic;
 }
+
+/* Keep the page still behind modal dialogs (e.g. the datasheet drawer). */
+html:has(dialog[open]) {
+  overflow: hidden;
+}

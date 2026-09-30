@@ -7,6 +7,7 @@ import bracketLeftWhite from "@/assets/icons/bracket-left-white.svg";
 import bracketLeft from "@/assets/icons/bracket-left.svg";
 import bracketRightWhite from "@/assets/icons/bracket-right-white.svg";
 import bracketRight from "@/assets/icons/bracket-right.svg";
+import downloadWhite from "@/assets/icons/download-white.svg";
 import underline from "@/assets/icons/underline.svg";
 
 import styles from "./css/Button.module.css";
@@ -15,6 +16,7 @@ import styles from "./css/Button.module.css";
  * Figma: Button-2 → `primary`, Button-1 → `framed`, Button-3 → `link`.
  * `framed-light` is the header CTA: white fill and brackets, for dark backgrounds.
  * `arrow-light` is a bare white arrow + label link, for dark backgrounds.
+ * `download` is the red fill with a download icon (Figma: datasheet form).
  * Renders a `next/link` when given `href`, otherwise a `<button>`.
  */
 const VARIANT_CLASSES = {
@@ -23,6 +25,7 @@ const VARIANT_CLASSES = {
   "framed-light": styles.framed,
   link: `text-1 ${styles.link}`,
   "arrow-light": `text-1 ${styles.arrowLight}`,
+  download: `text-1 ${styles.primary} ${styles.download}`,
 };
 
 export default function Button({
@@ -78,6 +81,13 @@ function ButtonContent({ variant, children }) {
           <span aria-hidden="true" className={styles.underline}>
             <Image src={underline} alt="" width={99} height={0.8} />
           </span>
+        </>
+      );
+    case "download":
+      return (
+        <>
+          <Image src={downloadWhite} alt="" />
+          <span className="text-trim-cap">{children}</span>
         </>
       );
     default:

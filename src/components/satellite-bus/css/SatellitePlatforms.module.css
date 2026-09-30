@@ -1,0 +1,61 @@
+/* Dark band (Figma: Section-2, 1512 × 1047). */
+.section {
+  padding-block: 50px 76px;
+  background: var(--foreground);
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  max-width: 307px;
+}
+
+.intro {
+  max-width: 696px;
+  opacity: 0.6;
+}
+
+.tabs {
+  margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 80px 100px;
+  }
+
+  .header {
+    gap: 24px;
+  }
+}
+
+/*
+ * Desktop: heading and intro on Figma's 526 · 69 · 815 columns, the intro
+ * 55px below the heading's top; tabs 100px under the heading.
+ */
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 83px 130px;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 526fr 69fr 815fr;
+    align-items: start;
+    gap: 0;
+  }
+
+  .intro {
+    grid-column: 3;
+    margin-top: 55px;
+  }
+
+  .tabs {
+    margin-top: 100px;
+  }
+}

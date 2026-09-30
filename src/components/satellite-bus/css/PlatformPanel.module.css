@@ -1,0 +1,155 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+}
+
+/*
+ * 526 × 502.6 box (Figma: Frame 1410156261). Rings and image are placed in
+ * percentages of it so the composition scales as one piece.
+ */
+.media {
+  position: relative;
+  width: min(100%, 526px);
+  aspect-ratio: 526 / 502.6;
+  align-self: center;
+}
+
+.rings {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+}
+
+.ringDashed,
+.ringMiddle,
+.ringInner {
+  position: absolute;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.ringDashed {
+  top: 11.95%;
+  left: 11.67%;
+  width: 76.66%;
+}
+
+.ringMiddle {
+  top: 18%;
+  left: 17.1%;
+  width: 65.79%;
+}
+
+.ringInner {
+  top: 24.05%;
+  left: 23.16%;
+  width: 53.68%;
+}
+
+/* 429 × 374 slot. */
+.imageSlot {
+  position: absolute;
+  top: 12.79%;
+  left: 9.22%;
+  width: 81.56%;
+  height: 74.41%;
+}
+
+.image {
+  object-fit: contain;
+  filter: drop-shadow(0 4px 16.1px rgb(0 0 0 / 0.25));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #fff;
+}
+
+.description {
+  max-width: 576px;
+  opacity: 0.6;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.label span {
+  opacity: 0.6;
+}
+
+.value {
+  margin-top: 6px;
+  padding-left: 11px;
+}
+
+.cta {
+  margin-top: 50px;
+}
+
+/* Tablet up: specs as label / value columns. */
+@media (min-width: 768px) {
+  .specs {
+    gap: 20px;
+  }
+
+  .spec {
+    display: grid;
+    grid-template-columns: 228px 1fr;
+  }
+
+  .label {
+    gap: 10px;
+  }
+
+  .value {
+    margin-top: 0;
+    padding-left: 0;
+  }
+}
+
+/*
+ * Desktop: image and text side by side on Figma's 526 · 69 · 815 columns;
+ * the text starts 76px below the image box.
+ */
+@media (min-width: 1280px) {
+  .panel {
+    display: grid;
+    grid-template-columns: 526fr 69fr 815fr;
+    align-items: start;
+    gap: 0;
+    padding-top: 50px;
+  }
+
+  .media {
+    grid-column: 1;
+    align-self: start;
+    width: 100%;
+  }
+
+  .content {
+    grid-column: 3;
+    padding-top: 76px;
+  }
+
+  .specs {
+    margin-top: 50px;
+  }
+
+  .cta {
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,98 @@
+.slider:focus-visible {
+  outline-offset: -2px;
+}
+
+/* ── Track ─────────────────────────────────────────────────────────────── */
+
+.viewport {
+  position: relative;
+  overflow: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+/*
+ * Before JS places it, the track starts on the container's content edge
+ * (1512px frame, 16/24/50px gutters) so hydration doesn't shift it.
+ */
+.track {
+  --edge: max(16px, calc((100vw - 1512px) / 2 + 16px));
+
+  display: flex;
+  gap: 10px;
+  transform: translate3d(var(--edge), 0, 0);
+  transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: calc(100vw - 56px);
+}
+
+.inactive {
+  cursor: pointer;
+}
+
+.slide img {
+  -webkit-user-drag: none;
+}
+
+@media (min-width: 768px) {
+  .track {
+    --edge: max(24px, calc((100vw - 1512px) / 2 + 24px));
+  }
+
+  .slide {
+    width: calc(100vw - 88px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .track {
+    --edge: max(50px, calc((100vw - 1512px) / 2 + 50px));
+  }
+
+  .slide {
+    width: min(1130px, calc(100vw - 140px));
+  }
+}
+
+/*
+ * Figma: Frame 1410155996 — hint that follows the mouse over the cards.
+ * Mouse/trackpad only; placed by JS, scales in while the pointer is inside.
+ */
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+  padding: 12px 20px;
+  background: rgb(26 26 26 / 0.3);
+  backdrop-filter: blur(19px);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.625rem; /* 10px */
+  line-height: 0.875rem; /* 14px */
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  scale: 0;
+  transition:
+    opacity 250ms ease-out,
+    scale 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cursor[data-visible] {
+  opacity: 1;
+  scale: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor {
+    display: block;
+  }
+}

@@ -1,5 +1,6 @@
 import About from "@/components/home/components/About";
 import Hero from "@/components/home/components/Hero";
+import Missions from "@/components/home/components/Missions";
 import { siteConfig } from "@/config/site";
 
 const description =
@@ -18,6 +19,7 @@ export default function HomePage() {
     <>
       <Hero />
       <About />
+      <Missions />
     </>
   );
 }

@@ -1,0 +1,15 @@
+.section {
+  margin-top: 48px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-top: 64px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    margin-top: 80px;
+  }
+}

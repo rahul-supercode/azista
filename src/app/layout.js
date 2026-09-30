@@ -1,6 +1,7 @@
 import { Bebas_Neue, Schibsted_Grotesk } from "next/font/google";
 
 import Header from "@/components/layout/Header";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 import { siteConfig } from "@/config/site";
 
 import "./globals.css";
@@ -52,9 +53,12 @@ export default function RootLayout({ children }) {
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className={styles.main}>
-          {children}
-        </main>
+        {/* The header stays outside: fixed elements can't live in the smoothed content. */}
+        <SmoothScroll>
+          <main id="main-content" className={styles.main}>
+            {children}
+          </main>
+        </SmoothScroll>
       </body>
     </html>
   );

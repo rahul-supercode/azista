@@ -1,0 +1,48 @@
+/* 1512 × 531 band over a dark motion-blur photo (Figma: Frame 1410156559). */
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--foreground);
+  color: #fff;
+}
+
+.background {
+  z-index: -1;
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 80px;
+  text-align: center;
+}
+
+.eyebrow {
+  opacity: 0.6;
+}
+
+.title {
+  max-width: 666px;
+  margin-block: 24px 40px;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding-block: 104px;
+  }
+}
+
+/* Figma: eyebrow cap 132px down, heading 30px below it, button 63px below. */
+@media (min-width: 1280px) {
+  .content {
+    min-height: 531px;
+    padding-block: 132px 0;
+  }
+
+  .title {
+    margin-block: 30px 63px;
+  }
+}

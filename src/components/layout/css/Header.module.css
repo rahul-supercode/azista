@@ -1,0 +1,61 @@
+.header {
+  position: fixed;
+  inset-inline: 0;
+  top: 16px;
+  z-index: 40;
+  will-change: translate, opacity;
+  transition:
+    translate 600ms cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 600ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Scrolled down: glide up out of view (keyboard focus brings it back). */
+.header[data-hidden]:not(:focus-within) {
+  translate: 0 calc(-100% - 40px);
+  opacity: 0;
+}
+
+/* Fill spans the container's content box; logo and CTA sit 12px inside it. */
+.bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding-inline: 12px;
+}
+
+.barFill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--surface-dark);
+  transition: background-color 300ms ease;
+}
+
+.header[data-over-dark] .barFill {
+  background: transparent;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .header {
+    top: 24px;
+  }
+}
+
+@media (max-width: 1279.98px) {
+  /* The open mobile menu always needs the dark fill behind the bar. */
+  .header:has([data-menu-open]) .barFill {
+    background: var(--surface-dark);
+  }
+}
+
+@media (min-width: 1280px) {
+  .header {
+    top: 30px;
+  }
+}

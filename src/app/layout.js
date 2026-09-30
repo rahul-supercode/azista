@@ -1,5 +1,6 @@
 import { Bebas_Neue, Schibsted_Grotesk } from "next/font/google";
 
+import Header from "@/components/layout/Header";
 import { siteConfig } from "@/config/site";
 
 import "./globals.css";
@@ -50,6 +51,7 @@ export default function RootLayout({ children }) {
         <a href="#main-content" className={styles.skipLink}>
           Skip to main content
         </a>
+        <Header />
         <main id="main-content" className={styles.main}>
           {children}
         </main>

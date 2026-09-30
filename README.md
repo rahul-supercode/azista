@@ -1,6 +1,6 @@
 # Azista
 
-Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · ESLint · Prettier
+Next.js 16 (App Router) · React 19 · JavaScript (JSX) · CSS Modules · ESLint · Prettier
 
 ## Getting started
 
@@ -14,57 +14,53 @@ npm run dev                  # http://localhost:3000
 
 ## Scripts
 
-| Script              | Description                                     |
-| ------------------- | ----------------------------------------------- |
-| `npm run dev`       | Start the dev server (Turbopack)                |
-| `npm run build`     | Production build (includes type-checking)       |
-| `npm run start`     | Serve the production build                      |
-| `npm run lint`      | Lint with ESLint (`lint:fix` to auto-fix)       |
-| `npm run format`    | Format with Prettier (`format:check` to verify) |
-| `npm run typecheck` | Generate route types and run `tsc`              |
-| `npm run check`     | Type-check + lint + format check (use in CI)    |
+| Script           | Description                                     |
+| ---------------- | ----------------------------------------------- |
+| `npm run dev`    | Start the dev server (Turbopack)                |
+| `npm run build`  | Production build                                |
+| `npm run start`  | Serve the production build                      |
+| `npm run lint`   | Lint with ESLint (`lint:fix` to auto-fix)       |
+| `npm run format` | Format with Prettier (`format:check` to verify) |
+| `npm run check`  | Lint + format check (use in CI)                 |
 
 ## Project structure
 
 ```
 src/
-├── app/            # Routing only: layouts, pages, route handlers, special files
-│   ├── layout.tsx       # Root layout: <html>, fonts, metadata, viewport
-│   ├── page.tsx         # Home page
-│   ├── loading.tsx      # Suspense fallback
-│   ├── error.tsx        # Route error boundary (client)
-│   ├── global-error.tsx # Root layout error boundary (client)
-│   ├── not-found.tsx    # 404 page
-│   └── globals.css      # Tailwind + design tokens
-├── assets/icons/   # Static SVGs imported by components (from Figma)
+├── app/                      # Routing only: layouts, pages, special files
+│   ├── layout.js             # Root layout: <html>, fonts, metadata, viewport
+│   ├── page.js               # Home page (composes components/home)
+│   ├── loading.js / error.js / global-error.js / not-found.js
+│   ├── <route>/page.js       # + page.module.css when the page needs its own styles
+│   └── globals.css           # Design tokens, reset, .container, text styles
+├── assets/icons/             # Static SVGs imported by components (from Figma)
 ├── components/
-│   └── ui/         # Generic, reusable UI primitives (Button, ...)
-├── config/         # App-wide constants (site name, URL, ...)
-└── lib/            # Framework-agnostic utilities (cn, ...)
+│   ├── layout/               # Header, nav, footer  (+ css/<Name>.module.css)
+│   ├── ui/                   # Primitives: Button, ... (+ css/<Name>.module.css)
+│   ├── shared/components/    # Composed pieces used on several pages (+ shared/css/)
+│   └── <page>/components/    # Sections for one page, e.g. home/components/Hero.jsx
+│       <page>/css/           # …and their styles, e.g. home/css/Hero.module.css
+├── config/                   # App-wide constants (site, navigation)
+└── hooks/                    # Shared client hooks (add when needed)
 ```
 
-As the app grows, add:
-
-- `src/components/<area>/` for composed, app-specific components (e.g. `layout/`).
-- `src/features/<feature>/` for feature-scoped components, actions and data access.
-- `src/hooks/` for shared client hooks, `src/types/` for shared types.
-
-Import from `src` with the `@/` alias, e.g. `import { cn } from "@/lib/utils"`.
+Components are `.jsx`, PascalCase, one default export per file. Pages and
+non-component modules are `.js`. Import from `src` with the `@/` alias.
 
 ## Conventions
 
 - **Server Components by default.** Add `"use client"` only to components that need
   state, effects, event handlers or browser APIs, and keep them as small leaves.
-- **Server-only code** (DB access, secrets) should `import "server-only"` (install the
-  `server-only` package when first needed) so it can never be bundled for the client.
 - **Environment variables:** `.env*` files are git-ignored except `.env.example`.
   Document every new variable in `.env.example`. Only `NEXT_PUBLIC_*` variables reach
   the browser; never put secrets in them.
-- **Styling:** use the design tokens in `globals.css` instead of hard-coded values, and
-  `cn()` to merge classes.
-  - Colors: `primary` (#FF0000), `foreground` (#1A1A1A), `background` (#FFFFFF),
-    `muted` (#E8E6E6) → `bg-primary`, `text-foreground`, ...
-  - Text styles: `type-heading-1…3` (Bebas Neue) and `type-text-1…6` (Schibsted
+- **Styling:** CSS Modules per component; use the tokens in `globals.css` instead of
+  hard-coded values. Breakpoints: tablet `768px`, desktop `1280px`.
+  - Wrap section content in `<div className="container">` (1512px frame, 50/24/16px gutters).
+  - Colors: `var(--primary)` (#FF0000), `var(--foreground)` (#1A1A1A),
+    `var(--background)` (#FFFFFF), `var(--muted)` (#E8E6E6).
+  - Text styles: global classes `heading-1…3` (Bebas Neue) and `text-1…6` (Schibsted
     Grotesk). Add `text-trim-cap` to trim line-height to the cap height like Figma.
-  - Buttons: `<Button variant="primary | framed | link">` and `<ButtonLink href>`.
-- **Routes are typed** (`typedRoutes`): `<Link href>` is checked at compile time.
+  - Buttons: `<Button variant="primary | framed | framed-light | link">`; pass `href`
+    to render a link.
+- Mark dark sections with `data-bg="dark"` so the header turns transparent over them.

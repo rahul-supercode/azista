@@ -13,14 +13,18 @@ Follow these for every page and feature. Don't over-engineer: use the simplest a
 
 ## Components
 
-- UI used on more than one page (sections, cards, buttons, header, footer, form elements, ...) must be a shared component in `src/components/`. Never duplicate markup across pages.
-- Page-specific components stay colocated with the page (e.g. `src/app/<route>/_components/`).
+- JavaScript only: components are `.jsx` (PascalCase file names, one default export); pages and other modules are `.js`. No TypeScript.
+- Folder structure mirrors `/Applications/MAMP/htdocs/virya-frontend`:
+  - `src/components/layout/` (header, footer, …), `src/components/ui/` (primitives like `Button`), `src/components/shared/components/` (composed pieces used on several pages).
+  - Page sections live in `src/components/<page>/components/<Name>.jsx` (e.g. `home/components/Hero.jsx`); `src/app/<route>/page.js` only composes them.
+  - Styles are CSS Modules next to the component folder: `<folder>/css/<Name>.module.css`.
+- UI used on more than one page (sections, cards, buttons, header, footer, form elements, ...) must be a shared component. Never duplicate markup across pages.
 - Keep components small and single-purpose; prefer composition over large components.
 
 ## Next.js
 
 - App Router; Server Components by default. Add `"use client"` only for interactivity or browser APIs, and keep client components as small leaves.
-- Use layouts / nested layouts, and `loading.tsx`, `error.tsx`, `not-found.tsx` where useful.
+- Use layouts / nested layouts, and `loading.js`, `error.js`, `not-found.js` where useful.
 - Prefer Next.js built-ins over hand-rolled equivalents; choose caching based on how often data changes.
 - No unnecessary dependencies, animation libraries or third-party scripts.
 
@@ -33,10 +37,16 @@ Follow these for every page and feature. Don't over-engineer: use the simplest a
 - Add JSON-LD structured data where relevant; keep `sitemap` and `robots` up to date.
 - Clean, meaningful URLs, logical internal linking, no duplicate content.
 
+## Styling
+
+- CSS Modules only (no Tailwind). Use the tokens in `src/app/globals.css` and the global text classes (`heading-1…3`, `text-1…6`, `text-trim-cap`).
+- Wrap every section's content in the global `.container` class; full-bleed backgrounds go on the outer `<section>`.
+- Breakpoints: tablet `768px`, desktop `1280px`.
+
 ## Images, fonts and performance
 
 - Use `next/image` with explicit dimensions/aspect ratio and responsive `sizes`.
-- `priority` only for the genuine above-the-fold LCP image; let everything else lazy-load.
+- `preload` only for the genuine above-the-fold LCP image; let everything else lazy-load.
 - Informative images get meaningful `alt`; decorative images get `alt=""`.
 - Optimize background images/videos; don't load what isn't needed.
 - Fonts via `next/font`, only the required weights/styles.
@@ -54,7 +64,6 @@ Follow these for every page and feature. Don't over-engineer: use the simplest a
 
 ## Code quality
 
-- Strict TypeScript, no `any` without justification; define types where needed.
 - Extract shared logic into utilities/hooks; avoid deep nesting and duplication.
 - No unused imports, variables, components or dependencies.
 

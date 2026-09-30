@@ -1,0 +1,191 @@
+/* Full-bleed 1512 × 760 frame (Figma: Frame 1410156736). */
+.frame {
+  position: relative;
+  aspect-ratio: 1512 / 760;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--muted);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+}
+
+/* Later slides start hidden; each is wiped in when it becomes active. */
+.slide:not(:first-child) {
+  clip-path: inset(0% 0% 100% 0%);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Title + link, 60px down on desktop (Figma: 50/60); panels share a cell. */
+.panels {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  padding-top: 32px;
+  color: var(--foreground);
+}
+
+.panel {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  visibility: hidden;
+  opacity: 0;
+  translate: 0 16px;
+  transition:
+    opacity 400ms ease,
+    translate 400ms ease,
+    visibility 0s linear 400ms;
+}
+
+.panelActive {
+  visibility: visible;
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 700ms ease 400ms,
+    translate 700ms cubic-bezier(0.22, 1, 0.36, 1) 400ms,
+    visibility 0s;
+}
+
+.title {
+  max-width: 532px;
+}
+
+/* Dark image behind: white text, link and tabs. */
+.panels,
+.tab {
+  transition: color 600ms ease;
+}
+
+.frame[data-dark] .panels,
+.frame[data-dark] .panels a,
+.frame[data-dark] .tab {
+  color: #fff;
+}
+
+.frame[data-dark] .panels a img {
+  filter: invert(1);
+}
+
+.frame[data-dark] .track {
+  background: rgb(255 255 255 / 0.3);
+}
+
+.frame[data-dark] .fill {
+  background: #fff;
+}
+
+/* ── Tabs: label over a progress track, 60px above the bottom edge ────── */
+
+.tabsBar {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 32px;
+  z-index: 3;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  color: #000;
+}
+
+.tab > :first-child {
+  opacity: 0.6;
+  transition: opacity 300ms ease;
+}
+
+.tab[aria-selected="true"] > :first-child {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .tab:hover > :first-child {
+    opacity: 1;
+  }
+}
+
+.track {
+  position: relative;
+  height: 1px;
+  background: rgb(0 0 0 / 0.2);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.tab[aria-selected="true"] .track {
+  opacity: 1;
+}
+
+/* The autoplay timer: its animationend advances the carousel. */
+.fill {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  transform-origin: left;
+  animation: progress 6s linear forwards;
+}
+
+.fillDone {
+  animation: none;
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* No autoplay with reduced motion: the underline just marks the active tab. */
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    animation: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .panels {
+    padding-top: 48px;
+  }
+
+  .panel {
+    gap: 48px;
+  }
+
+  .tabsBar {
+    bottom: 48px;
+  }
+
+  .tabs {
+    gap: 81px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .panels {
+    padding-top: 60px;
+  }
+
+  .tabsBar {
+    bottom: 60px;
+  }
+}

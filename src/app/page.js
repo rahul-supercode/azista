@@ -1,3 +1,4 @@
+import About from "@/components/home/components/About";
 import Hero from "@/components/home/components/Hero";
 import { siteConfig } from "@/config/site";
 
@@ -13,5 +14,10 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <About />
+    </>
+  );
 }

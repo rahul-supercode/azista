@@ -1,0 +1,42 @@
+.frame {
+  position: relative;
+}
+
+/* How far each corner sits outside the box so its stroke lands on the edge. */
+.red {
+  --corner-offset: -0.5px;
+}
+
+.light {
+  --corner-offset: 0px;
+}
+
+.corner {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+}
+
+/* The SVG is the top-left corner; the others mirror it. */
+.topLeft {
+  top: var(--corner-offset);
+  left: var(--corner-offset);
+}
+
+.topRight {
+  top: var(--corner-offset);
+  right: var(--corner-offset);
+  transform: scaleX(-1);
+}
+
+.bottomLeft {
+  bottom: var(--corner-offset);
+  left: var(--corner-offset);
+  transform: scaleY(-1);
+}
+
+.bottomRight {
+  right: var(--corner-offset);
+  bottom: var(--corner-offset);
+  transform: rotate(180deg);
+}

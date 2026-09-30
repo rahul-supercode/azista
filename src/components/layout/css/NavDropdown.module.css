@@ -6,24 +6,32 @@
   transition: opacity 150ms ease;
 }
 
-.link {
+.link,
+.toggle {
   transition: opacity 150ms ease;
 }
 
 @media (hover: hover) {
-  .trigger:hover,
-  .link:hover {
+  .link:hover,
+  .toggle:hover {
     opacity: 0.7;
   }
 }
 
-/* ── Plus / minus icon swap ────────────────────────────────────────────── */
+/* ── Plus / minus toggle ───────────────────────────────────────────────── */
 
-.icon {
+.toggle {
   position: relative;
   flex-shrink: 0;
   width: 16px;
   height: 16px;
+}
+
+/* Bigger tap target without changing the layout. */
+.toggle::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
 }
 
 .plus,
@@ -92,6 +100,15 @@
     grid-template-rows: 1fr;
     translate: 0 -8px;
     background: var(--surface-dark);
+  }
+
+  /* Bridges the gap to the header so hover survives the trip to the panel. */
+  .panel::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    inset-inline: 0;
+    height: 26.5px;
   }
 
   .panelOpen {

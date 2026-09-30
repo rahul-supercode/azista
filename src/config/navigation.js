@@ -1,22 +1,23 @@
+/** Product links shared by the header dropdowns and the footer columns. */
+const eoPayloadLinks = [
+  { label: "Fineview Series", href: "/eo-payloads/fineview" },
+  { label: "Vista Series", href: "/eo-payloads/vista" },
+];
+
+const satelliteBusLinks = [
+  { label: "Platform", href: "/satellite-bus" },
+  { label: "Subsystems", href: "/satellite-bus/subsystems" },
+  { label: "Structures", href: "/satellite-bus/structures" },
+];
+
 /**
- * Header navigation. An item is either a link (`href`) or a dropdown (`items`).
+ * Header navigation. An item is a link (`href`), optionally with a dropdown
+ * (`items`).
  */
 export const mainNav = [
   { label: "Missions", href: "/missions" },
-  {
-    label: "EO payloads",
-    items: [
-      { label: "Fineview", href: "/eo-payloads/fineview" },
-      { label: "Vista", href: "/eo-payloads/vista" },
-    ],
-  },
-  {
-    label: "Satellite Bus",
-    items: [
-      { label: "Overview", href: "/satellite-bus" },
-      { label: "Subsystems", href: "/satellite-bus/subsystems" },
-    ],
-  },
+  { label: "EO payloads", href: "/eo-payloads", items: eoPayloadLinks },
+  { label: "Satellite Bus", href: "/satellite-bus", items: satelliteBusLinks },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -38,21 +39,8 @@ export const footerNav = [
       { label: "Contact", href: "/contact" },
     ],
   },
-  {
-    title: "EO Payloads",
-    links: [
-      { label: "Fineview Series", href: "/eo-payloads/fineview" },
-      { label: "Vista Series", href: "/eo-payloads/vista" },
-    ],
-  },
-  {
-    title: "Satellite Bus",
-    links: [
-      { label: "Platform", href: "/satellite-bus" },
-      { label: "Subsystems", href: "/satellite-bus/subsystems" },
-      { label: "Structures", href: "/satellite-bus/structures" },
-    ],
-  },
+  { title: "EO Payloads", links: eoPayloadLinks },
+  { title: "Satellite Bus", links: satelliteBusLinks },
   {
     title: "Missions",
     links: [

@@ -76,11 +76,16 @@ export default function SiteNav({ items, cta }) {
                 <NavDropdown
                   id={`${id}-menu-${index}`}
                   label={item.label}
+                  href={item.href}
                   items={item.items}
                   open={openDropdown === item.label}
-                  onToggle={() =>
+                  onOpenChange={(open) =>
                     setOpenDropdown((current) =>
-                      current === item.label ? null : item.label,
+                      open
+                        ? item.label
+                        : current === item.label
+                          ? null
+                          : current,
                     )
                   }
                 />

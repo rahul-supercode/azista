@@ -6,23 +6,47 @@ import plus from "@/assets/icons/plus.svg";
 
 import styles from "./css/NavDropdown.module.css";
 
-/**
- * Disclosure menu: expands inline on mobile, fades in as a panel under the
- * header on desktop. Stays mounted so it can animate; `inert` keeps the closed
- * menu out of the tab order and accessibility tree.
- */
-export default function NavDropdown({ id, label, items, open, onToggle }) {
+// Hover only opens the floating desktop panel, never the mobile menu.
+const HOVER_QUERY = "(hover: hover) and (min-width: 1280px)";
+
+function isHoverPointer(event) {
   return (
-    <>
-      <button
-        type="button"
-        aria-expanded={open}
-        aria-controls={id}
-        onClick={onToggle}
-        className={`${styles.trigger} ${open ? styles.open : ""}`}
-      >
-        {label}
-        <span aria-hidden="true" className={styles.icon}>
+    event.pointerType === "mouse" && window.matchMedia(HOVER_QUERY).matches
+  );
+}
+
+/**
+ * The label links to the section's page; the plus/minus button toggles the
+ * menu (touch and keyboard), and on desktop a mouse hover opens it too.
+ * Expands inline on mobile, fades in as a panel under the header on desktop.
+ * Stays mounted so it can animate; `inert` keeps the closed menu out of the
+ * tab order and accessibility tree.
+ */
+export default function NavDropdown({
+  id,
+  label,
+  href,
+  items,
+  open,
+  onOpenChange,
+}) {
+  return (
+    <div
+      onPointerEnter={(event) => isHoverPointer(event) && onOpenChange(true)}
+      onPointerLeave={(event) => isHoverPointer(event) && onOpenChange(false)}
+    >
+      <div className={`${styles.trigger} ${open ? styles.open : ""}`}>
+        <Link href={href} className={styles.link}>
+          {label}
+        </Link>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={id}
+          onClick={() => onOpenChange(!open)}
+          className={styles.toggle}
+        >
+          <span className="sr-only">{`${label} menu`}</span>
           <Image
             src={plus}
             alt=""
@@ -37,8 +61,8 @@ export default function NavDropdown({ id, label, items, open, onToggle }) {
             height={16}
             className={styles.minus}
           />
-        </span>
-      </button>
+        </button>
+      </div>
       <div
         id={id}
         inert={!open}
@@ -56,6 +80,6 @@ export default function NavDropdown({ id, label, items, open, onToggle }) {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 import About from "@/components/home/components/About";
+import Experience from "@/components/home/components/Experience";
 import Hero from "@/components/home/components/Hero";
 import HostedPayloads from "@/components/home/components/HostedPayloads";
 import Missions from "@/components/home/components/Missions";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <OpticalPayloads />
       <SatelliteBus />
       <HostedPayloads />
+      <Experience />
     </>
   );
 }

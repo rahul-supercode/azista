@@ -2,6 +2,7 @@ import About from "@/components/home/components/About";
 import Hero from "@/components/home/components/Hero";
 import Missions from "@/components/home/components/Missions";
 import OpticalPayloads from "@/components/home/components/OpticalPayloads";
+import SatelliteBus from "@/components/home/components/SatelliteBus";
 import { siteConfig } from "@/config/site";
 
 const description =
@@ -22,6 +23,7 @@ export default function HomePage() {
       <About />
       <Missions />
       <OpticalPayloads />
+      <SatelliteBus />
     </>
   );
 }

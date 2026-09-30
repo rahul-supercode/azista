@@ -1,0 +1,80 @@
+/* 1512 × 648 band over a faint grid (Figma: Bg lines). */
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.lines {
+  z-index: -1;
+  object-fit: cover;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-block: 64px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.intro {
+  max-width: 457px;
+  margin-bottom: 40px;
+}
+
+/* 463 × 470 slot; the PNG is exactly 2× that. */
+.media {
+  position: relative;
+  width: min(463px, 100%);
+  aspect-ratio: 463 / 470;
+  align-self: center;
+}
+
+.image {
+  object-fit: contain;
+}
+
+/*
+ * Tablet up: side by side. Columns keep Figma's proportions across the
+ * 1412px content box: 119 gutter · 595 text · 463 image · 235 rest.
+ */
+@media (min-width: 768px) {
+  .inner {
+    display: grid;
+    grid-template-columns: 119fr 595fr 463fr 235fr;
+    align-items: center;
+    gap: 0;
+    min-height: 648px;
+    padding-block: 80px 98px;
+  }
+
+  .text {
+    grid-column: 2;
+    padding-right: 32px;
+  }
+
+  .media {
+    grid-column: 3;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .intro {
+    margin-bottom: 50px;
+  }
+}

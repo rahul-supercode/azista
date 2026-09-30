@@ -1,10 +1,17 @@
+import Hero from "@/components/home/components/Hero";
 import { siteConfig } from "@/config/site";
 
+const description =
+  "Azista engineers and manufactures space hardware at scale: EO payloads, satellite buses and complete missions.";
+
+export const metadata = {
+  title: { absolute: `${siteConfig.name} | Space Hardware at Scale` },
+  description,
+  alternates: { canonical: "/" },
+  openGraph: { url: "/", description },
+  twitter: { card: "summary_large_image", description },
+};
+
 export default function HomePage() {
-  return (
-    <section className="container">
-      <h1 className="heading-1">{siteConfig.name}</h1>
-      <p className="text-2">{siteConfig.description}</p>
-    </section>
-  );
+  return <Hero />;
 }

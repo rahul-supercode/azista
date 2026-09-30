@@ -1,0 +1,54 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  height: 100svh;
+  min-height: 560px;
+  max-height: 800px;
+  overflow: hidden;
+  background: #042d62;
+}
+
+.banner {
+  z-index: -1;
+  object-fit: cover;
+}
+
+/* Two stacked bottom gradients, as in the design, to lift the heading. */
+.section::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: -1;
+  height: 45%;
+  background:
+    linear-gradient(to top, rgb(4 45 98 / 0.3), rgb(0 26 59 / 0)),
+    linear-gradient(to top, rgb(4 45 98 / 0.3), rgb(0 26 59 / 0));
+  pointer-events: none;
+}
+
+.content {
+  padding-bottom: 48px;
+}
+
+.heading {
+  max-width: 857px;
+  letter-spacing: normal;
+  text-wrap: balance;
+  color: #fff;
+  text-shadow: 0 0 200px rgb(0 0 0 / 0.3);
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding-bottom: 64px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .content {
+    padding-bottom: 70px;
+  }
+}

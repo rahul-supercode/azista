@@ -4,6 +4,7 @@ import Experience from "@/components/home/components/Experience";
 import Hero from "@/components/home/components/Hero";
 import HostedPayloads from "@/components/home/components/HostedPayloads";
 import Missions from "@/components/home/components/Missions";
+import News from "@/components/home/components/News";
 import OpticalPayloads from "@/components/home/components/OpticalPayloads";
 import SatelliteBus from "@/components/home/components/SatelliteBus";
 import { siteConfig } from "@/config/site";
@@ -30,6 +31,7 @@ export default function HomePage() {
       <HostedPayloads />
       <Experience />
       <Events />
+      <News />
     </>
   );
 }

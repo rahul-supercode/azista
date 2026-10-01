@@ -20,10 +20,13 @@ export default function FirstRunner() {
       className={styles.section}
     >
       <div className={`container ${styles.header}`}>
-        <p className={`text-5 text-trim-cap ${styles.eyebrow}`}>
+        <p className={`text-5 text-4-md text-trim-cap ${styles.eyebrow}`}>
           In orbit since 2023
         </p>
-        <h2 id="first-runner-heading" className="heading-2 text-trim-cap">
+        <h2
+          id="first-runner-heading"
+          className="heading-2 heading-2-md text-trim-cap"
+        >
           Azista First Runner
         </h2>
       </div>

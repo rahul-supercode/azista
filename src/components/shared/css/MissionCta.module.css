@@ -11,6 +11,10 @@
   object-fit: cover;
 }
 
+.backgroundDesktop {
+  display: none;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -28,9 +32,30 @@
   margin-block: 24px 40px;
 }
 
+/* Mobile: a taller banner, its content centred top-to-bottom. */
+@media (max-width: 768px) {
+  .section {
+    display: flex;
+    align-items: center;
+    min-height: 433px;
+  }
+
+  .content {
+    padding-block: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .content {
     padding-block: 104px;
+  }
+
+  .backgroundMobile {
+    display: none;
+  }
+
+  .backgroundDesktop {
+    display: block;
   }
 }
 

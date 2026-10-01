@@ -16,10 +16,13 @@ export default function Subsystems() {
     >
       <div className="container">
         <header className={styles.header}>
-          <h2 id="subsystems-heading" className="heading-2 text-trim-cap">
+          <h2
+            id="subsystems-heading"
+            className="heading-2 heading-2-md text-trim-cap"
+          >
             Subsystems
           </h2>
-          <p className={`text-2 text-trim-cap ${styles.intro}`}>
+          <p className={`text-2 text-1-md  text-trim-cap ${styles.intro}`}>
             Flight-proven satellite subsystems covering critical spacecraft
             functions, engineered for integration, reliability, and mission
             performance.

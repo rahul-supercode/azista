@@ -20,6 +20,30 @@
   pointer-events: none;
 }
 
+/*
+ * Mobile: full-bleed textured background behind the nav/legal block only
+ * (the logo/social/address block above stays solid black). `.lower` cancels
+ * the container's side padding so the image can bleed edge to edge while
+ * its own content keeps the same inset; `top` skips past `.address`'s
+ * height (106px `.top` row + 48px `.main` padding-top + its own content).
+ */
+.lower {
+  position: relative;
+  margin-inline: -16px;
+  padding-inline: 16px;
+}
+
+.backgroundMobile {
+  position: absolute;
+  /* inset: 309px 0 -3px; */
+  bottom: -26px;
+  z-index: -1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  pointer-events: none;
+}
+
 .muted {
   opacity: 0.6;
 }
@@ -72,7 +96,7 @@
 
 .main {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 40px 24px;
   padding-block: 48px;
   border-bottom: 0.4px solid rgb(255 255 255 / 0.2);
@@ -86,6 +110,14 @@
 
 .heading {
   margin-bottom: 27px;
+}
+
+.columnSummary {
+  list-style: none;
+}
+
+.columnSummary::-webkit-details-marker {
+  display: none;
 }
 
 .links {
@@ -105,19 +137,95 @@
 
 .legal {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 16px 30px;
 }
 
 @media (min-width: 768px) {
+  .lower {
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .backgroundMobile {
+    display: none;
+  }
+
   .main {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .columnSummary {
+    cursor: default;
+  }
+
+  .plus {
+    display: none;
+  }
+
+  /*
+   * Desktop never collapses: closed <details> content lives in an implicit
+   * ::details-content box the UA stylesheet collapses via content-visibility
+   * and block-size, not plain display:none — so that's what has to be
+   * overridden, regardless of the actual [open] state.
+   */
+  .column::details-content {
+    content-visibility: visible !important;
+    block-size: auto !important;
+    overflow: visible !important;
+  }
+
+  .legal {
+    flex-direction: row;
   }
 
   .bottom {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+/* Mobile: each nav column becomes a collapsible row with a "+" toggle. */
+@media (max-width: 768px) {
+  .background {
+    display: none;
+  }
+  .main {
+    gap: 10px;
+    margin: 29px 0;
+    padding-block: 0;
+  }
+  .column {
+    border-top: 0.4px solid rgb(255 255 255 / 0.2);
+    padding-block: 24px;
+  }
+
+  .column .heading {
+    margin-bottom: 0;
+  }
+
+  .column[open] .heading {
+    margin-bottom: 27px;
+  }
+
+  .columnSummary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+  }
+  .heading {
+    opacity: 0.8;
+  }
+  .muted {
+    max-width: 209px;
+  }
+  .bottom {
+    padding-block: 0;
+    margin: 20px 0;
   }
 }
 

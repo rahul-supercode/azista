@@ -203,6 +203,75 @@ button {
   line-height: 1.1875rem; /* 19px */
   letter-spacing: -0.02em;
 }
+@media (max-width: 768px) {
+  .heading-1-md {
+    font-family: "Bebas Neue";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px; /* 90% */
+    letter-spacing: -0.8px;
+    text-transform: uppercase;
+  }
+
+  .heading-2-md {
+    font-family: "Bebas Neue";
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px; /* 100% */
+    letter-spacing: -0.68px;
+    text-transform: uppercase;
+  }
+  .heading-3-md {
+    font-family: "Bebas Neue";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 100% */
+    text-transform: uppercase;
+  }
+  .text-1-md {
+    font-family: "Schibsted Grotesk";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 128.571% */
+  }
+  .text-2-md {
+    font-family: "Schibsted Grotesk";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15px; /* 125% */
+    letter-spacing: 0.12px;
+    text-transform: uppercase;
+  }
+  .text-3-md {
+    font-family: "Schibsted Grotesk";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 109.091% */
+    letter-spacing: -0.66px;
+  }
+  .text-4-md {
+    font-family: "Schibsted Grotesk";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px; /* 140% */
+    letter-spacing: -0.1px;
+    text-transform: uppercase;
+  }
+  .text-5-md {
+    font-family: "Schibsted Grotesk";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 120% */
+  }
+}
 
 .text-trim-cap {
   text-box: trim-both cap alphabetic;

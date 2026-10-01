@@ -19,14 +19,15 @@
   text-align: center;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .section {
-    margin-top: 64px;
+    margin-top: 30px;
   }
 
   .frame {
-    gap: 60px;
-    padding: 90px 40px;
+    gap: 20px;
+    padding: 44px 10px;
+    min-height: 100%;
   }
 }
 

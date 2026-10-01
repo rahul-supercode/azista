@@ -12,30 +12,38 @@
 .inner {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 40px;
   padding-block: 64px;
 }
 
+/*
+ * Mobile: flattened so its children (title, intro, cta) reorder against
+ * `.media` directly — title, then the image, then the intro and button.
+ */
 .text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: contents;
 }
 
 .title {
-  margin-bottom: 24px;
-}
-
-.intro {
-  max-width: 457px;
-  margin-bottom: 40px;
+  order: 1;
 }
 
 .media {
+  order: 2;
   position: relative;
   width: min(463px, 100%);
   aspect-ratio: 463 / 470;
   align-self: center;
+}
+
+.intro {
+  order: 3;
+  max-width: 457px;
+}
+
+.cta {
+  order: 4;
+  align-self: flex-start;
 }
 
 .image {
@@ -53,8 +61,19 @@
   }
 
   .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     grid-column: 2;
     padding-right: 32px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+  }
+
+  .intro {
+    margin-bottom: 40px;
   }
 
   .media {

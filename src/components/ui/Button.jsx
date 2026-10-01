@@ -17,7 +17,7 @@ import styles from "./css/Button.module.css";
 /**
  * Figma: Button-2 → `primary`, Button-1 → `framed`, Button-3 → `link`.
  * `framed-light` is the header CTA: white fill and brackets, for dark backgrounds.
- * `link-light` is Button-3 in white, for dark backgrounds.
+ * `link-light` is `link` (arrow + underline) in white, for dark backgrounds.
  * `arrow-light` is a bare white arrow + label link, for dark backgrounds.
  * `download` / `linkedin` are the red fill with a download / LinkedIn icon.
  * Renders a `next/link` when given `href`, otherwise a `<button>`.
@@ -26,8 +26,8 @@ const VARIANT_CLASSES = {
   primary: `text-1 ${styles.primary}`,
   framed: styles.framed,
   "framed-light": styles.framed,
-  link: `text-1 ${styles.link}`,
-  "link-light": `text-1 ${styles.link} ${styles.linkLight}`,
+  link: `text-1 text-1-md ${styles.link}`,
+  "link-light": `text-1 text-1-md ${styles.link} ${styles.linkLight}`,
   "arrow-light": `text-1 ${styles.arrowLight}`,
   download: `text-1 ${styles.primary} ${styles.iconed}`,
   linkedin: `text-1 ${styles.primary} ${styles.iconed}`,
@@ -70,7 +70,7 @@ function ButtonContent({ variant, children }) {
         <>
           <Bracket src={light ? bracketLeftWhite : bracketLeft} />
           <span
-            className={`text-4 ${styles.framedLabel} ${light ? styles.framedLabelLight : ""}`}
+            className={`text-4 text-2-md ${styles.framedLabel} ${light ? styles.framedLabelLight : ""}`}
           >
             {children}
           </span>

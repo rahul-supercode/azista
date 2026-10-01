@@ -19,14 +19,14 @@ export default function SubsystemCard({ subsystem }) {
           className={styles.image}
         />
       </div>
-      <h3 className={`text-6 ${styles.title}`}>{name}</h3>
-      <p className={`text-1 text-trim-cap ${styles.description}`}>
+      <h3 className={`text-6 text-5-md ${styles.title}`}>{name}</h3>
+      <p className={`text-1 text-1-md text-trim-cap ${styles.description}`}>
         {description}
       </p>
       <DatasheetButton
         name={name}
         datasheet={datasheet}
-        className={`text-1 ${styles.datasheet}`}
+        className={`text-1 text-1-md ${styles.datasheet}`}
       >
         <Image src={download} alt="" />
         <span className="text-trim-cap">Download Datasheet</span>

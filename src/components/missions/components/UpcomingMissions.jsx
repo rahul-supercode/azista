@@ -48,7 +48,7 @@ export default function UpcomingMissions() {
       <div className="container">
         <h2
           id="upcoming-missions-heading"
-          className={`heading-2 text-trim-cap ${styles.heading}`}
+          className={`heading-2 heading-2-md text-trim-cap ${styles.heading}`}
         >
           Upcoming Missions
         </h2>

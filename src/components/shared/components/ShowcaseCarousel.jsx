@@ -11,8 +11,15 @@ import { useScrollExpand } from "@/hooks/useScrollExpand";
 import styles from "../css/ShowcaseCarousel.module.css";
 
 /**
- * `slides`: `[{ label, title, href, image, imageAlt, dark? }]`; `dark` makes
- * the text and tabs white.
+ * Full-bleed image carousel (after icomat.co.uk's): opens up as it scrolls
+ * into view, then auto-advances — the active tab's underline fills as a
+ * timer and the next slide wipes down over the current one while its image
+ * settles. Autoplay pauses while the carousel is off screen, hovered or
+ * focused, and stops for good once a tab is chosen.
+ *
+ * slides: [{ label, title, href, image, mobileImage, imageAlt, dark? }] —
+ * `dark` switches the text and tabs to white for a dark image; `mobileImage`
+ * swaps in below the `768px` breakpoint if set, otherwise `image` is used.
  */
 export default function ShowcaseCarousel({ label, slides }) {
   const id = useId();
@@ -51,8 +58,8 @@ export default function ShowcaseCarousel({ label, slides }) {
       for (const other of slideRefs.current) {
         if (!other || other === slide) continue;
         // Finish any interrupted wipe so the slide underneath isn't half-clipped.
-        gsap.killTweensOf([other, other.querySelector("img")]);
-        gsap.set(other.querySelector("img"), { yPercent: 0 });
+        gsap.killTweensOf([other, ...other.querySelectorAll("img")]);
+        gsap.set(other.querySelectorAll("img"), { yPercent: 0 });
         if (other === previous) {
           gsap.set(other, { clipPath: "inset(0% 0% 0% 0%)" });
           other.style.zIndex = "1";
@@ -61,7 +68,7 @@ export default function ShowcaseCarousel({ label, slides }) {
           other.style.zIndex = "0";
         }
       }
-      gsap.killTweensOf([slide, slide.querySelector("img")]);
+      gsap.killTweensOf([slide, ...slide.querySelectorAll("img")]);
       slide.style.zIndex = "2";
       gsap.fromTo(
         slide,
@@ -69,7 +76,7 @@ export default function ShowcaseCarousel({ label, slides }) {
         { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "power3.inOut" },
       );
       gsap.fromTo(
-        slide.querySelector("img"),
+        slide.querySelectorAll("img"),
         { yPercent: -5 },
         { yPercent: 0, duration: 1.6, ease: "power2.out" },
       );
@@ -117,11 +124,18 @@ export default function ShowcaseCarousel({ label, slides }) {
             style={i === 0 ? { zIndex: 1 } : undefined}
           >
             <Image
+              src={slide.mobileImage || slide.image}
+              alt={slide.imageAlt}
+              fill
+              sizes="(min-width: 768px) 0px, 100vw"
+              className={`${styles.image} ${styles.imageMobile}`}
+            />
+            <Image
               src={slide.image}
               alt={slide.imageAlt}
               fill
               sizes="100vw"
-              className={styles.image}
+              className={`${styles.image} ${styles.imageDesktop}`}
             />
           </div>
         ))}
@@ -137,7 +151,7 @@ export default function ShowcaseCarousel({ label, slides }) {
               inert={i !== index}
               className={`${styles.panel} ${i === index ? styles.panelActive : ""}`}
             >
-              <h3 className={`text-3 text-trim-cap ${styles.title}`}>
+              <h3 className={`text-3 text-3-md text-trim-cap ${styles.title}`}>
                 {slide.title}
               </h3>
               <Button variant="link" href={slide.href}>
@@ -157,7 +171,7 @@ export default function ShowcaseCarousel({ label, slides }) {
                 aria-selected={i === index}
                 aria-controls={`${id}-panel-${i}`}
                 onClick={() => choose(i)}
-                className={`text-1 ${styles.tab}`}
+                className={`text-1 text-1-md ${styles.tab}`}
               >
                 <span className="text-trim-cap">{slide.label}</span>
                 <span aria-hidden="true" className={styles.track}>

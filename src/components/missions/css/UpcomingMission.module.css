@@ -133,3 +133,14 @@
     margin-top: 40px;
   }
 }
+
+@media (max-width: 768px) {
+  .specs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .value {
+    margin-left: 20px;
+  }
+}

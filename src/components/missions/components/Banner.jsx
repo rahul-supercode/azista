@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import gridLines from "@/assets/icons/grid-lines-dark.svg";
+import scrollDown from "@/assets/icons/scroll-down.svg";
 
 import styles from "../css/Banner.module.css";
 import LensReveal from "./LensReveal";
@@ -35,11 +36,15 @@ export default function Banner() {
       <div className={`container ${styles.content}`}>
         <h1
           id="missions-heading"
-          className={`heading-1 text-trim-cap ${styles.title}`}
+          className={`heading-1 heading-1-md text-trim-cap ${styles.title}`}
         >
           Building the Future of Earth Observation
         </h1>
       </div>
+      <a href="#missions-banner-end" className={styles.scrollCue}>
+        <Image src={scrollDown} alt="Scroll to content" />
+      </a>
+      <span id="missions-banner-end" className={styles.end} />
     </section>
   );
 }

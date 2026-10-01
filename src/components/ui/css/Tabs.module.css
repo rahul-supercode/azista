@@ -64,6 +64,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .list {
+    gap: 71px;
+  }
+}
+
 /* ── Compact (Figma: Group 1000011346) ─────────────────────────────────── */
 
 .compact .list {

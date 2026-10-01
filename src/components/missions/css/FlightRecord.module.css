@@ -112,6 +112,9 @@
 .specValue {
   opacity: 0.54;
 }
+.button {
+  display: none;
+}
 
 @media (min-width: 768px) {
   .section {
@@ -196,5 +199,36 @@
 
   .specLabel {
     max-width: 143px;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .value {
+    margin-left: 20px;
+  }
+  .glowImage {
+    display: none;
+  }
+  .specs {
+    margin-top: 34px;
+  }
+  .spec {
+    gap: 8px;
+  }
+  .specLabel {
+    opacity: 0.6;
+  }
+  .specValue {
+    opacity: 0.6;
+  }
+  .button {
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
   }
 }

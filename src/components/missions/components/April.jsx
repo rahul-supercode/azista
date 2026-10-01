@@ -30,7 +30,7 @@ export default function April() {
       <div className="container">
         <h2
           id="april-heading"
-          className={`heading-2 text-trim-cap ${styles.heading}`}
+          className={`heading-2 heading-2-md text-trim-cap ${styles.heading}`}
         >
           Advanced Pixel Research &amp; Intelligence Lab (APRIL)
         </h2>
@@ -58,7 +58,7 @@ export default function April() {
         ))}
       </div>
       <div className={`container ${styles.footer}`}>
-        <p className={`text-2 text-trim-cap ${styles.intro}`}>
+        <p className={`text-2 text-1-md text-trim-cap ${styles.intro}`}>
           A research and intelligence lab focused on advancing Earth observation
           through advanced image processing, analytics, and data-driven
           intelligence.

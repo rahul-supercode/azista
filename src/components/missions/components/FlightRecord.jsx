@@ -6,6 +6,7 @@ import imagingIcon from "@/assets/icons/stat-imaging.svg";
 import massIcon from "@/assets/icons/stat-mass.svg";
 import missionLifeIcon from "@/assets/icons/stat-mission-life.svg";
 import orbitIcon from "@/assets/icons/stat-orbit.svg";
+import Button from "@/components/ui/Button";
 
 import styles from "../css/FlightRecord.module.css";
 
@@ -44,11 +45,11 @@ export default function FlightRecord() {
         <div className={styles.header}>
           <h2
             id="flight-record-heading"
-            className={`heading-2 text-trim-cap ${styles.title}`}
+            className={`heading-2 heading-2-md text-trim-cap ${styles.title}`}
           >
             India’s longest-serving private satellite.
           </h2>
-          <p className={`text-1 text-trim-cap ${styles.intro}`}>
+          <p className={`text-1 text-1-md text-trim-cap ${styles.intro}`}>
             Built by the private sector, successfully launched on June 13, 2023,
             via a SpaceX Falcon 9 rocket. It serves as a flight-proven platform
             supporting critical civilian and defense applications.
@@ -73,21 +74,34 @@ export default function FlightRecord() {
           <dl className={styles.record}>
             {RECORD.map((item) => (
               <div key={item.label} className={styles.row}>
-                <dt className={`text-5 ${styles.label}`}>
+                <dt className={`text-5 text-4-md ${styles.label}`}>
                   <Image src={bullet} alt="" />
                   {item.label}
                 </dt>
-                <dd className="text-5">{item.value}</dd>
+                <dd className={`${styles?.value} text-5 text-4-md `}>
+                  {item.value}
+                </dd>
               </div>
             ))}
           </dl>
+          <Button
+            variant="link-light"
+            href="/contact"
+            className={styles.button}
+          >
+            Load more
+          </Button>
         </div>
         <dl className={styles.specs}>
           {SPECS.map((spec) => (
             <div key={spec.label} className={styles.spec}>
               <Image src={spec.icon} alt="" />
-              <dt className={`text-5 ${styles.specLabel}`}>{spec.label}</dt>
-              <dd className={`text-1 text-trim-cap ${styles.specValue}`}>
+              <dt className={`text-5 text-4-md ${styles.specLabel}`}>
+                {spec.label}
+              </dt>
+              <dd
+                className={`text-1 text-1-md text-trim-cap ${styles.specValue}`}
+              >
                 {spec.value}
               </dd>
             </div>

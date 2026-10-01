@@ -46,7 +46,7 @@ function EventDetails({ event }) {
       <p className={styles.details}>
         <span className={`text-trim-cap ${styles.meta}`}>{event.date}</span>
         <span className={`text-trim-cap ${styles.meta}`}>{event.place}</span>
-        <span className={`text-1 text-trim-cap ${styles.booth}`}>
+        <span className={`text-1 text-1-md text-trim-cap ${styles.booth}`}>
           {event.booth}
         </span>
       </p>
@@ -64,7 +64,7 @@ export default function Events() {
       <div className="container">
         <h2
           id="events-heading"
-          className={`text-3 text-trim-cap ${styles.title}`}
+          className={`text-3 text-3-md text-trim-cap ${styles.title}`}
         >
           Meet the Azista Space team; let’s build the hardware behind your
           mission.

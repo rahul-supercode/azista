@@ -30,7 +30,7 @@ export default function PlatformPanel({ platform }) {
       )}
       <div className={styles.content}>
         <h3 className="sr-only">{name}</h3>
-        <p className={`text-1 text-trim-cap ${styles.description}`}>
+        <p className={`text-1 text-1-md text-trim-cap ${styles.description}`}>
           {description ?? `Details for ${name} are coming soon.`}
         </p>
         {specs && <SpecTable specs={specs} className={styles.specs} />}

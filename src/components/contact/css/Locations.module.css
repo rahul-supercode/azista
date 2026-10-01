@@ -1,0 +1,68 @@
+.section {
+  padding-block: 56px;
+  background: var(--color-2);
+  color: var(--color-3);
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.content {
+  grid-area: content;
+}
+
+/* The design crops the map to this window of the source image. */
+.map {
+  position: relative;
+  grid-area: map;
+  aspect-ratio: 716 / 450;
+  overflow: hidden;
+}
+
+.mapImage {
+  position: absolute;
+  top: -120.21%;
+  left: -15.59%;
+  width: 131.18%;
+  height: 240.24%;
+  max-width: none;
+}
+
+.heading {
+  margin-bottom: 35px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px;
+  padding-top: 40px;
+}
+
+.address {
+  max-width: 473px;
+  font-style: normal;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 80px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 100px;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-areas: "map content";
+    grid-template-columns: minmax(0, 716fr) minmax(0, 656fr);
+    gap: 40px;
+  }
+}

@@ -1,0 +1,124 @@
+.panel {
+  position: relative;
+  aspect-ratio: 854 / 701;
+  overflow: hidden;
+  background: #f5f6f9;
+}
+
+.frame {
+  position: absolute;
+  inset: 4.14% 5.97% 6.99%;
+}
+
+/* The render's frame in Figma: 440 × 390 at (207, 107). */
+.stage {
+  position: absolute;
+  top: 15.26%;
+  left: 24.24%;
+  width: 51.52%;
+  height: 55.62%;
+  scale: var(--scale);
+  transform-origin: 50% 70%;
+  transition: scale 600ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.shadow {
+  position: absolute;
+  top: 45.08%;
+  left: 2.52%;
+  width: 85.14%;
+  height: 55.1%;
+  max-width: none;
+}
+
+.render {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.fadeIn {
+  animation: render-in 600ms ease-out;
+}
+
+/* Crops the render the way Figma does. */
+.image {
+  position: absolute;
+  top: -9.29%;
+  left: -40.51%;
+  width: 168.83%;
+  height: 109.29%;
+  max-width: none;
+}
+
+@keyframes render-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.subsystems {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  translate: 0 -50%;
+}
+
+.subsystem {
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border: 0.4px solid rgb(0 0 0 / 0.1);
+  background: var(--background);
+  animation: subsystem-in 400ms ease-out;
+}
+
+.subsystemImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes subsystem-in {
+  from {
+    opacity: 0;
+    translate: 12px 0;
+  }
+}
+
+.caption {
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+  text-align: center;
+  translate: -50% 0;
+}
+
+.summary {
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .caption {
+    top: 82.74%;
+  }
+
+  .subsystems {
+    right: 9%;
+    gap: 8px;
+  }
+
+  .subsystem {
+    width: 56px;
+    height: 56px;
+    padding: 6px;
+  }
+}

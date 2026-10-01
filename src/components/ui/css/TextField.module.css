@@ -46,3 +46,97 @@
   translate: 0 -20px;
   scale: 0.75;
 }
+
+/* ── Boxed (Contact form) ──────────────────────────────────────────────── */
+
+.boxed {
+  padding-top: 0;
+}
+
+.boxed .input {
+  height: 57px;
+  padding: 25px 20px 8px;
+  border: 0.4px solid rgb(0 0 0 / 0.2);
+  resize: vertical;
+}
+
+.boxed textarea.input {
+  height: 206px;
+  min-height: 120px;
+  padding-top: 38px;
+}
+
+.boxed .input:focus,
+.boxed .input:focus-visible {
+  border-color: var(--foreground);
+}
+
+.boxed .label {
+  top: 17px;
+  left: 20px;
+}
+
+.boxed:has(textarea) .label {
+  top: 19px;
+}
+
+.boxed .input:focus + .label,
+.boxed .input:not(:placeholder-shown) + .label {
+  translate: 0 -10px;
+}
+
+/* ── Stacked (Build your mission) ──────────────────────────────────────── */
+
+/* The design marks no field as required; the browser flags missed ones. */
+.stacked .required {
+  display: none;
+}
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 0;
+}
+
+.stacked .input {
+  order: 1;
+  height: 57px;
+  padding: 0 20px;
+  border: 0.4px solid rgb(0 0 0 / 0.2);
+  color: rgb(26 26 26 / 0.6);
+  appearance: textfield;
+}
+
+.stacked .input::-webkit-inner-spin-button,
+.stacked .input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.stacked:has(.unit) .input {
+  padding-right: 64px;
+}
+
+.stacked .input:focus,
+.stacked .input:focus-visible {
+  border-color: var(--foreground);
+}
+
+.stacked .label,
+.stacked .input:focus + .label,
+.stacked .input:not(:placeholder-shown) + .label {
+  position: static;
+  opacity: 1;
+  translate: none;
+  scale: none;
+}
+
+.unit {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: var(--foreground);
+  opacity: 0.6;
+  pointer-events: none;
+}

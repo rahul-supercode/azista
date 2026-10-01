@@ -8,6 +8,8 @@ import bracketLeft from "@/assets/icons/bracket-left.svg";
 import bracketRightWhite from "@/assets/icons/bracket-right-white.svg";
 import bracketRight from "@/assets/icons/bracket-right.svg";
 import downloadWhite from "@/assets/icons/download-white.svg";
+import linkedinSmall from "@/assets/icons/linkedin-small.svg";
+import underlineWhite from "@/assets/icons/underline-white.svg";
 import underline from "@/assets/icons/underline.svg";
 
 import styles from "./css/Button.module.css";
@@ -15,8 +17,9 @@ import styles from "./css/Button.module.css";
 /**
  * Figma: Button-2 → `primary`, Button-1 → `framed`, Button-3 → `link`.
  * `framed-light` is the header CTA: white fill and brackets, for dark backgrounds.
+ * `link-light` is Button-3 in white, for dark backgrounds.
  * `arrow-light` is a bare white arrow + label link, for dark backgrounds.
- * `download` is the red fill with a download icon.
+ * `download` / `linkedin` are the red fill with a download / LinkedIn icon.
  * Renders a `next/link` when given `href`, otherwise a `<button>`.
  */
 const VARIANT_CLASSES = {
@@ -24,9 +27,13 @@ const VARIANT_CLASSES = {
   framed: styles.framed,
   "framed-light": styles.framed,
   link: `text-1 ${styles.link}`,
+  "link-light": `text-1 ${styles.link} ${styles.linkLight}`,
   "arrow-light": `text-1 ${styles.arrowLight}`,
-  download: `text-1 ${styles.primary} ${styles.download}`,
+  download: `text-1 ${styles.primary} ${styles.iconed}`,
+  linkedin: `text-1 ${styles.primary} ${styles.iconed}`,
 };
+
+const VARIANT_ICONS = { download: downloadWhite, linkedin: linkedinSmall };
 
 export default function Button({
   variant = "primary",
@@ -72,21 +79,30 @@ function ButtonContent({ variant, children }) {
       );
     }
     case "link":
+    case "link-light": {
+      const light = variant === "link-light";
       return (
         <>
           <span className={styles.linkRow}>
-            <Arrow src={arrowBlack} />
+            <Arrow src={light ? arrowWhite : arrowBlack} />
             <span className="text-trim-cap">{children}</span>
           </span>
           <span aria-hidden="true" className={styles.underline}>
-            <Image src={underline} alt="" width={99} height={0.8} />
+            <Image
+              src={light ? underlineWhite : underline}
+              alt=""
+              width={light ? 133 : 99}
+              height={0.8}
+            />
           </span>
         </>
       );
+    }
     case "download":
+    case "linkedin":
       return (
         <>
-          <Image src={downloadWhite} alt="" />
+          <Image src={VARIANT_ICONS[variant]} alt="" />
           <span className="text-trim-cap">{children}</span>
         </>
       );

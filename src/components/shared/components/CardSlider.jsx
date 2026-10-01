@@ -187,11 +187,12 @@ export default function CardSlider({
   }
 
   // A click focuses the slider (so arrow keys work after it) without the
-  // browser scrolling it into view, which jumps the page and cancels the drag.
+  // browser scrolling it into view, which jumps the page and cancels the drag,
+  // or showing the keyboard focus ring.
   function focusWithoutScroll(event) {
     if (event.button !== 0) return;
     event.preventDefault();
-    rootRef.current.focus({ preventScroll: true });
+    rootRef.current.focus({ preventScroll: true, focusVisible: false });
   }
 
   return (

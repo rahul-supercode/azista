@@ -1,0 +1,87 @@
+.field {
+  position: relative;
+}
+
+.box {
+  position: relative;
+}
+
+.select {
+  display: block;
+  width: 100%;
+  height: 57px;
+  padding: 25px 48px 8px 20px;
+  border: 0.4px solid rgb(0 0 0 / 0.2);
+  border-radius: 0;
+  background: none;
+  color: var(--foreground);
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 200ms ease;
+}
+
+.select:focus,
+.select:focus-visible {
+  outline: none;
+  border-color: var(--foreground);
+}
+
+.label {
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  color: var(--foreground);
+  opacity: 0.6;
+  transform-origin: left top;
+  pointer-events: none;
+  transition:
+    translate 200ms ease,
+    scale 200ms ease;
+}
+
+.required {
+  color: var(--primary);
+}
+
+.field:has(.select:not(:has(option[value=""]:checked))) .label {
+  translate: 0 -10px;
+  scale: 0.75;
+}
+
+.chevron {
+  position: absolute;
+  top: 25.2px;
+  right: 19.8px;
+  max-width: none;
+  pointer-events: none;
+}
+
+/* ── Stacked (Build your mission) ──────────────────────────────────────── */
+
+/* The design marks no field as required; the browser flags missed ones. */
+.stacked .required {
+  display: none;
+}
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stacked .box {
+  order: 1;
+}
+
+.stacked .select {
+  padding-block: 0;
+  color: rgb(26 26 26 / 0.6);
+}
+
+.stacked .label,
+.stacked:has(.select:not(:has(option[value=""]:checked))) .label {
+  position: static;
+  opacity: 1;
+  translate: none;
+  scale: none;
+}

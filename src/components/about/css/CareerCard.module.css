@@ -1,0 +1,100 @@
+.card {
+  height: 100%;
+  background: #f3f3f3;
+  color: var(--foreground);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 20px 12px 12px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+}
+
+.icon img {
+  width: 80%;
+  height: auto;
+}
+
+.title {
+  flex: 1;
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 600;
+  line-height: 1.125rem; /* 18px */
+}
+
+.chevron {
+  flex-shrink: 0;
+  width: 11px;
+  height: 6px;
+  transition: rotate 200ms ease;
+}
+
+.card[open] .chevron {
+  rotate: 180deg;
+}
+
+.text {
+  padding: 4px 23px 20px 12px;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.0625rem; /* 17px */
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .card {
+    min-height: 308px;
+    padding: 20px;
+    background: #f5f6f9;
+  }
+
+  /* Always open: the content shows whether or not `open` is set. */
+  .card::details-content {
+    content-visibility: visible;
+  }
+
+  .summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 0;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .title {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.1875rem; /* 19px */
+    letter-spacing: -0.02em;
+  }
+
+  .chevron {
+    display: none;
+  }
+
+  .text {
+    padding: 0;
+    margin-top: 12px;
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.4375rem; /* 23px */
+  }
+}

@@ -1,0 +1,67 @@
+.list {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid rgb(26 26 26 / 0.2);
+}
+
+.link {
+  position: relative;
+  display: block;
+  padding-bottom: 14px;
+  color: #000;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: calc(100% + 10px);
+  height: 1px;
+  background: var(--foreground);
+  translate: -50% 0;
+  scale: 0 1;
+  transition: scale 300ms ease-out;
+}
+
+.link[aria-current] {
+  opacity: 1;
+}
+
+.link[aria-current]::after {
+  scale: 1 1;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .list {
+    justify-content: space-between;
+    padding-inline: 46px;
+  }
+
+  .link {
+    padding-bottom: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .list {
+    overflow-x: clip;
+  }
+
+  /* A quarter of the 1412px rule, centred on the label. */
+  .link::after {
+    width: min(353px, 23.35vw);
+  }
+}

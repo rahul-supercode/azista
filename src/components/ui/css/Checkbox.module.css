@@ -1,0 +1,42 @@
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.input {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border: 0.4px solid rgb(0 0 0 / 0.6);
+  border-radius: 0;
+  background: var(--background);
+  appearance: none;
+  cursor: inherit;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.input:checked {
+  border-color: var(--primary);
+  background: var(--primary);
+  box-shadow: inset 0 0 0 2px var(--background);
+}
+
+.label {
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+.input:checked + .label {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .checkbox:hover .input:not(:checked) {
+    border-color: var(--foreground);
+  }
+}

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import bulletTriangle from "@/assets/icons/bullet-triangle.svg";
 import OrbitRings from "@/components/shared/components/OrbitRings";
+import SpecTable from "@/components/shared/components/SpecTable";
 import Button from "@/components/ui/Button";
 
 import styles from "../css/PlatformPanel.module.css";
@@ -33,19 +33,7 @@ export default function PlatformPanel({ platform }) {
         <p className={`text-1 text-trim-cap ${styles.description}`}>
           {description ?? `Details for ${name} are coming soon.`}
         </p>
-        {specs && (
-          <dl className={styles.specs}>
-            {specs.map((spec) => (
-              <div key={spec.label} className={styles.spec}>
-                <dt className={`text-5 ${styles.label}`}>
-                  <Image src={bulletTriangle} alt="" />
-                  <span>{spec.label}</span>
-                </dt>
-                <dd className={`text-5 ${styles.value}`}>{spec.value}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
+        {specs && <SpecTable specs={specs} className={styles.specs} />}
         <Button variant="framed" href="/contact" className={styles.cta}>
           Contact our team
         </Button>

@@ -1,0 +1,195 @@
+/* ── Map ───────────────────────────────────────────────────────────────── */
+
+/*
+ * The map art is wider than small screens, so it is shown enlarged (`--fit`)
+ * and centred on India (`--focus`, a fraction of the image width).
+ */
+.map {
+  --fit: 3.015;
+  --focus: 0.528;
+  /* Zoomed in: the selected point is scaled by `--zoom` and moved to
+     (`--target-x`, `--target-y`), fractions of the image. */
+  --zoom: 1.5;
+  --target-x: var(--focus);
+  --target-y: 0.45;
+
+  position: relative;
+  margin-top: -12px;
+  overflow: hidden;
+}
+
+.canvas {
+  width: calc(var(--fit) * 100%);
+  margin-left: calc((0.5 - var(--fit) * var(--focus)) * 100%);
+  transform-origin: 0 0;
+  transition:
+    translate 1.2s cubic-bezier(0.65, 0, 0.35, 1),
+    scale 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.canvas[data-zoomed] {
+  translate: calc((var(--target-x) - var(--point-x) * var(--zoom)) * 100%)
+    calc((var(--target-y) - var(--point-y) * var(--zoom)) * 100%);
+  scale: var(--zoom);
+}
+
+/* White fades at the top and bottom edges. */
+.map::before,
+.map::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.map::before {
+  top: 0;
+  height: 72px;
+  background: linear-gradient(#fff, rgb(255 255 255 / 0));
+}
+
+.map::after {
+  bottom: 0;
+  height: 80px;
+  background: linear-gradient(rgb(255 255 255 / 0), #fff);
+}
+
+/* ── Card and arrows ───────────────────────────────────────────────────── */
+
+.explorer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  /* Overlaps the bottom of the map. */
+  margin-top: -126px;
+}
+
+/* Full-bleed on small screens. */
+.card {
+  align-self: stretch;
+  min-height: 229px;
+  margin-inline: -16px;
+  padding: 20px 16px 31px;
+  background: var(--surface-dark);
+  backdrop-filter: blur(19px);
+}
+
+.arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.arrow {
+  position: relative;
+  width: 23px;
+  height: 23px;
+  transition: opacity 150ms ease;
+}
+
+/* Larger touch target than the drawn button. */
+.arrow::before {
+  content: "";
+  position: absolute;
+  inset: -10px -5px;
+}
+
+.arrow img {
+  width: 100%;
+  height: 100%;
+}
+
+.prev img {
+  scale: -1 1;
+}
+
+@media (hover: hover) {
+  .arrow:hover {
+    opacity: 0.85;
+  }
+}
+
+@media (min-width: 768px) {
+  .map {
+    --fit: 1.5;
+    --zoom: 1.6;
+
+    margin-top: -24px;
+  }
+
+  .map::before {
+    height: 160px;
+  }
+
+  .card {
+    min-height: 261px;
+    margin-inline: -24px;
+    padding: 30px 24px 37px;
+  }
+
+  .arrows {
+    gap: 20px;
+  }
+
+  .arrow {
+    width: 60px;
+    height: 60px;
+  }
+
+  .arrow::before {
+    content: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .stage {
+    position: relative;
+  }
+
+  .map {
+    --fit: 1;
+    --focus: 0.5;
+    --zoom: 2;
+    /* Clear of the card, bottom left. */
+    --target-x: 0.55;
+    --target-y: 0.42;
+
+    margin-top: -40px;
+  }
+
+  .map::before {
+    height: 241px;
+  }
+
+  .map::after {
+    height: 167px;
+  }
+
+  .explorer {
+    position: absolute;
+    right: 0;
+    bottom: 60px;
+    left: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 0;
+    pointer-events: none;
+  }
+
+  .card,
+  .arrows {
+    pointer-events: auto;
+  }
+
+  .card {
+    align-self: auto;
+    width: 615px;
+    margin-inline: 0;
+    padding-inline: 30px;
+  }
+}

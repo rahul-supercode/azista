@@ -2,7 +2,9 @@
   position: relative;
 }
 
-.red {
+.red,
+.small,
+.medium {
   --corner-offset: -0.5px;
 }
 

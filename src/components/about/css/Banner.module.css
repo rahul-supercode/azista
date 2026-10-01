@@ -1,0 +1,55 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  height: 550px;
+  overflow: hidden;
+  background: #000;
+  color: var(--color-3);
+}
+
+.image {
+  z-index: -1;
+  object-fit: cover;
+}
+
+/* 20% shade; on smaller screens a fade to black behind the title instead. */
+.section::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: 36%;
+  background: linear-gradient(rgb(0 0 0 / 0), #000);
+}
+
+.content {
+  padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    height: 640px;
+  }
+
+  .content {
+    padding-bottom: 70px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    height: 740px;
+  }
+
+  .section::after {
+    inset: 0;
+    height: auto;
+    background: rgb(0 0 0 / 0.2);
+  }
+
+  .content {
+    padding-bottom: 91px;
+  }
+}

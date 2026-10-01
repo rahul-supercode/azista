@@ -1,0 +1,106 @@
+.section {
+  padding-block: 64px 48px;
+  background: var(--foreground);
+  color: #fff;
+}
+
+.layout {
+  display: grid;
+  grid-template-areas:
+    "title"
+    "intro"
+    "media"
+    "specs";
+}
+
+.title {
+  grid-area: title;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 34px; /* One blank 23px line between the trimmed paragraphs. */
+  grid-area: intro;
+  max-width: 785px;
+  margin-top: 24px;
+  opacity: 0.6;
+}
+
+/* Figma: 477 × 456 slot; rings and unit placed within it. */
+.media {
+  position: relative;
+  grid-area: media;
+  justify-self: center;
+  width: min(100%, 477px);
+  aspect-ratio: 477 / 456;
+  margin-top: 24px;
+}
+
+.rings {
+  position: absolute;
+  top: 4.56%;
+  left: 7.73%;
+  width: 84.54%;
+}
+
+.media .unit {
+  position: absolute;
+  top: 20.94%;
+  left: 5.03%;
+  width: 89.94%;
+}
+
+.specs {
+  grid-area: specs;
+  margin-top: 24px;
+  padding-top: 40px;
+  border-top: 1px solid rgb(255 255 255 / 0.2);
+  --spec-label-width: 220px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 80px;
+  }
+
+  .intro {
+    margin-top: 40px;
+  }
+
+  .specs {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 83px 39px;
+  }
+
+  .layout {
+    grid-template-columns: 598fr 814fr;
+    grid-template-rows: minmax(188px, auto) auto;
+    grid-template-areas:
+      "title intro"
+      "media specs";
+  }
+
+  .intro {
+    margin-top: 44px;
+    padding-bottom: 40px;
+  }
+
+  .media {
+    align-self: start;
+    justify-self: start;
+    margin-top: 0;
+  }
+
+  .specs {
+    align-self: start;
+    max-width: 772px;
+    margin-top: 0;
+    --spec-label-width: 291px;
+  }
+}

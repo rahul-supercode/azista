@@ -19,7 +19,7 @@
   color: var(--primary-foreground);
 }
 
-.download {
+.iconed {
   padding-inline: 30px;
 }
 
@@ -29,6 +29,10 @@
   align-items: flex-start;
   gap: 10px;
   color: #000;
+}
+
+.linkLight {
+  color: #fff;
 }
 
 .arrowLight {

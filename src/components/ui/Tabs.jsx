@@ -6,11 +6,30 @@ import styles from "./css/Tabs.module.css";
 
 const STEP = { ArrowRight: 1, ArrowLeft: -1 };
 
-/** `tabs`: `[{ id, label, panel }]`. */
-export default function Tabs({ label, tabs, defaultId, className = "" }) {
+/**
+ * `tabs`: `[{ id, label, panel }]`. Pass `activeId` + `onChange` to control
+ * the selection from outside (e.g. prev/next buttons).
+ * `variant="compact"`: tighter row of fixed-width tabs, for use inside a card.
+ * `variant="pill"`: filled white box marks the selected tab, for dark sections.
+ */
+export default function Tabs({
+  label,
+  tabs,
+  defaultId,
+  activeId: controlledId,
+  onChange,
+  variant = "default",
+  className = "",
+}) {
   const baseId = useId();
-  const [activeId, setActiveId] = useState(defaultId ?? tabs[0].id);
+  const [uncontrolledId, setUncontrolledId] = useState(defaultId ?? tabs[0].id);
+  const activeId = controlledId ?? uncontrolledId;
   const tabRefs = useRef({});
+
+  function setActiveId(id) {
+    setUncontrolledId(id);
+    onChange?.(id);
+  }
 
   function select(index) {
     const tab = tabs[(index + tabs.length) % tabs.length];
@@ -28,7 +47,7 @@ export default function Tabs({ label, tabs, defaultId, className = "" }) {
   }
 
   return (
-    <div className={className}>
+    <div className={`${styles[variant] ?? ""} ${className}`}>
       <div
         role="tablist"
         aria-label={label}
@@ -50,7 +69,7 @@ export default function Tabs({ label, tabs, defaultId, className = "" }) {
               aria-controls={`${baseId}-panel-${tab.id}`}
               tabIndex={selected ? 0 : -1}
               onClick={() => setActiveId(tab.id)}
-              className={`text-1 text-trim-cap ${styles.tab}`}
+              className={`${variant === "pill" ? "text-6" : "text-1"} text-trim-cap ${styles.tab}`}
             >
               {tab.label}
             </button>

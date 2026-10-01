@@ -1,0 +1,85 @@
+.layout {
+  display: grid;
+  grid-template-areas:
+    "heading"
+    "preview"
+    "form";
+  row-gap: 40px;
+}
+
+.heading {
+  grid-area: heading;
+}
+
+/* Full-bleed below desktop. */
+.preview {
+  grid-area: preview;
+  margin-inline: -16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  grid-area: form;
+  gap: 40px;
+  max-width: 458px;
+}
+
+.subsystems {
+  min-width: 0;
+}
+
+.legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.checkboxes {
+  display: grid;
+  clear: both;
+  grid-template-columns: repeat(2, max-content);
+  gap: 19px 62px;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 20px;
+  padding-inline: 30px;
+}
+
+@media (min-width: 768px) {
+  .preview {
+    margin-inline: -24px;
+  }
+
+  .checkboxes {
+    grid-template-columns: repeat(3, max-content);
+  }
+}
+
+@media (min-width: 1280px) {
+  .layout {
+    grid-template-areas:
+      "preview heading"
+      "preview form";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: minmax(0, 803fr) minmax(0, 577fr);
+    column-gap: 32px;
+    row-gap: 0;
+  }
+
+  .heading {
+    padding-top: 70px;
+    margin-bottom: 65px;
+  }
+
+  /* Runs past the container's left padding, and on wide screens the
+     panel colour carries on to the viewport's edge. */
+  .preview {
+    align-self: start;
+    margin-inline: -50px 0;
+    box-shadow: 0 0 0 100vmax #f5f6f9;
+    clip-path: inset(0 0 0 -100vmax);
+  }
+}

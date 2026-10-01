@@ -1,0 +1,41 @@
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.label span {
+  opacity: 0.6;
+}
+
+.value {
+  margin-top: 6px;
+  padding-left: 11px;
+}
+
+@media (min-width: 768px) {
+  .specs {
+    gap: 20px;
+  }
+
+  .spec {
+    display: grid;
+    grid-template-columns: var(--spec-label-width, 228px) 1fr;
+    align-items: start;
+  }
+
+  .label {
+    gap: 10px;
+  }
+
+  .value {
+    margin-top: 0;
+    padding-left: 0;
+  }
+}

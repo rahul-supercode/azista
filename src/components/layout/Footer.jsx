@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Fragment } from "react";
 
 import linkedin from "@/assets/icons/linkedin.svg";
 import youtube from "@/assets/icons/youtube.svg";
+import { headquarters } from "@/config/locations";
 import { footerNav, legalNav, socialLinks } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 
@@ -63,9 +65,12 @@ export default function Footer() {
               Headquarters
             </h2>
             <p className={`text-1 text-trim-cap ${styles.muted}`}>
-              Sy.No 80–84, Melange Towers, 4th Floor,
-              <br />C Wing, Patrika Nagar, Madhapur, Hyderabad, Telangana, India
-              – 500 081
+              {headquarters.addressLines.map((line, index) => (
+                <Fragment key={line}>
+                  {index > 0 && <br />}
+                  {line}
+                </Fragment>
+              ))}
             </p>
           </address>
 

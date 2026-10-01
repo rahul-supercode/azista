@@ -1,0 +1,30 @@
+.section {
+  padding-block: 40px 60px;
+  overflow: hidden;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  text-align: center;
+}
+
+.mapImage {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 64px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-top: 84px;
+  }
+}

@@ -1,0 +1,19 @@
+.section {
+  padding-block: 110px 64px;
+}
+
+.heading {
+  max-width: 340px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 126px 80px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 118px 98px;
+  }
+}

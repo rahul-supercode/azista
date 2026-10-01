@@ -8,6 +8,24 @@
   text-align: center;
 }
 
+/* Mobile-only intro line under the heading (Figma: text-1-md's styling,
+   used here outside its usual 768px+ context). */
+.subtext {
+  margin-bottom: 24px;
+  color: #1a1a1a;
+  font-family: "Schibsted Grotesk";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  /* text-align: center; */
+}
+
+@media (min-width: 768px) {
+  .subtext {
+    display: none;
+  }
+}
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -90,9 +108,17 @@
     width: 11px;
     height: 11px;
   }
-  .section
-  {
+  .section {
     padding-block: 32px;
+  }
+  .title
+  {
+    text-align: start;
+    margin-bottom: 20px;
+  }
+  .media
+  {
+    display: none;
   }
 }
 

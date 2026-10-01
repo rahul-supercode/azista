@@ -26,6 +26,12 @@ export default function SatelliteStructure() {
         >
           Satellite Structure
         </h2>
+        <p className={`text-trim-cap ${styles.subtext}`}>
+          A CubeSat structure provides the standardised mechanical chassis
+          rails, frame and deployment interfaces that keep a satellite compliant
+          with the CubeSat Design Specification, from 1U up through 16U and
+          custom form factors.
+        </p>
         <div className={styles.layout}>
           <div className={styles.media}>
             <Image

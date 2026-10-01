@@ -114,4 +114,8 @@
     scroll-snap-align: start;
     padding: 14px 10px 20px;
   }
+  .section
+  {
+    padding-block: 34px;
+  }
 }

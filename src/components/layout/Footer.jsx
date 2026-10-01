@@ -78,7 +78,9 @@ export default function Footer() {
           />
           <div className={styles.main}>
             <address className={styles.address}>
-              <h2 className={`text-6 text-5-md text-trim-cap ${styles.heading}`}>
+              <h2
+                className={`text-6 text-5-md text-trim-cap ${styles.heading}`}
+              >
                 Headquarters
               </h2>
               <p className={`text-1 text-1-md text-trim-cap ${styles.muted}`}>
@@ -94,7 +96,9 @@ export default function Footer() {
                 className={styles.column}
               >
                 <summary className={styles.columnSummary}>
-                  <h2 className={`text-6 text-5-md text-trim-cap ${styles.heading}`}>
+                  <h2
+                    className={`text-6 text-5-md text-trim-cap ${styles.heading}`}
+                  >
                     {column.title}
                   </h2>
                   <span aria-hidden="true" className={styles.plus}>

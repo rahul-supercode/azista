@@ -40,10 +40,14 @@ function elapsed(from, to) {
     (end.getFullYear() - start.getFullYear()) * 12 +
     end.getMonth() -
     start.getMonth();
-  const anchor = new Date(start);
+  let anchor = new Date(start);
   anchor.setMonth(start.getMonth() + months);
   if (anchor > end) {
     months -= 1;
+    // Recompute from a fresh copy of `start` — `anchor` was already
+    // shifted above, so calling setMonth on it again would compound
+    // the offset onto the wrong base year.
+    anchor = new Date(start);
     anchor.setMonth(start.getMonth() + months);
   }
   let rest = Math.floor((end - anchor) / MINUTE);

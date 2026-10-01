@@ -189,14 +189,11 @@
 
 /* Mobile: each nav column becomes a collapsible row with a "+" toggle. */
 @media (max-width: 768px) {
-
-  .background
-  {
+  .background {
     display: none;
   }
-  .main
-  {
-    gap:10px;
+  .main {
+    gap: 10px;
     margin: 29px 0;
     padding-block: 0;
   }
@@ -220,16 +217,13 @@
     gap: 16px;
     cursor: pointer;
   }
-  .heading
-  {
+  .heading {
     opacity: 0.8;
   }
-  .muted
-  {
+  .muted {
     max-width: 209px;
   }
-  .bottom
-  {
+  .bottom {
     padding-block: 0;
     margin: 20px 0;
   }

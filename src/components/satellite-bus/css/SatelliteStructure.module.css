@@ -111,13 +111,11 @@
   .section {
     padding-block: 32px;
   }
-  .title
-  {
+  .title {
     text-align: start;
     margin-bottom: 20px;
   }
-  .media
-  {
+  .media {
     display: none;
   }
 }

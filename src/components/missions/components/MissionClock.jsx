@@ -107,7 +107,7 @@ export default function MissionClock({ since, renderedAt, className = "" }) {
             <span className={`text-trim-cap ${styles.value}`}>
               {pad(shown[unit])}
             </span>
-            <span className={`text-5 text-trim-cap ${styles.label}`}>
+            <span className={`text-5 text-4-md  text-trim-cap ${styles.label}`}>
               {unit}
             </span>
           </li>

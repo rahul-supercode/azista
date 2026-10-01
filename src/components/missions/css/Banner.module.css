@@ -46,6 +46,33 @@
   text-shadow: 0 0 200px rgb(0 0 0 / 0.3);
 }
 
+/* Mobile-only scroll cue, bottom-right corner. */
+.scrollCue {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  display: block;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .scrollCue:hover {
+    opacity: 0.8;
+  }
+}
+
+.end {
+  position: absolute;
+  bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .scrollCue {
+    display: none;
+  }
+}
+
 @media (min-width: 1280px) {
   .content {
     padding-top: 200px;

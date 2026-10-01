@@ -74,3 +74,21 @@
     row-gap: 70px;
   }
 }
+@media (max-width: 768px) {
+  .ctaTitle {
+    display: none;
+  }
+
+  .ctaCell {
+    aspect-ratio: auto;
+  }
+
+  .cta {
+    width: auto;
+    height: auto;
+  }
+  .section
+  {
+    padding-block:34px;
+  }
+}

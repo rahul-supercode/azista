@@ -22,11 +22,11 @@ export default function SatellitePlatforms() {
         <div className={styles.header}>
           <h2
             id="satellite-platforms-heading"
-            className={`heading-2 text-trim-cap ${styles.title}`}
+            className={`heading-2 heading-2-md text-trim-cap ${styles.title}`}
           >
             Satellite Platforms
           </h2>
-          <p className={`text-2 text-trim-cap ${styles.intro}`}>
+          <p className={`text-2 text-1-md text-trim-cap ${styles.intro}`}>
             Modular satellite platforms designed for rapid deployment across
             diverse mission requirements, with proven flight heritage and
             scalable configurations.

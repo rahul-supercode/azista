@@ -50,7 +50,7 @@ export default function Tabs({ label, tabs, defaultId, className = "" }) {
               aria-controls={`${baseId}-panel-${tab.id}`}
               tabIndex={selected ? 0 : -1}
               onClick={() => setActiveId(tab.id)}
-              className={`text-1 text-trim-cap ${styles.tab}`}
+              className={`text-1 text-1-md text-trim-cap ${styles.tab}`}
             >
               {tab.label}
             </button>

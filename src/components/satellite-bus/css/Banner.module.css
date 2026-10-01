@@ -48,6 +48,22 @@
   pointer-events: none;
 }
 
+/*
+ * Mobile: the source PNG is a near-square canvas with transparent padding
+ * around the diagonal satellite, so at 100% width it doesn't reach the
+ * edges. Scale it up and recentre so the satellite itself bleeds off both
+ * sides, matching the Figma crop; `.section`'s overflow: hidden clips it.
+ */
+@media (max-width: 768px) {
+  .satellite {
+    width: 151%;
+    max-width: none;
+    margin-left: -36%;
+    margin-bottom: -142px;
+    transform: rotate(-5.245deg);
+  }
+}
+
 .end {
   position: absolute;
   bottom: 0;

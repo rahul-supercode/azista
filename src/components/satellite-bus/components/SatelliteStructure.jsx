@@ -22,7 +22,7 @@ export default function SatelliteStructure() {
       <div className="container">
         <h2
           id="structures-heading"
-          className={`heading-2 text-trim-cap ${styles.title}`}
+          className={`heading-2 heading-2-md text-trim-cap ${styles.title}`}
         >
           Satellite Structure
         </h2>
@@ -45,7 +45,9 @@ export default function SatelliteStructure() {
                 className={styles.item}
               >
                 <summary className={styles.summary}>
-                  <span className={`text-2 text-trim-cap ${styles.name}`}>
+                  <span
+                    className={`text-2 text-1-md text-trim-cap ${styles.name}`}
+                  >
                     {item.name}
                   </span>
                   <span aria-hidden="true" className={styles.icon}>
@@ -55,11 +57,13 @@ export default function SatelliteStructure() {
                 </summary>
                 <div className={styles.content}>
                   {item.title && (
-                    <h3 className={`text-6 ${styles.itemTitle}`}>
+                    <h3 className={`text-6 text-1-md ${styles.itemTitle}`}>
                       {item.title}
                     </h3>
                   )}
-                  <p className={`text-1 text-trim-cap ${styles.description}`}>
+                  <p
+                    className={`text-1 text-1-md text-trim-cap ${styles.description}`}
+                  >
                     {item.description ??
                       `Details for ${item.name} are coming soon.`}
                   </p>
@@ -68,7 +72,9 @@ export default function SatelliteStructure() {
                       {item.features.map((feature) => (
                         <li key={feature} className="text-1">
                           <Image src={bulletTriangle} alt="" />
-                          <span className="text-trim-cap">{feature}</span>
+                          <span className={"text-1-md text-trim-cap"}>
+                            {feature}
+                          </span>
                         </li>
                       ))}
                     </ul>

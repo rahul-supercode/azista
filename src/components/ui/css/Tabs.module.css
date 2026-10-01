@@ -63,3 +63,8 @@
     width: min(353px, 23.35vw);
   }
 }
+@media (max-width: 768px) {
+  .list {
+    gap: 71px;
+  }
+}

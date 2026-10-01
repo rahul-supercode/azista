@@ -13,11 +13,11 @@ export default function Banner() {
       <div className={`container ${styles.content}`}>
         <h1
           id="satellite-bus-heading"
-          className={`heading-1 text-trim-cap ${styles.title}`}
+          className={`heading-1 heading-1-md text-trim-cap ${styles.title}`}
         >
           Satellite Bus
         </h1>
-        <p className={`text-1 text-trim-cap ${styles.intro}`}>
+        <p className={`text-1 text-1-md text-trim-cap ${styles.intro}`}>
           Modular Satellite Platforms, up to 500 kg, and flight-proven
           subsystems to ensure mission success across diverse missions.
         </p>

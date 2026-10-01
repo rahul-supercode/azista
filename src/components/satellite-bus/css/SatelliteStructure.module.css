@@ -85,10 +85,23 @@
   height: 21px;
 }
 
+@media (max-width: 768px) {
+  .icon {
+    width: 11px;
+    height: 11px;
+  }
+  .section
+  {
+    padding-block: 32px;
+  }
+}
+
 .plus,
 .minus {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   transition:
     opacity 300ms ease-out,
     rotate 300ms ease-out;

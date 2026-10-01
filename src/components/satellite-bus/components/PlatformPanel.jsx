@@ -30,18 +30,20 @@ export default function PlatformPanel({ platform }) {
       )}
       <div className={styles.content}>
         <h3 className="sr-only">{name}</h3>
-        <p className={`text-1 text-trim-cap ${styles.description}`}>
+        <p className={`text-1 text-1-md text-trim-cap ${styles.description}`}>
           {description ?? `Details for ${name} are coming soon.`}
         </p>
         {specs && (
           <dl className={styles.specs}>
             {specs.map((spec) => (
               <div key={spec.label} className={styles.spec}>
-                <dt className={`text-5 ${styles.label}`}>
+                <dt className={`text-5 text-4-md ${styles.label}`}>
                   <Image src={bulletTriangle} alt="" />
                   <span>{spec.label}</span>
                 </dt>
-                <dd className={`text-5 ${styles.value}`}>{spec.value}</dd>
+                <dd className={`text-5 text-4-md ${styles.value}`}>
+                  {spec.value}
+                </dd>
               </div>
             ))}
           </dl>

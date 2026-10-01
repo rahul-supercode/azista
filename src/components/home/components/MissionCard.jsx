@@ -9,6 +9,7 @@ import styles from "../css/MissionCard.module.css";
 export default function MissionCard({
   title,
   image,
+  mobileImage = image,
   imageAlt,
   specs,
   theme = "light",
@@ -19,23 +20,35 @@ export default function MissionCard({
       className={`${styles.card} ${theme === "dark" ? styles.dark : ""}`}
     >
       <Image
+        src={mobileImage}
+        alt={imageAlt}
+        fill
+        sizes="100vw"
+        draggable={false}
+        className={`${styles.image} ${styles.imageMobile}`}
+      />
+      <Image
         src={image}
         alt={imageAlt}
         fill
         sizes="(min-width: 1280px) 1130px, 100vw"
         draggable={false}
-        className={styles.image}
+        className={`${styles.image} ${styles.imageDesktop}`}
       />
-      <h3 className={`heading-3 text-trim-cap ${styles.title}`}>{title}</h3>
+      <h3 className={`heading-3 heading-3-md text-trim-cap ${styles.title}`}>
+        {title}
+      </h3>
       <dl
         className={`${styles.specs} ${specsAt === "top" ? styles.specsTop : ""}`}
       >
         {specs.map((spec) => (
           <div key={spec.label} className={styles.spec}>
-            <dt className={`text-5 text-trim-cap ${styles.specLabel}`}>
+            <dt
+              className={`text-5 text-4-md text-trim-cap ${styles.specLabel}`}
+            >
               {spec.label}
             </dt>
-            <dd className="text-1 text-trim-cap">{spec.value}</dd>
+            <dd className="text-1 text-1-md text-trim-cap">{spec.value}</dd>
           </div>
         ))}
       </dl>

@@ -1,7 +1,11 @@
+/*
+ * Full-bleed frame, image behind the overlaid text and tabs. Mobile gets a
+ * taller frame (2:3) to suit the portrait mobile art; desktop is the
+ * 1512 × 760 Figma frame (Frame 1410156736).
+ */
 .frame {
   position: relative;
-  aspect-ratio: 1512 / 760;
-  min-height: 560px;
+  aspect-ratio: 2 / 3;
   overflow: hidden;
   background: var(--muted);
 }
@@ -19,6 +23,11 @@
   object-fit: cover;
 }
 
+.imageDesktop {
+  display: none;
+}
+
+/* Title + link, 60px down on desktop (Figma: 50/60); panels share a cell. */
 .panels {
   position: relative;
   z-index: 3;
@@ -79,7 +88,7 @@
   background: #fff;
 }
 
-/* ── Tabs ─────────────────────────────────────────────────────────────── */
+/* ── Tabs: label over a progress track, above the bottom edge ─────────── */
 
 .tabsBar {
   position: absolute;
@@ -157,6 +166,19 @@
 }
 
 @media (min-width: 768px) {
+  .frame {
+    aspect-ratio: 1512 / 760;
+    min-height: 560px;
+  }
+
+  .imageMobile {
+    display: none;
+  }
+
+  .imageDesktop {
+    display: block;
+  }
+
   .panels {
     padding-top: 48px;
   }

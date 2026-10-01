@@ -13,19 +13,26 @@ export default function MissionCta() {
       className={styles.section}
     >
       <Image
+        src="/assets/start-your-mission-md.jpg"
+        alt=""
+        fill
+        sizes="(min-width: 768px) 0px, 100vw"
+        className={`${styles.background} ${styles.backgroundMobile}`}
+      />
+      <Image
         src="/assets/hp-mission-cta.jpg"
         alt=""
         fill
         sizes="100vw"
-        className={styles.background}
+        className={`${styles.background} ${styles.backgroundDesktop}`}
       />
       <div className={`container ${styles.content}`}>
-        <p className={`text-5 text-trim-cap ${styles.eyebrow}`}>
+        <p className={`text-5 text-4-md text-trim-cap ${styles.eyebrow}`}>
           Start your mission
         </p>
         <h2
           id="mission-cta-heading"
-          className={`heading-2 text-trim-cap ${styles.title}`}
+          className={`heading-2 heading-3-md text-trim-cap ${styles.title}`}
         >
           Engineered around your mission requirements.
         </h2>

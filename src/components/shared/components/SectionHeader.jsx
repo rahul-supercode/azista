@@ -4,10 +4,10 @@ import styles from "../css/SectionHeader.module.css";
 export default function SectionHeader({ id, title, children }) {
   return (
     <div className={`container ${styles.header}`}>
-      <h2 id={id} className="heading-2 text-trim-cap">
+      <h2 id={id} className="heading-2 heading-2-md text-trim-cap">
         {title}
       </h2>
-      <p className={`text-1 ${styles.intro}`}>{children}</p>
+      <p className={`text-1 text-1-md ${styles.intro}`}>{children}</p>
     </div>
   );
 }

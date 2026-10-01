@@ -29,16 +29,20 @@ export default function HostedPayloads() {
           <div className={styles.text}>
             <h2
               id="hosted-payloads-heading"
-              className={`heading-2 text-trim-cap ${styles.title}`}
+              className={`heading-2 heading-2-md text-trim-cap ${styles.title}`}
             >
               Hosted Payloads
             </h2>
-            <p className={`text-1 text-trim-cap ${styles.intro}`}>
+            <p className={`text-1 text-1-md text-trim-cap ${styles.intro}`}>
               A route to space for critical instruments and sensors, flown on
               our satellites and delivered without the cost or timeline of
               building a dedicated spacecraft
             </p>
-            <Button variant="framed" href="/hosted-payloads">
+            <Button
+              variant="framed"
+              href="/hosted-payloads"
+              className={styles.cta}
+            >
               Learn more
             </Button>
           </div>

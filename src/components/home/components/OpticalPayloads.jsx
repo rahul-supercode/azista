@@ -11,6 +11,7 @@ const PAYLOADS = [
       "High-quality panchromatic and multispectral Earth observation payload",
     href: "/eo-payloads/fineview",
     image: "/assets/hp-optical-payloads.jpg",
+    mobileImage: "/assets/fineview-md.png",
     imageAlt: "The gold-foiled Fineview optical payload on a test stand",
   },
   {
@@ -18,6 +19,7 @@ const PAYLOADS = [
     title: "Wide-swath optical payload for Earth observation",
     href: "/eo-payloads/vista",
     image: "/assets/hp-panorama.jpg",
+    mobileImage: "/assets/mission-3-md.png",
     imageAlt: "Wireframe render of an Azista satellite structure",
     dark: true,
   },

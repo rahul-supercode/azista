@@ -23,7 +23,7 @@ const VARIANT_CLASSES = {
   primary: `text-1 ${styles.primary}`,
   framed: styles.framed,
   "framed-light": styles.framed,
-  link: `text-1 ${styles.link}`,
+  link: `text-1 text-1-md ${styles.link}`,
   "arrow-light": `text-1 ${styles.arrowLight}`,
   download: `text-1 ${styles.primary} ${styles.download}`,
 };
@@ -63,7 +63,7 @@ function ButtonContent({ variant, children }) {
         <>
           <Bracket src={light ? bracketLeftWhite : bracketLeft} />
           <span
-            className={`text-4 ${styles.framedLabel} ${light ? styles.framedLabelLight : ""}`}
+            className={`text-4 text-2-md ${styles.framedLabel} ${light ? styles.framedLabelLight : ""}`}
           >
             {children}
           </span>

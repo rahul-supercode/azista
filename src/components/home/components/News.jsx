@@ -30,9 +30,12 @@ const STORIES = [
 export default function News() {
   return (
     <section aria-labelledby="news-heading" className={styles.section}>
-      <div className="container">
+      <div className={`container ${styles.wrap}`}>
         <div className={styles.header}>
-          <h2 id="news-heading" className="heading-3 text-trim-cap">
+          <h2
+            id="news-heading"
+            className={`heading-3 heading-3-md text-trim-cap ${styles.heading}`}
+          >
             Azista in the news
           </h2>
           <Button variant="link" href="/news" className={styles.viewAll}>
@@ -51,7 +54,7 @@ export default function News() {
                   className={styles.image}
                 />
               </div>
-              <h3 className={`text-1 text-trim-cap ${styles.title}`}>
+              <h3 className={`text-1 text-1-md text-trim-cap ${styles.title}`}>
                 {story.title}
               </h3>
             </article>

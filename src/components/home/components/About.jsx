@@ -13,7 +13,7 @@ export default function About() {
     >
       <CornerFrame className={styles.frame}>
         <ScrollRevealText
-          className={`text-3 text-trim-cap ${styles.statement}`}
+          className={`text-3 text-3-md text-trim-cap ${styles.statement}`}
         >
           Azista Space is a vertically integrated space systems manufacturer
           delivering optical payloads, satellite buses, and subsystems. We bring

@@ -11,17 +11,25 @@ export default function Hero() {
       className={styles.section}
     >
       <Image
+        src="/assets/hero-banner-md.jpg"
+        alt="Azista space hardware: a gold electronics unit, an antenna test chamber, a satellite in orbit and Earth imagery from space"
+        fill
+        preload
+        sizes="(min-width: 768px) 0px, 100vw"
+        className={`${styles.banner} ${styles.bannerMobile}`}
+      />
+      <Image
         src="/assets/homepage-banner.jpg"
         alt="Azista space hardware: a gold electronics unit, an antenna test chamber, a satellite in orbit and Earth imagery from space"
         fill
         preload
         sizes="100vw"
-        className={styles.banner}
+        className={`${styles.banner} ${styles.bannerDesktop}`}
       />
       <div className={`container ${styles.content}`}>
         <h1
           id="home-hero-heading"
-          className={`heading-2 text-trim-cap ${styles.heading}`}
+          className={`heading-2 heading-1-md text-trim-cap ${styles.heading}`}
         >
           Engineering and Manufacturing Space Hardware at Scale
         </h1>

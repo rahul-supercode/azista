@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import chevron from "@/assets/icons/chevron.svg";
+import chevronWhite from "@/assets/icons/chevron-white.svg";
+
 import styles from "../css/Events.module.css";
 
 const NEXT_EVENT = {
@@ -39,40 +42,56 @@ export default function Events() {
       <div className="container">
         <h2
           id="events-heading"
-          className={`text-3 text-trim-cap ${styles.title}`}
+          className={`text-3 text-3-md text-trim-cap ${styles.title}`}
         >
           Meet the Azista Space team; let’s build the hardware behind your
           mission.
         </h2>
         <ul className={styles.grid}>
           <li className={`${styles.card} ${styles.featured}`}>
-            <p className={styles.details}>
-              <span className={`text-trim-cap ${styles.meta}`}>
-                {NEXT_EVENT.date}
-              </span>
-              <span className={`text-trim-cap ${styles.meta}`}>
-                {NEXT_EVENT.place}
-              </span>
-              <span className={`text-1 text-trim-cap ${styles.booth}`}>
-                {NEXT_EVENT.booth}
-              </span>
-            </p>
+            <details open className={styles.accordion}>
+              <summary className={styles.summary}>
+                <p className={styles.details}>
+                  <span className={`text-trim-cap ${styles.meta}`}>
+                    {NEXT_EVENT.date}
+                  </span>
+                  <span className={`text-trim-cap ${styles.meta}`}>
+                    {NEXT_EVENT.place}
+                  </span>
+                  <span
+                    className={`text-1 text-1-md text-trim-cap ${styles.booth}`}
+                  >
+                    {NEXT_EVENT.booth}
+                  </span>
+                </p>
+                <span aria-hidden="true" className={styles.chevron}>
+                  <Image src={chevronWhite} alt="" width={12} height={7} />
+                </span>
+              </summary>
+            </details>
             <Link href="/contact" className={styles.connect}>
               <span className="text-trim-cap">Connect with us</span>
             </Link>
           </li>
           {EVENTS.map((event) => (
             <li key={event.name} className={styles.card}>
-              <Image
-                src={event.logo}
-                alt={`${event.name} logo`}
-                width={event.width}
-                height={54}
-                className={styles.logo}
-              />
-              <p className={`text-1 text-trim-cap ${styles.name}`}>
-                {event.name}
-              </p>
+              <details className={styles.accordion}>
+                <summary className={styles.summary}>
+                  <Image
+                    src={event.logo}
+                    alt={`${event.name} logo`}
+                    width={event.width}
+                    height={54}
+                    className={styles.logo}
+                  />
+                  <p className={`text-1 text-trim-cap ${styles.name}`}>
+                    {event.name}
+                  </p>
+                  <span aria-hidden="true" className={styles.chevron}>
+                    <Image src={chevron} alt="" width={12} height={7} />
+                  </span>
+                </summary>
+              </details>
             </li>
           ))}
         </ul>

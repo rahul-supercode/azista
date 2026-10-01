@@ -27,7 +27,21 @@
   padding: 32px 16px 48px;
 }
 
+/*
+ * Mobile: flattened so its children (title, intro, cta) reorder against
+ * `.media` directly — the title goes first, before the image.
+ */
+.text {
+  display: contents;
+}
+
+.title {
+  order: 1;
+}
+
+/* 700 × 509 slot; the PNG is exactly 2× that. */
 .media {
+  order: 2;
   position: relative;
   aspect-ratio: 700 / 509;
   width: 100%;
@@ -46,19 +60,14 @@
   pointer-events: none;
 }
 
-.text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.title {
-  margin-bottom: 24px;
-}
-
 .intro {
+  order: 3;
   max-width: 455px;
-  margin-bottom: 40px;
+}
+
+.cta {
+  order: 4;
+  align-self: flex-start;
 }
 
 @media (min-width: 768px) {
@@ -72,6 +81,24 @@
     align-items: center;
     gap: 40px;
     padding: 40px;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .media {
+    order: 0;
+  }
+
+  .title {
+    margin-bottom: 24px;
+  }
+
+  .intro {
+    margin-bottom: 40px;
   }
 }
 

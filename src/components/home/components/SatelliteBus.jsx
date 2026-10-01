@@ -14,16 +14,20 @@ export default function SatelliteBus() {
         <div className={styles.text}>
           <h2
             id="satellite-bus-heading"
-            className={`heading-2 text-trim-cap ${styles.title}`}
+            className={`heading-2 heading-2-md text-trim-cap ${styles.title}`}
           >
             Satellite Bus
           </h2>
-          <p className={`text-1 text-trim-cap ${styles.intro}`}>
+          <p className={`text-1 text-1-md text-trim-cap ${styles.intro}`}>
             Modular satellite platforms up to 500 kg, engineered and
             manufactured in-house, ready to carry any mission, from full-scale
             deployments to in-orbit demonstrations.
           </p>
-          <Button variant="framed" href="/satellite-bus/subsystems">
+          <Button
+            variant="framed"
+            href="/satellite-bus/subsystems"
+            className={styles.cta}
+          >
             Explore subsystems
           </Button>
         </div>

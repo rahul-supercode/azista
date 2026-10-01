@@ -8,6 +8,7 @@ const MISSIONS = [
   {
     title: "Azista First Runner",
     image: "/assets/hp-azista-first-runner.jpg",
+    mobileImage: "/assets/mission-1-md.png",
     imageAlt: "The Azista First Runner satellite in orbit above Earth",
     specsAt: "top",
     specs: [
@@ -19,6 +20,7 @@ const MISSIONS = [
   {
     title: "Focus",
     image: "/assets/hp-focus.jpg",
+    mobileImage: "/assets/mission-2-md.png",
     imageAlt: "Wireframe render of the Focus satellite",
     theme: "dark",
     specs: [
@@ -29,6 +31,7 @@ const MISSIONS = [
   {
     title: "Panorama",
     image: "/assets/hp-panorama.jpg",
+    mobileImage: "/assets/mission-3-md.png",
     imageAlt: "Wireframe render of the Panorama satellite structure",
     specs: [
       { label: "Status", value: "Under Development" },

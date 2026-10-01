@@ -40,13 +40,13 @@
   -webkit-user-drag: none;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .track {
     --edge: max(24px, calc((100vw - 1512px) / 2 + 24px));
   }
 
   .slide {
-    width: calc(100vw - 88px);
+    width: calc(100vw - 112px);
   }
 }
 

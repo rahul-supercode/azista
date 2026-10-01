@@ -15,6 +15,7 @@
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,6 +26,53 @@
   border: 0.4px dashed rgb(0 0 0 / 0.2);
   background: #f5f6f9;
   text-align: center;
+}
+
+/*
+ * Mobile: each card is a native <details> so its chevron (top-right) can
+ * open/close it. `.card` still owns the box; the un-featured cards' logo,
+ * name and chevron are re-flexed one level deeper since `.summary` now
+ * wraps them instead of `.card` itself.
+ */
+.accordion {
+  display: block;
+}
+
+.summary {
+  display: block;
+  list-style: none;
+  cursor: pointer;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.card:not(.featured) .accordion {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.card:not(.featured) .summary {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.chevron {
+  position: absolute;
+  top: 30px;
+  right: 16px;
+  transform: rotate(180deg);
+  transition: transform 200ms ease;
+}
+
+details[open] .chevron {
+  transform: rotate(0deg);
 }
 
 .logo {
@@ -94,6 +142,14 @@
   .featured {
     grid-column: auto;
   }
+
+  .summary {
+    cursor: default;
+  }
+
+  .chevron {
+    display: none;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -107,5 +163,23 @@
 
   .grid {
     grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .card {
+    gap: 14px;
+    min-height: 173px;
+    align-items: flex-start;
+    text-align: start;
+  }
+  .details {
+    align-items: flex-start;
+  }
+  .card:not(.featured) .summary {
+    align-items: flex-start;
+    gap: 14px;
   }
 }

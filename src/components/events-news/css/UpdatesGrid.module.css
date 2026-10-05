@@ -1,0 +1,150 @@
+.section {
+  padding-block: 0px 80px;
+}
+
+.filter {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 0.4px solid rgb(26 26 26 / 0.3);
+  color: #1a1a1a;
+  /* text-5 */
+  font-family: "Schibsted Grotesk";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px; /* 116.667% */
+  letter-spacing: 0.24px;
+  text-transform: uppercase;
+}
+
+/* Mobile: text-4-md's spec, repeated since the global class only
+   activates at 768px+. */
+@media (max-width: 768px) {
+  .filter {
+    padding: 8px 12px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 14px; /* 140% */
+    letter-spacing: -0.1px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 24px 20px;
+  margin-top: 32px;
+}
+
+/* Mobile: capped grids (currently just Events, limit 4 — see
+   UpdatesGrid.jsx's `mobileLimit` prop) hide cards past the 4th until
+   "View more" is clicked. */
+@media (max-width: 768px) {
+  .grid.capped:not(.expanded) > :nth-child(n + 5) {
+    display: none;
+  }
+}
+
+/* Desktop: regardless of mobileLimit, a panel with more than
+   DESKTOP_PAGE_SIZE (6) items hides the rest past the 6th 3x2 grid until
+   "View more" is clicked. Doesn't apply to either of the current panels —
+   both have exactly 6 items — but keeps the grid correct if either grows. */
+@media (min-width: 768px) {
+  .grid:not(.expanded) > :nth-child(n + 7) {
+    display: none;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--muted);
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  opacity: 0.6;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaDivider {
+  width: 1px;
+  height: 16px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+.cardTitle {
+  margin-top: 12px;
+  color: var(--foreground);
+}
+
+/*
+ * Hidden by default; .viewMoreMobile and .viewMoreDesktop each only show
+ * it within their own breakpoint, and only when UpdatesGrid.jsx actually
+ * rendered that flag (i.e. there's genuinely more to reveal there).
+ */
+.viewMore {
+  display: none;
+  width: fit-content;
+  margin: 40px auto 0;
+  padding: 14px 40px;
+  border: 0.4px solid rgb(26 26 26 / 0.3);
+  color: var(--foreground);
+  text-transform: uppercase;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .viewMore:hover {
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .viewMoreMobile {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .viewMoreDesktop {
+    display: block;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 64px 100px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px 24px;
+  }
+}

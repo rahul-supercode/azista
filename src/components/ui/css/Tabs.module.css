@@ -1,5 +1,14 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .list {
   display: flex;
+  flex: 1;
+  min-width: 0;
   gap: 50px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -211,6 +220,61 @@
 @media (max-width: 768px) and (hover: hover) {
   .pill .tab:not([aria-selected="true"]):hover {
     background: none;
+    opacity: 1;
+  }
+}
+
+/* ── Toggle (Events & News) ──────────────────────────────────────────── */
+
+.toggle .toolbar {
+  padding-bottom: 20px;
+  border-bottom: 0.4px solid rgb(26 26 26 / 0.2);
+}
+
+.toggle .list {
+  flex: none;
+  gap: 8px;
+  padding-inline: 0;
+  border-bottom: 0;
+}
+
+.toggle .tab {
+  padding: 10px 20px;
+  color: var(--foreground);
+  opacity: 0.6;
+  /* text-4's spec, repeated: Tabs.jsx hardcodes text-1 for non-pill tabs. */
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  line-height: 1.0625rem; /* 17px */
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Mobile: text-4-md's spec, repeated for the same reason as text-4's above
+   — the global class only activates at 768px+. */
+@media (max-width: 768px) {
+  .toggle .tab {
+    padding: 8px 16px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 14px; /* 140% */
+    letter-spacing: -0.1px;
+  }
+}
+
+.toggle .tab::after {
+  content: none;
+}
+
+.toggle .tab[aria-selected="true"] {
+  background: var(--foreground);
+  color: #fff;
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .toggle .tab:not([aria-selected="true"]):hover {
     opacity: 1;
   }
 }

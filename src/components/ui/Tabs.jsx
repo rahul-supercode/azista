@@ -11,6 +11,9 @@ const STEP = { ArrowRight: 1, ArrowLeft: -1 };
  * the selection from outside (e.g. prev/next buttons).
  * `variant="compact"`: tighter row of fixed-width tabs, for use inside a card.
  * `variant="pill"`: filled white box marks the selected tab, for dark sections.
+ * `variant="toggle"`: two plain buttons, the active one filled dark.
+ * `toolbarExtra`: optional content (e.g. a filter control) placed beside the
+ * tablist, outside the scrolling tab row.
  */
 export default function Tabs({
   label,
@@ -19,6 +22,7 @@ export default function Tabs({
   activeId: controlledId,
   onChange,
   variant = "default",
+  toolbarExtra,
   className = "",
 }) {
   const baseId = useId();
@@ -48,33 +52,36 @@ export default function Tabs({
 
   return (
     <div className={`${styles[variant] ?? ""} ${className}`}>
-      <div
-        role="tablist"
-        aria-label={label}
-        onKeyDown={onKeyDown}
-        className={styles.list}
-      >
-        {tabs.map((tab) => {
-          const selected = tab.id === activeId;
-          return (
-            <button
-              key={tab.id}
-              ref={(node) => {
-                tabRefs.current[tab.id] = node;
-              }}
-              type="button"
-              role="tab"
-              id={`${baseId}-tab-${tab.id}`}
-              aria-selected={selected}
-              aria-controls={`${baseId}-panel-${tab.id}`}
-              tabIndex={selected ? 0 : -1}
-              onClick={() => setActiveId(tab.id)}
-              className={`${variant === "pill" ? "text-6" : "text-1 text-1-md"} text-trim-cap ${styles.tab}`}
-            >
-              {tab.label}
-            </button>
-          );
-        })}
+      <div className={styles.toolbar}>
+        <div
+          role="tablist"
+          aria-label={label}
+          onKeyDown={onKeyDown}
+          className={styles.list}
+        >
+          {tabs.map((tab) => {
+            const selected = tab.id === activeId;
+            return (
+              <button
+                key={tab.id}
+                ref={(node) => {
+                  tabRefs.current[tab.id] = node;
+                }}
+                type="button"
+                role="tab"
+                id={`${baseId}-tab-${tab.id}`}
+                aria-selected={selected}
+                aria-controls={`${baseId}-panel-${tab.id}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActiveId(tab.id)}
+                className={`${variant === "pill" ? "text-6" : "text-1 text-1-md"} text-trim-cap ${styles.tab}`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+        {toolbarExtra}
       </div>
       {tabs.map((tab) => (
         <div

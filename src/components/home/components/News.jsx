@@ -38,7 +38,7 @@ export default function News() {
           >
             Azista in the news
           </h2>
-          <Button variant="link" href="/news" className={styles.viewAll}>
+          <Button variant="link" href="/events-news" className={styles.viewAll}>
             View all
           </Button>
         </div>

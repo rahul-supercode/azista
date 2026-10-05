@@ -2,6 +2,7 @@
   display: flex;
   gap: 32px;
   overflow-x: auto;
+
   scrollbar-width: none;
   border-bottom: 1px solid rgb(26 26 26 / 0.2);
 }
@@ -63,5 +64,15 @@
   /* A quarter of the 1412px rule, centred on the label. */
   .link::after {
     width: min(353px, 23.35vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .list {
+    overflow-y: hidden;
+    gap: 68px;
+  }
+  .link {
+    padding-top: 3px;
   }
 }

@@ -122,3 +122,12 @@
     padding: 6px;
   }
 }
+
+@media (max-width: 768px) {
+  .panel {
+    margin: 20px;
+  }
+  .summary {
+    display: none;
+  }
+}

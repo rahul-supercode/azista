@@ -11,7 +11,7 @@ const tabs = locations.map((location) => ({
   label: location.city,
   panel: (
     <div className={styles.panel}>
-      <address className={`text-1 text-trim-cap ${styles.address}`}>
+      <address className={`text-1 text-1-md text-trim-cap ${styles.address}`}>
         {location.addressLines.join(" ")}
       </address>
       <Button
@@ -38,7 +38,7 @@ export default function Locations() {
         <div className={styles.content}>
           <h2
             id="locations-heading"
-            className={`heading-3 text-trim-cap ${styles.heading}`}
+            className={`heading-3 heading-2-md text-trim-cap ${styles.heading}`}
           >
             Locations
           </h2>

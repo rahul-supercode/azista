@@ -153,3 +153,64 @@
     background: rgb(255 255 255 / 0.1);
   }
 }
+
+/*
+ * Mobile: plain underlined tabs instead of the filled pill box — same look
+ * as the default variant above, just with the text-5-md type spec (the
+ * global class only activates at 768px+, so its properties are repeated
+ * here rather than relied on).
+ */
+@media (max-width: 768px) {
+  .pill .list {
+    justify-content: flex-start;
+    gap: 23px;
+    border-bottom: 0.4px solid rgb(255 255 255 / 0.2);
+  }
+
+  .pill .tab {
+    display: block;
+    flex: none;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    padding: 0 0 10px;
+    font-family: "Schibsted Grotesk";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 120% */
+    opacity: 0.6;
+    background: none;
+    color: #fff;
+  }
+
+  .pill .tab[aria-selected="true"] {
+    background: none;
+    color: #fff;
+    opacity: 1;
+  }
+
+  .pill .tab::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: calc(100% + 10px);
+    height: 1px;
+    background: currentColor;
+    translate: -50% 0;
+    scale: 0 1;
+    transition: scale 300ms ease-out;
+  }
+
+  .pill .tab[aria-selected="true"]::after {
+    scale: 1 1;
+  }
+}
+
+@media (max-width: 768px) and (hover: hover) {
+  .pill .tab:not([aria-selected="true"]):hover {
+    background: none;
+    opacity: 1;
+  }
+}

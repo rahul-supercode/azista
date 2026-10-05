@@ -110,7 +110,7 @@ export default function MissionConfigurator({ heading }) {
           required
         />
         <fieldset className={styles.subsystems}>
-          <legend className={`text-1 text-trim-cap ${styles.legend}`}>
+          <legend className={`text-1 text-1-md text-trim-cap ${styles.legend}`}>
             Select your subsystems
           </legend>
           <div className={styles.checkboxes}>
@@ -144,7 +144,7 @@ export default function MissionConfigurator({ heading }) {
           defaultValue={defaultMission.missionLife}
           required
         />
-        <Button type="submit" className={styles.submit}>
+        <Button type="submit" className={`text-1-md ${styles.submit}`}>
           Discuss this mission
         </Button>
       </form>

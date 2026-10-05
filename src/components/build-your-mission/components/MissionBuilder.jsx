@@ -10,7 +10,7 @@ export default function MissionBuilder() {
           heading={
             <h1
               id="mission-heading"
-              className={`heading-3 text-trim-cap ${styles.heading}`}
+              className={`heading-3 heading-2-md text-trim-cap ${styles.heading}`}
             >
               Define your mission requirements.
             </h1>

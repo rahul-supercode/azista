@@ -11,7 +11,7 @@ export default function ContactIntro() {
       <div className={`container ${styles.layout}`}>
         <h1
           id="contact-heading"
-          className={`heading-2 text-trim-cap ${styles.heading}`}
+          className={`heading-2 heading-2-md text-trim-cap ${styles.heading}`}
         >
           Tell us what you’re building, <br className={styles.break} />
           and we’ll help you build it.

@@ -33,12 +33,12 @@ export default function TextField({
         id={id}
         required={required}
         placeholder=" "
-        className={`text-1 ${styles.input}`}
+        className={`text-1 text-1-md ${styles.input}`}
         {...props}
       />
       <label
         htmlFor={id}
-        className={`text-1 ${stacked ? "text-trim-cap" : ""} ${styles.label}`}
+        className={`text-1 text-1-md ${stacked ? "text-trim-cap" : ""} ${styles.label}`}
       >
         {label}
         {unit && <span className="sr-only"> ({unit})</span>}

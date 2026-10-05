@@ -19,6 +19,12 @@
 }
 
 .canvas {
+  /* `--point-x`/`--point-y` (desktop) by default; mobile swaps in
+     `--point-x-mobile`/`--point-y-mobile` below, for the differently
+     cropped portrait image (see Facilities.jsx / data/facilities.js). */
+  --active-point-x: var(--point-x);
+  --active-point-y: var(--point-y);
+
   width: calc(var(--fit) * 100%);
   margin-left: calc((0.5 - var(--fit) * var(--focus)) * 100%);
   transform-origin: 0 0;
@@ -28,9 +34,31 @@
 }
 
 .canvas[data-zoomed] {
-  translate: calc((var(--target-x) - var(--point-x) * var(--zoom)) * 100%)
-    calc((var(--target-y) - var(--point-y) * var(--zoom)) * 100%);
+  translate: calc(
+      (var(--target-x) - var(--active-point-x) * var(--zoom)) * 100%
+    )
+    calc((var(--target-y) - var(--active-point-y) * var(--zoom)) * 100%);
   scale: var(--zoom);
+}
+
+/*
+ * Mobile: the dedicated portrait map (see Facilities.jsx) is already a
+ * tight crop around India, so it needs no pre-zoom (`--fit: 1`); the
+ * per-city zoom uses its own mapPointMobile fractions via --active-point-*.
+ */
+@media (max-width: 767.98px) {
+  .map {
+    --fit: 1;
+    --focus: 0.5;
+    --zoom: 1.8;
+    --target-x: 0.5;
+    --target-y: 0.42;
+  }
+
+  .canvas {
+    --active-point-x: var(--point-x-mobile);
+    --active-point-y: var(--point-y-mobile);
+  }
 }
 
 /* White fades at the top and bottom edges. */

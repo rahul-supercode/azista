@@ -13,7 +13,8 @@ const ZOOM_THRESHOLD = 0.4;
 
 /**
  * Map with location tabs and prev/next buttons that cycle through them. Once
- * the map scrolls into view it zooms to the selected location's `mapPoint`.
+ * the map scrolls into view it zooms to the selected location's `mapPoint`
+ * (`mapPointMobile` below 768px, for the differently-cropped mobile image).
  */
 export default function FacilityExplorer({ tabs, defaultId, map }) {
   const [activeId, setActiveId] = useState(defaultId);
@@ -22,6 +23,7 @@ export default function FacilityExplorer({ tabs, defaultId, map }) {
 
   const index = tabs.findIndex((tab) => tab.id === activeId);
   const { x, y } = tabs[index].mapPoint;
+  const { x: mx, y: my } = tabs[index].mapPointMobile;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,7 +48,12 @@ export default function FacilityExplorer({ tabs, defaultId, map }) {
         <div
           className={styles.canvas}
           data-zoomed={zoomed || undefined}
-          style={{ "--point-x": x, "--point-y": y }}
+          style={{
+            "--point-x": x,
+            "--point-y": y,
+            "--point-x-mobile": mx,
+            "--point-y-mobile": my,
+          }}
         >
           {map}
         </div>

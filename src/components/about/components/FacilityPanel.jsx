@@ -7,7 +7,7 @@ import styles from "../css/FacilityPanel.module.css";
 export default function FacilityPanel({ facility }) {
   return (
     <>
-      <h3 className={`heading-3 text-trim-cap ${styles.city}`}>
+      <h3 className={`heading-3 heading-3-md text-trim-cap ${styles.city}`}>
         {facility.city}
       </h3>
       {facility.sites.length > 0 ? (

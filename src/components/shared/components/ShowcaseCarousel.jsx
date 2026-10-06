@@ -6,15 +6,13 @@ import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 
 import Button from "@/components/ui/Button";
-import { useScrollExpand } from "@/hooks/useScrollExpand";
 
 import styles from "../css/ShowcaseCarousel.module.css";
 
 /**
- * Full-bleed image carousel (after icomat.co.uk's): opens up as it scrolls
- * into view, then auto-advances — the active tab's underline fills as a
- * timer and the next slide wipes down over the current one while its image
- * settles. Autoplay pauses while the carousel is off screen, hovered or
+ * Full-bleed image carousel (after icomat.co.uk's) that auto-advances — the
+ * active tab's underline fills as a timer and the next slide wipes down over
+ * the current one while its image settles. Autoplay pauses while the carousel is off screen, hovered or
  * focused, and stops for good once a tab is chosen.
  *
  * slides: [{ label, title, href, image, mobileImage, imageAlt, dark? }] —
@@ -23,7 +21,7 @@ import styles from "../css/ShowcaseCarousel.module.css";
  */
 export default function ShowcaseCarousel({ label, slides }) {
   const id = useId();
-  const frameRef = useScrollExpand();
+  const frameRef = useRef(null);
   const slideRefs = useRef([]);
   const [index, setIndex] = useState(0);
   const [cycle, setCycle] = useState(0);

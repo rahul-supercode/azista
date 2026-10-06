@@ -49,7 +49,7 @@ export default function ProductNav({ label, items }) {
               href={`#${item.id}`}
               aria-current={item.id === currentId ? "location" : undefined}
               onClick={(event) => onClick(event, item.id)}
-              className={`text-1 text-trim-cap ${styles.link}`}
+              className={`text-1 text-1-md text-trim-cap ${styles.link}`}
             >
               {item.label}
             </a>

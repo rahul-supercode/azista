@@ -44,12 +44,12 @@ export default function PayloadSupportUnit() {
       <div className={`container ${styles.layout}`}>
         <h2
           id="payload-support-unit-heading"
-          className={`heading-2 text-trim-cap ${styles.title}`}
+          className={`heading-2 heading-2-md text-trim-cap ${styles.title}`}
         >
           Payload <br />
           Support Unit
         </h2>
-        <div className={`text-1 ${styles.intro}`}>
+        <div className={`text-1 text-1-md ${styles.intro}`}>
           <p className="text-trim-cap">
             The onboard compute, storage, and encryption stack behind every
             payload.
@@ -73,10 +73,11 @@ export default function PayloadSupportUnit() {
             height={1024}
             frame={[429, 233]}
             crop={[-3.56, -17.24, 106.19, 130.6]}
+            mobileCrop={[16.44, -8.24, 67.19, 113.6]}
             className={styles.unit}
           />
         </div>
-        <SpecTable specs={SPECS} className={styles.specs} />
+        <SpecTable specs={SPECS} mobileLimit={4} className={styles.specs} />
       </div>
     </section>
   );

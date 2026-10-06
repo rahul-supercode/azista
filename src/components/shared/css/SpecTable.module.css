@@ -19,6 +19,35 @@
   padding-left: 11px;
 }
 
+/* Mobile-only "Load more" (see SpecTable.jsx's `mobileLimit` prop). */
+.moreToggle {
+  display: inline-block;
+  width: fit-content;
+  list-style: none;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  /* text-1-md's spec, repeated: the global class only activates at
+     768px+, where this toggle is already hidden. */
+  font-family: "Schibsted Grotesk";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+.moreToggle::-webkit-details-marker {
+  display: none;
+}
+
+.more[open] .moreToggle {
+  display: none;
+}
+
+.more .spec {
+  margin-top: 14px;
+}
+
 @media (min-width: 768px) {
   .specs {
     gap: 20px;
@@ -37,5 +66,22 @@
   .value {
     margin-top: 0;
     padding-left: 0;
+  }
+
+  .moreToggle {
+    display: none;
+  }
+
+  .more .spec {
+    margin-top: 20px;
+  }
+
+  /* Desktop never collapses: see the Footer/SatelliteStructure/Story
+     components for why ::details-content (not a child element) is what
+     to override. */
+  .more::details-content {
+    content-visibility: visible !important;
+    block-size: auto !important;
+    overflow: visible !important;
   }
 }

@@ -55,6 +55,55 @@
   color: var(--foreground);
 }
 
+/*
+ * Mobile: the "When we looked..." paragraph becomes a <details> summary
+ * ending in an inline "Read more" toggle that reveals the "Today, we're..."
+ * paragraph. Desktop always shows both paragraphs, as before.
+ */
+.more {
+  color: inherit;
+}
+
+.moreSummary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.moreSummary::-webkit-details-marker {
+  display: none;
+}
+
+.moreToggle {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.more[open] .moreToggle {
+  display: none;
+}
+
+.moreBody {
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .moreSummary {
+    cursor: default;
+  }
+
+  .moreToggle {
+    display: none;
+  }
+
+  /* Desktop never collapses: see the Footer/SatelliteStructure components
+     for why ::details-content (not a child element) is what to override. */
+  .more::details-content {
+    content-visibility: visible !important;
+    block-size: auto !important;
+    overflow: visible !important;
+  }
+}
+
 .principles {
   display: grid;
   gap: 10px;
@@ -102,6 +151,10 @@
     gap: 52px;
   }
 
+  .moreBody {
+    margin-top: 52px;
+  }
+
   .principles {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -124,6 +177,10 @@
 
   .statements {
     gap: 62px;
+  }
+
+  .moreBody {
+    margin-top: 62px;
   }
 
   .principles {

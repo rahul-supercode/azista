@@ -19,13 +19,13 @@ export default function Banner() {
       <div className={`container ${styles.content}`}>
         <h1
           id="fineview-heading"
-          className={`heading-1 text-trim-cap ${styles.title}`}
+          className={`heading-1 heading-1-mdtext-trim-cap ${styles.title}`}
         >
           FineView Electro-
           <br />
           Optical Payload
         </h1>
-        <p className={`text-2 text-trim-cap ${styles.intro}`}>
+        <p className={`text-2 text-1-md text-trim-cap ${styles.intro}`}>
           High-quality panchromatic and multispectral Earth observation payload
           built for sub-meter resolution imaging over a 5+ year LEO lifetime.
         </p>
@@ -36,11 +36,11 @@ export default function Banner() {
                 <span className={styles.statIcon}>
                   <Image src={stat.icon} alt="" />
                 </span>
-                <span className={`text-5 ${styles.statName}`}>
+                <span className={`text-5 text-4-md ${styles.statName}`}>
                   {stat.label}
                 </span>
               </dt>
-              <dd className="text-1 text-trim-cap">{stat.value}</dd>
+              <dd className="text-1 text-1-md text-trim-cap">{stat.value}</dd>
             </div>
           ))}
         </dl>

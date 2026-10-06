@@ -1,0 +1,167 @@
+.section {
+  padding-block: 114px 40px;
+  overflow: hidden;
+}
+
+.title {
+  margin-bottom: 32px;
+  margin-top: 50px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ── Featured card ────────────────────────────────────────────────────── */
+
+.featured {
+  display: flex;
+  flex-direction: column;
+}
+
+.featuredMedia {
+  position: relative;
+  aspect-ratio: 1392 / 850;
+  overflow: hidden;
+  background: #000;
+}
+
+.featuredImage {
+  object-fit: cover;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  opacity: 0.6;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaDivider {
+  flex-shrink: 0;
+}
+
+.featuredFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.featuredTitle {
+  color: var(--foreground);
+}
+
+.register {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  color: #1a1a1a;
+  font-family: "Schibsted Grotesk";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 15px */
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) {
+  .register:hover {
+    opacity: 0.7;
+  }
+}
+
+/* ── News list ────────────────────────────────────────────────────────── */
+
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.newsItem {
+  display: flex;
+  gap: 16px;
+}
+
+.newsMedia {
+  position: relative;
+  flex: 1 1 55%;
+  aspect-ratio: 676 / 402;
+  background: #000;
+}
+
+.newsImage {
+  object-fit: cover;
+}
+
+.newsBody {
+  display: flex;
+  flex: 1 1 45%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tag {
+  padding: 4px 10px;
+  background: var(--muted);
+  color: var(--foreground);
+  /* opacity: 0.6; */
+}
+
+/* Mobile: each news item stacks (image full-width on top), instead of the
+   image/text side-by-side pair used from tablet up. */
+@media (max-width: 768px) {
+  .newsItem {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .newsMedia {
+    flex: none;
+    width: 100%;
+  }
+
+  .newsBody {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* .section {
+    padding-block: 100px 120px;
+  } */
+
+  .title {
+    margin-bottom: 48px;
+  }
+
+  .grid {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .featured {
+    flex: 1 1 53%;
+  }
+
+  .news {
+    flex: 1 1 47%;
+  }
+}

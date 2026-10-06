@@ -32,7 +32,7 @@ export default function SelectField({
           id={id}
           required={required}
           defaultValue=""
-          className={`text-1 ${styles.select}`}
+          className={`text-1 text-1-md ${styles.select}`}
           {...props}
         >
           <option value="" disabled={required}>
@@ -54,7 +54,7 @@ export default function SelectField({
       </div>
       <label
         htmlFor={id}
-        className={`text-1 ${stacked ? "text-trim-cap" : ""} ${styles.label}`}
+        className={`text-1 text-1-md ${stacked ? "text-trim-cap" : ""} ${styles.label}`}
       >
         {label}
         {required && (

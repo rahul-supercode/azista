@@ -33,7 +33,7 @@ export const footerNav = [
     links: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
-      { label: "News & Events", href: "/news" },
+      { label: "News & Events", href: "/events-news" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
     ],
@@ -51,7 +51,7 @@ export const footerNav = [
 
 export const legalNav = [
   { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms & Conditions", href: "/terms" },
+  { label: "Terms & Conditions", href: "/terms-conditions" },
   {
     label: "Corporate & Compliance Information",
     href: "/corporate-compliance",

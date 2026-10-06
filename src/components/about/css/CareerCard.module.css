@@ -98,3 +98,24 @@
     line-height: 1.4375rem; /* 23px */
   }
 }
+
+@media (max-width: 768px) {
+  .title {
+    color: #1a1a1a;
+    /* text-5-md */
+    font-family: "Schibsted Grotesk";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 120% */
+  }
+  .text {
+    color: #1a1a1a;
+    /* text-1-md */
+    font-family: "Schibsted Grotesk";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 128.571% */
+  }
+}

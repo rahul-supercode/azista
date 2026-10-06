@@ -9,8 +9,8 @@ export default function ContactDetails() {
     <CornerFrame tone="small" className={styles.frame}>
       {inquiryContacts.map(({ title, email, phone }) => (
         <address key={title} className={styles.item}>
-          <h2 className={`text-6 ${styles.title}`}>{title}</h2>
-          <dl className={`text-1 ${styles.rows}`}>
+          <h2 className={`text-6 text-5-md ${styles.title}`}>{title}</h2>
+          <dl className={`text-1 text-1-md ${styles.rows}`}>
             <div className={styles.row}>
               <dt className={`text-trim-cap ${styles.term}`}>Mail :</dt>
               <dd className="text-trim-cap">

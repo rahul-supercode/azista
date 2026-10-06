@@ -17,9 +17,21 @@
   height: auto;
 }
 
+.mapImageDesktop {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .section {
     padding-top: 64px;
+  }
+
+  .mapImageMobile {
+    display: none;
+  }
+
+  .mapImageDesktop {
+    display: block;
   }
 }
 

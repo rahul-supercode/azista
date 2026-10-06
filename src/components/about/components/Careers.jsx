@@ -40,11 +40,11 @@ export default function Careers() {
         <div className={styles.header}>
           <h2
             id="careers-heading"
-            className={`heading-2 text-trim-cap ${styles.title}`}
+            className={`heading-2 heading-2-md text-trim-cap ${styles.title}`}
           >
             Build the future of space hardware
           </h2>
-          <p className={`text-2 text-trim-cap ${styles.intro}`}>
+          <p className={`text-2 text-1-md text-trim-cap ${styles.intro}`}>
             Join the team designing, building, and launching India&apos;s
             satellite manufacturing future from the factory floor to orbit.
           </p>

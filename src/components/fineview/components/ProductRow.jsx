@@ -19,21 +19,25 @@ export default function ProductRow({ product, reverse = false }) {
     >
       <CroppedImage {...media} className={styles.media} />
       <div className={styles.content}>
-        <h2 id={headingId} className="heading-2 text-trim-cap">
+        <h2 id={headingId} className="heading-2 heading-2-md text-trim-cap">
           {name}
         </h2>
-        <p className={`text-2 text-trim-cap ${styles.description}`}>
+        <p className={`text-2 text-1-md text-trim-cap ${styles.description}`}>
           {description}
         </p>
-        <h3 className={`text-6 ${styles.specsTitle}`}>Specifications</h3>
+        <h3 className={`text-6 text-5-md ${styles.specsTitle}`}>
+          Specifications
+        </h3>
         <dl className={styles.specs}>
           {specs.map((spec) => (
             <div key={spec.label} className={styles.spec}>
               <dt className={styles.term}>
                 <Image src={bulletTriangle} alt="" className={styles.bullet} />
-                <span className={`text-5 ${styles.label}`}>{spec.label}</span>
+                <span className={`text-5 text-4-md ${styles.label}`}>
+                  {spec.label}
+                </span>
               </dt>
-              <dd className="text-1 text-trim-cap">{spec.value}</dd>
+              <dd className="text-1 text-1-md text-trim-cap">{spec.value}</dd>
             </div>
           ))}
         </dl>
@@ -41,7 +45,7 @@ export default function ProductRow({ product, reverse = false }) {
           name={name}
           datasheet={datasheet}
           variant="download"
-          className={styles.cta}
+          className={`text-1-md ${styles.cta}`}
         >
           Download Datasheet
         </DatasheetButton>

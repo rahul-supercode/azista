@@ -12,6 +12,7 @@ export default function Facilities() {
     label: facility.city,
     panel: <FacilityPanel facility={facility} />,
     mapPoint: facility.mapPoint,
+    mapPointMobile: facility.mapPointMobile,
   }));
 
   return (
@@ -19,7 +20,7 @@ export default function Facilities() {
       <div className={`container ${styles.header}`}>
         <h2
           id="facilities-heading"
-          className={`heading-2 text-trim-cap ${styles.title}`}
+          className={`heading-2 heading-2-md text-trim-cap ${styles.title}`}
         >
           Our Facilities
         </h2>
@@ -28,15 +29,28 @@ export default function Facilities() {
         tabs={tabs}
         defaultId={defaultFacilityId}
         map={
-          <Image
-            src="/assets/about/facilities-map.png"
-            alt="Map of India marking Azista facilities in Ahmedabad, Hyderabad and Bengaluru"
-            width={3024}
-            height={1582}
-            // Covers the zoomed-in view too.
-            sizes="(min-width: 1280px) 200vw, (min-width: 768px) 240vw, 450vw"
-            className={styles.mapImage}
-          />
+          <>
+            {/* Mobile: a dedicated portrait map — a different crop than
+                desktop's, not just a resize, so it zooms/pans using its own
+                mapPointMobile fractions (see data/facilities.js). */}
+            <Image
+              src="/assets/about/facilities-map-md.png"
+              alt="Map of India marking Azista facilities in Ahmedabad, Hyderabad and Bengaluru"
+              width={640}
+              height={1010}
+              sizes="(min-width: 768px) 0px, 100vw"
+              className={`${styles.mapImage} ${styles.mapImageMobile}`}
+            />
+            <Image
+              src="/assets/about/facilities-map.png"
+              alt="Map of India marking Azista facilities in Ahmedabad, Hyderabad and Bengaluru"
+              width={3024}
+              height={1582}
+              // Covers the zoomed-in view too.
+              sizes="(min-width: 1280px) 200vw, 240vw"
+              className={`${styles.mapImage} ${styles.mapImageDesktop}`}
+            />
+          </>
         }
       />
     </section>

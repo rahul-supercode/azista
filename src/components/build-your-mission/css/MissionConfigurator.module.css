@@ -1,8 +1,8 @@
 .layout {
   display: grid;
   grid-template-areas:
-    "heading"
     "preview"
+    "heading"
     "form";
   row-gap: 40px;
 }

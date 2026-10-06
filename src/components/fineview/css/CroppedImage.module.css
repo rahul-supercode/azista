@@ -14,6 +14,12 @@
   rotate: var(--box-rotate);
 }
 
+@media (max-width: 768px) {
+  .box {
+    rotate: var(--box-rotate-mobile);
+  }
+}
+
 .image {
   position: absolute;
   top: var(--crop-top);
@@ -21,4 +27,13 @@
   width: var(--crop-width);
   max-width: none;
   height: var(--crop-height);
+}
+
+@media (max-width: 768px) {
+  .image {
+    top: var(--crop-top-mobile);
+    left: var(--crop-left-mobile);
+    width: var(--crop-width-mobile);
+    height: var(--crop-height-mobile);
+  }
 }

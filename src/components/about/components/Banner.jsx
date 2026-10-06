@@ -11,15 +11,23 @@ export default function Banner() {
       className={styles.section}
     >
       <Image
+        src="/assets/about/about-banner-md.jpg"
+        alt="Azista cleanroom with satellite test equipment and engineers at work"
+        fill
+        preload
+        sizes="(min-width: 768px) 0px, 100vw"
+        className={`${styles.image} ${styles.imageMobile}`}
+      />
+      <Image
         src="/assets/about/about-banner.jpg"
         alt="Azista cleanroom with satellite test equipment and engineers at work"
         fill
         preload
         sizes="100vw"
-        className={styles.image}
+        className={`${styles.image} ${styles.imageDesktop}`}
       />
       <div className={`container ${styles.content}`}>
-        <h1 id="about-heading" className="heading-2 text-trim-cap">
+        <h1 id="about-heading" className="heading-2 heading-1-md text-trim-cap">
           The Azista story
         </h1>
       </div>

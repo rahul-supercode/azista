@@ -5,7 +5,8 @@ const PLACEHOLDER =
 /**
  * `media` reproduces the Figma crop: `frame` is the slot's bounding box,
  * `box` the (optionally rotated) clipping box inside it, and `crop` the
- * image's left/top/width/height as percentages of that box.
+ * image's left/top/width/height as percentages of that box. `mobileRotate`,
+ * if set, replaces the box's rotation below 768px only.
  */
 export const products = [
   {
@@ -45,6 +46,7 @@ export const products = [
       height: 941,
       frame: [557.4, 585.88],
       box: [325.095, 489.463, 37.96],
+      mobileRotate: 0,
       crop: [-83.36, 0, 267.52, 100],
     },
   },
@@ -65,6 +67,7 @@ export const products = [
       height: 1536,
       frame: [565.503, 632.13],
       box: [383.18, 519.386, 24.76],
+      mobileRotate: 0,
       crop: [-5.03, -14.3, 109.64, 121.33],
     },
   },
@@ -85,6 +88,7 @@ export const products = [
       height: 1121,
       frame: [578, 490],
       box: [578, 490, 0],
+      mobileRotate: 0,
       crop: [-19.9, -19.25, 139.6, 131.57],
     },
   },

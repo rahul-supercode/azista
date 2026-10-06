@@ -6,8 +6,8 @@
   display: grid;
   grid-template-areas:
     "heading"
-    "form"
     "media"
+    "form"
     "details";
   row-gap: 40px;
 }

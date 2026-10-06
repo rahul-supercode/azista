@@ -3,14 +3,24 @@
   background: var(--muted);
 }
 
-.title {
-  max-width: 525px;
+/* Centred title + intro: 24px apart, 60px above the cards on desktop. */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
   margin-bottom: 40px;
+  text-align: center;
+}
+
+.intro {
+  max-width: 370px;
+  opacity: 0.6;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -21,7 +31,7 @@
   justify-content: space-between;
   gap: 24px;
   height: 100%;
-  min-height: 256px;
+  min-height: 173px;
   padding: 30px 16px;
   border: 0.4px dashed rgb(0 0 0 / 0.2);
   background: #f5f6f9;
@@ -58,8 +68,9 @@
   backface-visibility: hidden;
 }
 
+/* Back: dark card with when and where to find us. */
 .back {
-  padding-bottom: 29px;
+  padding-bottom: 25px;
   background: var(--foreground);
   color: #fff;
   transform: rotateY(180deg);
@@ -70,7 +81,11 @@
   transform: rotateY(180deg);
 }
 
-/* ── Event details ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .flipInner {
+    transition: none;
+  }
+}
 
 .details {
   display: flex;
@@ -107,43 +122,37 @@
   }
 }
 
+/* Tablet: two columns. */
 @media (min-width: 768px) {
   .section {
-    padding-block: 80px 96px;
+    padding-block: 80px 120px;
+  }
+
+  .header {
+    margin-bottom: 48px;
   }
 
   .grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 19px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .section {
-    padding-block: 100px 120px;
-  }
-
-  .title {
-    margin-bottom: 49px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
   }
 
   .card {
-    gap: 14px;
-    min-height: 173px;
-    align-items: flex-start;
-    text-align: start;
+    min-height: 256px;
+  }
+}
+
+/* Desktop: five 267px columns (Figma: cards at 275, news heading at 681). */
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 100px 150px;
   }
 
-  .details {
-    align-items: flex-start;
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
   }
 }

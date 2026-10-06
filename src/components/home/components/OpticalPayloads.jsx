@@ -10,7 +10,7 @@ const PAYLOADS = [
     title:
       "High-quality panchromatic and multispectral Earth observation payload",
     href: "/eo-payloads/fineview",
-    image: "/assets/hp-optical-payloads.jpg",
+    image: "/assets/hp-fineview.jpg",
     mobileImage: "/assets/fineview-md.png",
     imageAlt: "The gold-foiled Fineview optical payload on a test stand",
   },
@@ -25,7 +25,7 @@ const PAYLOADS = [
   },
 ];
 
-/** Figma: section-4 (2938:7). */
+/** Figma: section-4 (2938:7); carousel frame 3186:371. */
 export default function OpticalPayloads() {
   return (
     <section

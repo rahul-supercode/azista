@@ -1,7 +1,7 @@
 /*
  * Full-bleed frame, image behind the overlaid text and tabs. Mobile gets a
- * taller frame (2:3) to suit the portrait mobile art; desktop is the
- * 1512 × 760 Figma frame (Frame 1410156736).
+ * taller frame (2:3) to suit the portrait mobile art; tablet and up use the
+ * 1512 × 700 Figma frame (Frame 1410156594).
  */
 .frame {
   position: relative;
@@ -27,7 +27,7 @@
   display: none;
 }
 
-/* Title + link, 60px down on desktop (Figma: 50/60); panels share a cell. */
+/* Title + link; panels share a cell. */
 .panels {
   position: relative;
   z-index: 3;
@@ -88,7 +88,7 @@
   background: #fff;
 }
 
-/* ── Tabs: label over a progress track, above the bottom edge ─────────── */
+/* ── Tabs: label over a progress track (bottom on mobile, top from 768) ── */
 
 .tabsBar {
   position: absolute;
@@ -167,7 +167,7 @@
 
 @media (min-width: 768px) {
   .frame {
-    aspect-ratio: 1512 / 760;
+    aspect-ratio: 1512 / 700;
     min-height: 560px;
   }
 
@@ -179,29 +179,39 @@
     display: block;
   }
 
+  /* Tabs move to the top-left; the text sits in the right-hand column,
+     its top at 324 / 700 of the frame (Figma: Frame 1410156594). */
   .panels {
-    padding-top: 48px;
+    position: absolute;
+    inset-inline: 0;
+    top: 46.3%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding-top: 0;
   }
 
   .panel {
+    grid-column: 2;
+    grid-row: 1;
     gap: 48px;
   }
 
   .tabsBar {
-    bottom: 48px;
+    top: 48px;
+    bottom: auto;
   }
 
   .tabs {
-    gap: 81px;
+    gap: 61px;
   }
 }
 
 @media (min-width: 1280px) {
+  /* Title starts 885px into the 1512px frame (835 of the 1412 content). */
   .panels {
-    padding-top: 60px;
+    grid-template-columns: minmax(0, 835fr) minmax(0, 577fr);
   }
 
   .tabsBar {
-    bottom: 60px;
+    top: 80px;
   }
 }

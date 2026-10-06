@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import Button from "@/components/ui/Button";
-
 import styles from "../css/News.module.css";
 
 // TODO: link each story to its article once the URLs are known.
@@ -26,22 +24,17 @@ const STORIES = [
   },
 ];
 
-/** Figma: Frame 1410156741 (2977:11709). */
+/** Figma: section (3186:4408), bottom half. */
 export default function News() {
   return (
     <section aria-labelledby="news-heading" className={styles.section}>
-      <div className={`container ${styles.wrap}`}>
-        <div className={styles.header}>
-          <h2
-            id="news-heading"
-            className={`heading-3 heading-3-md text-trim-cap ${styles.heading}`}
-          >
-            Azista in the news
-          </h2>
-          <Button variant="link" href="/news" className={styles.viewAll}>
-            View all
-          </Button>
-        </div>
+      <div className="container">
+        <h2
+          id="news-heading"
+          className={`heading-3 heading-3-md text-trim-cap ${styles.heading}`}
+        >
+          Azista in the news
+        </h2>
         <div className={styles.grid}>
           {STORIES.map((story) => (
             <article key={story.title} className={styles.story}>

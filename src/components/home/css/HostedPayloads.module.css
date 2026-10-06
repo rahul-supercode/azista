@@ -39,22 +39,24 @@
   order: 1;
 }
 
-/* 700 × 509 slot; the PNG is exactly 2× that. */
+/* 638 × 787 slot. Figma stretches the 683 × 1024 cut-out to fill it. */
 .media {
   order: 2;
   position: relative;
-  aspect-ratio: 700 / 509;
-  width: 100%;
+  aspect-ratio: 638 / 787;
+  width: min(100%, 420px);
+  align-self: center;
 }
 
 .image {
-  object-fit: contain;
+  object-fit: fill;
 }
 
+/* Glow centred 26.1% across and 45.3% down the image slot (Figma: 149/152). */
 .glow {
   position: absolute;
-  top: calc(44.2% - 1208px);
-  left: calc(31% - 1208px);
+  top: calc(45.3% - 1206.5px);
+  left: calc(26.1% - 1206.5px);
   z-index: -1;
   max-width: none;
   pointer-events: none;
@@ -91,6 +93,7 @@
 
   .media {
     order: 0;
+    width: 100%;
   }
 
   .title {
@@ -102,31 +105,39 @@
   }
 }
 
+/*
+ * Desktop: 1412 × 721 frame, 35px from the top of a 789px section. The image
+ * overhangs the frame by 33px top and bottom so it meets the section's lower
+ * edge; the text starts 835px in and 236px down.
+ */
 @media (min-width: 1280px) {
   .section {
-    padding-block: 40px 109px;
+    padding-block: 35px 33px;
   }
 
   .frame {
-    grid-template-columns: 35fr 700fr 100fr 455fr 122fr;
+    grid-template-columns: 139fr 638fr 58fr 455fr 122fr;
     align-items: start;
     gap: 0;
-    height: 525px;
+    height: 721px;
     padding: 0;
   }
 
   .media {
     grid-column: 2;
-    margin-top: 30px;
+    align-self: stretch;
+    width: 100%;
+    margin-block: -33px;
+    aspect-ratio: auto;
   }
 
   .text {
     grid-column: 4;
-    margin-top: 159px;
+    margin-top: 236px;
   }
 
   .title {
-    margin-bottom: 27px;
+    margin-bottom: 31px;
   }
 
   .intro {

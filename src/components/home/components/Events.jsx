@@ -6,6 +6,14 @@ import styles from "../css/Events.module.css";
 // TODO: replace the "TBA" placeholders with each event's confirmed details.
 const EVENTS = [
   {
+    name: "Amos Conference",
+    logo: "/assets/events/amos.png",
+    width: 117,
+    date: "Date TBA",
+    place: "Location TBA",
+    booth: "Booth TBA",
+  },
+  {
     name: "National Space Symposium",
     logo: "/assets/events/space-symposium.png",
     width: 117,
@@ -39,7 +47,7 @@ const EVENTS = [
   },
 ];
 
-/** Back of an event card: when and where to find us, plus a contact link. */
+/** When and where to find us at an event, plus a contact link. */
 function EventDetails({ event }) {
   return (
     <div className={`${styles.card} ${styles.back}`}>
@@ -57,18 +65,20 @@ function EventDetails({ event }) {
   );
 }
 
-/** Figma: Frame 1410156740 (2977:11708). */
+/** Figma: section (3186:4408), top half. */
 export default function Events() {
   return (
     <section aria-labelledby="events-heading" className={styles.section}>
       <div className="container">
-        <h2
-          id="events-heading"
-          className={`text-3 text-3-md text-trim-cap ${styles.title}`}
-        >
-          Meet the Azista Space team; let’s build the hardware behind your
-          mission.
-        </h2>
+        <header className={styles.header}>
+          <h2 id="events-heading" className="heading-2 text-trim-cap">
+            Upcoming Events
+          </h2>
+          <p className={`text-1 text-1-md text-trim-cap ${styles.intro}`}>
+            Meet the Azista Space team; let’s build the hardware behind your
+            mission.
+          </p>
+        </header>
         <ul className={styles.grid}>
           {EVENTS.map((event) => (
             // Flips on hover, or when keyboard focus reaches the back's link.

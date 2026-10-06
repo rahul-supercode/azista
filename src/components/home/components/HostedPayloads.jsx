@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 
 import styles from "../css/HostedPayloads.module.css";
 
-/** Figma: section-6 (2938:8). */
+/** Figma: section-6 (2938:8); redesign 3186:351. */
 export default function HostedPayloads() {
   return (
     <section
@@ -22,7 +22,7 @@ export default function HostedPayloads() {
               src="/assets/hp-hosted-payloads.png"
               alt="An Azista satellite with four deployed solar panels and a payload mounted on top"
               fill
-              sizes="(min-width: 1280px) 700px, (min-width: 768px) 50vw, 100vw"
+              sizes="(min-width: 1280px) 638px, (min-width: 768px) 50vw, 420px"
               className={styles.image}
             />
           </div>

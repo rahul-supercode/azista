@@ -4,33 +4,12 @@
   box-shadow: 0 -1px 0 var(--muted);
 }
 
-/*
- * Mobile: `.wrap` stacks the heading, the slide and (last) the "View all"
- * link — `.header` flattens so they reorder independently of `.grid`.
- */
-.wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.header {
-  display: contents;
-}
-
 .heading {
-  order: 1;
+  margin-bottom: 32px;
 }
 
-.viewAll {
-  order: 3;
-  align-self: flex-start;
-  flex-shrink: 0;
-}
-
-/* A peeking horizontal scroll strip, snapped one card at a time. */
+/* Mobile: a peeking horizontal scroll strip, snapped one card at a time. */
 .grid {
-  order: 2;
   display: flex;
   gap: 16px;
   overflow-x: auto;
@@ -61,7 +40,7 @@
 }
 
 .title {
-  max-width: 448px;
+  max-width: 428px;
   margin-top: 20px;
 }
 
@@ -70,40 +49,22 @@
     padding-bottom: 96px;
   }
 
-  .wrap {
-    gap: 0;
-  }
-
-  .header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 32px;
-  }
-
-  .viewAll {
-    margin-top: 8px;
-  }
-
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    overflow-x: visible;
+    overflow: visible;
+    padding-bottom: 0;
   }
 }
 
+/* Desktop: images at 761 under a heading at 681 (Figma). */
 @media (min-width: 1280px) {
   .section {
     padding-bottom: 120px;
   }
 
-  .header {
-    margin-bottom: 30px;
-  }
-
-  .viewAll {
-    margin-top: 23px;
+  .heading {
+    margin-bottom: 45px;
   }
 }

@@ -9,7 +9,7 @@ Requires Node.js `>=20.9` (see `.nvmrc`) and npm.
 ```bash
 npm install
 cp .env.example .env.local   # then fill in values
-npm run dev                  # http://localhost:3000
+npm run dev                  # start the dev server
 ```
 
 ## Scripts

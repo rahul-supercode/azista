@@ -2,16 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 
-import linkedin from "@/assets/icons/linkedin.svg";
 import plusWhite from "@/assets/icons/plus-white.svg";
-import youtube from "@/assets/icons/youtube.svg";
 import { headquarters } from "@/config/locations";
 import { footerNav, legalNav, socialLinks } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 
 import styles from "./css/Footer.module.css";
 
-const SOCIAL_ICONS = { linkedin, youtube };
+const SOCIAL_ICONS = {  x: "/assets/x.svg", linkedin: "/assets/linkedin.svg" };
 
 /** Figma: Group 1000011438 (2977:11712). */
 export default function Footer() {
@@ -38,7 +36,12 @@ export default function Footer() {
           <ul className={styles.social}>
             {socialLinks.map(({ label, icon, href }) => {
               const image = (
-                <Image src={SOCIAL_ICONS[icon]} alt={href ? label : ""} />
+                <Image
+                  src={SOCIAL_ICONS[icon]}
+                  alt={href ? label : ""}
+                  width={20}
+                  height={20}
+                />
               );
               return (
                 <li key={label}>

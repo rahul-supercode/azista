@@ -69,9 +69,18 @@ export const sections = [
       {
         type: "list",
         items: [
-          { label: "(a)", text: "You are the authorized representative of that Organization" },
-          { label: "(b)", text: "You have the authority to bind that Organization to these Terms; and" },
-          { label: "(c)", text: "The Organization has consented to these terms." },
+          {
+            label: "(a)",
+            text: "You are the authorized representative of that Organization",
+          },
+          {
+            label: "(b)",
+            text: "You have the authority to bind that Organization to these Terms; and",
+          },
+          {
+            label: "(c)",
+            text: "The Organization has consented to these terms.",
+          },
         ],
       },
     ],
@@ -104,7 +113,10 @@ export const sections = [
       {
         type: "list",
         items: [
-          { label: "(a)", text: "resell or make any commercial use of this Site or any of the contents of this Site;" },
+          {
+            label: "(a)",
+            text: "resell or make any commercial use of this Site or any of the contents of this Site;",
+          },
           {
             label: "(b)",
             text: "modify, adapt, translate, reverse engineer, decompile, disassemble, or convert into human-readable form any of the contents of this Site not intended to be so read. This includes using or directly viewing the underlying HTML or other code from this Site except as interpreted and displayed in a web browser.",

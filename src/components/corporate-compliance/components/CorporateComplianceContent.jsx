@@ -1,4 +1,9 @@
-import { intro, lastUpdated, sections, title } from "../data/corporateCompliance";
+import {
+  intro,
+  lastUpdated,
+  sections,
+  title,
+} from "../data/corporateCompliance";
 import styles from "../css/CorporateComplianceContent.module.css";
 
 function renderBlock(block, index) {

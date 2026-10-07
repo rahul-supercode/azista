@@ -32,12 +32,10 @@
 }
 
 @media (max-width: 1280px) {
-  .section
-  {
+  .section {
     margin-top: 60px;
   }
-  .frame
-  {
+  .frame {
     padding: 124px 16px;
     min-height: 100%;
   }

@@ -67,7 +67,7 @@ export default function PayloadSupportUnit() {
             className={styles.rings}
           />
           <CroppedImage
-            src="/assets/fineview/payload-support-unit.png"
+            src="/assets/fineview/payload-support-unit.webp"
             alt="The Payload Support Unit: a black electronics enclosure with a green circuit board and D-sub connectors"
             width={1536}
             height={1024}

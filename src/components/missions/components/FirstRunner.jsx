@@ -32,7 +32,7 @@ export default function FirstRunner() {
       </div>
       <div className={styles.earth}>
         <Image
-          src="/assets/missions/earth-from-space.png"
+          src="/assets/missions/earth-from-space.webp"
           alt=""
           fill
           sizes="100vw"
@@ -45,7 +45,7 @@ export default function FirstRunner() {
           className={styles.satellite}
         >
           <Image
-            src="/assets/missions/first-runner.png"
+            src="/assets/missions/first-runner.webp"
             alt="The Azista First Runner satellite"
             width={1402}
             height={1122}

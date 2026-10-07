@@ -112,22 +112,17 @@
   }
 }
 
-@media (max-width: 768px)
-{
-  .innerSection
-  {
+@media (max-width: 768px) {
+  .innerSection {
     padding: 0 20px;
   }
-  .list
-  {
-    padding-left: 20px; 
+  .list {
+    padding-left: 20px;
   }
-  .divider
-  {
-    margin-top: 20px; 
+  .divider {
+    margin-top: 20px;
   }
-  .intro
-  {
+  .intro {
     margin-top: 20px;
   }
 }

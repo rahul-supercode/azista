@@ -59,7 +59,7 @@ export const news = [
   },
   {
     id: "space-based-disaster",
-    image: "/assets/events-news/news-2.png",
+    image: "/assets/events-news/news-2.webp",
     alt: "Space-Based Disaster Monitoring: Satellite Insights from AFR",
     title: "Space-Based Disaster Monitoring: Satellite Insights from AFR!",
   },

@@ -1,147 +1,146 @@
 .section {
-    padding-block: 134px 80px;
+  padding-block: 134px 80px;
+}
+
+.innerSection {
+  padding: 0px 149px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  max-width: 300px;
+  text-transform: uppercase;
+}
+
+.updated {
+  flex-shrink: 0;
+  color: rgba(26, 26, 26, 0.6);
+}
+
+.updatedDate {
+  font-weight: 600;
+}
+
+.divider {
+  display: block;
+  height: 1px;
+  margin-top: 30px;
+  background: #000;
+  opacity: 0.2;
+}
+
+.intro {
+  margin-top: 30px;
+  opacity: 0.8;
+}
+
+.link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.block {
+  margin-top: 40px;
+}
+
+.blockTitle {
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.blockBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.paragraph {
+  opacity: 0.8;
+}
+
+/* Lettered list: (a) (b) (c) ... */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0 0 0 28px;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  gap: 6px;
+  opacity: 0.8;
+}
+
+.itemLabel {
+  flex-shrink: 0;
+  color: #1e1e1e;
+  font-weight: 700;
+}
+
+/* Sub-section, e.g. "Trademark" */
+.sub {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0.8;
+}
+
+.subTitle {
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 160px 100px;
   }
-  
-  .innerSection {
-    padding: 0px 149px;
-  }
-  
+
   .header {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
   }
-  
-  .title {
-    max-width: 300px;
-    text-transform: uppercase;
-  }
-  
-  .updated {
-    flex-shrink: 0;
-    color: rgba(26, 26, 26, 0.6);
-  }
-  
-  .updatedDate {
-    font-weight: 600;
-  }
-  
-  .divider {
-    display: block;
-    height: 1px;
-    margin-top: 30px;
-    background: #000;
-    opacity: 0.2;
-  }
-  
+
   .intro {
-    margin-top: 30px;
-    opacity: 0.8;
-  }
-  
-  .link {
-    color: inherit;
-    text-decoration: underline;
-  }
-  
-  .block {
     margin-top: 40px;
   }
-  
-  .blockTitle {
-    margin-bottom: 12px;
-    font-weight: 700;
+
+  .block {
+    margin-top: 48px;
   }
-  
-  .blockBody {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-block: 200px 120px;
   }
-  
-  .paragraph {
-    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .innerSection {
+    padding: 0 20px;
   }
-  
-  /* Lettered list: (a) (b) (c) ... */
+
   .list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin: 0;
-    padding: 0 0 0 28px;
-    list-style: none;
+    padding-left: 12px;
   }
-  
-  .item {
-    display: flex;
-    gap: 6px;
-    opacity: 0.8;
+
+  .divider {
+    margin-top: 20px;
   }
-  
-  .itemLabel {
-    flex-shrink: 0;
-    color: #1e1e1e;
-    font-weight: 700;
+
+  .intro {
+    margin-top: 20px;
   }
-  
-  /* Sub-section, e.g. "Trademark" */
-  .sub {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    opacity: 0.8;
+  .block {
+    margin-top: 20px;
   }
-  
-  .subTitle {
-    font-weight: 600;
-  }
-  
-  @media (min-width: 768px) {
-    .section {
-      padding-block: 160px 100px;
-    }
-  
-    .header {
-      flex-direction: row;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-    }
-  
-    .intro {
-      margin-top: 40px;
-    }
-  
-    .block {
-      margin-top: 48px;
-    }
-  }
-  
-  @media (min-width: 1280px) {
-    .section {
-      padding-block: 200px 120px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .innerSection {
-      padding: 0 20px;
-    }
-  
-    .list {
-      padding-left: 12px;
-    }
-  
-    .divider {
-      margin-top: 20px;
-    }
-  
-    .intro {
-      margin-top: 20px;
-    }
-    .block
-    {
-        margin-top: 20px;
-    }
-  }
+}

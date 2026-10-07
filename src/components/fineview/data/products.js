@@ -61,7 +61,7 @@ export const products = [
       { label: "Material of Mirrors", value: "Silicon carbide" },
     ],
     media: {
-      src: "/assets/fineview/crown-3.png",
+      src: "/assets/fineview/crown-3.webp",
       alt: "The Crown 3 imager: a wide aluminium telescope barrel mounted on a frame above its electronics",
       width: 1024,
       height: 1536,

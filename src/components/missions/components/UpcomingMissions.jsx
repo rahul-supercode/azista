@@ -11,7 +11,7 @@ const MISSIONS = [
     name: "Focus",
     description:
       "Advanced upcoming high-resolution imaging mission optimized for sharp structural detail and target reconnaissance.",
-    image: "/assets/missions/focus.png",
+    image: "/assets/missions/focus.webp",
     imageAlt: "Render of the Focus satellite with its side panels open",
     imageCrop: true,
     specs: [

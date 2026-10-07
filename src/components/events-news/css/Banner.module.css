@@ -130,8 +130,7 @@
     flex-direction: column;
     gap: 10px;
   }
-  .grid
-  {
+  .grid {
     flex-direction: column;
   }
   .newsMedia {

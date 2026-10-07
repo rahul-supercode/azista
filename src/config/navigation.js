@@ -1,12 +1,15 @@
 const eoPayloadLinks = [
   { label: "Fineview Series", href: "/eo-payloads/fineview" },
-  { label: "Vista Series", href: "/eo-payloads/vista" },
+  // { label: "Vista Series", href: "/eo-payloads/vista" },
+  { label: "Vista Series", href: "#" },
 ];
 
 const satelliteBusLinks = [
   { label: "Platform", href: "/satellite-bus" },
-  { label: "Subsystems", href: "/satellite-bus/subsystems" },
-  { label: "Structures", href: "/satellite-bus/structures" },
+  // { label: "Subsystems", href: "/satellite-bus/subsystems" },
+  // { label: "Structures", href: "/satellite-bus/structures" },
+  { label: "Subsystems", href: "#" },
+  { label: "Structures", href: "#" },
 ];
 
 /**
@@ -15,7 +18,8 @@ const satelliteBusLinks = [
  */
 export const mainNav = [
   { label: "Missions", href: "/missions" },
-  { label: "EO payloads", href: "/eo-payloads", items: eoPayloadLinks },
+  // { label: "EO payloads", href: "/eo-payloads", items: eoPayloadLinks },
+  { label: "EO payloads", href: "#", items: eoPayloadLinks },
   { label: "Satellite Bus", href: "/satellite-bus", items: satelliteBusLinks },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -34,7 +38,8 @@ export const footerNav = [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
       { label: "News & Events", href: "/events-news" },
-      { label: "Careers", href: "/careers" },
+      // { label: "Careers", href: "/careers" },
+      { label: "Careers", href: "#" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -58,8 +63,12 @@ export const legalNav = [
   },
 ];
 
-// TODO: add the real profile URLs; until then the icons show but aren't links.
 export const socialLinks = [
-  { label: "LinkedIn", icon: "linkedin", href: null },
-  { label: "YouTube", icon: "youtube", href: null },
+ 
+  { label: "X", icon: "x", href: "https://x.com/azistaspace" },
+  {
+    label: "LinkedIn",
+    icon: "linkedin",
+    href: "https://www.linkedin.com/company/azista-space/",
+  },
 ];

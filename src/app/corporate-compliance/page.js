@@ -1,7 +1,6 @@
 import CorporateComplianceContent from "@/components/corporate-compliance/components/CorporateComplianceContent";
 
-const description =
-  "Azista Space's corporate and compliance information.";
+const description = "Azista Space's corporate and compliance information.";
 
 export const metadata = {
   title: "Corporate & Compliance Information",

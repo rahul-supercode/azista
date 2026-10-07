@@ -40,7 +40,8 @@ export default function HostedPayloads() {
             </p>
             <Button
               variant="framed"
-              href="/hosted-payloads"
+              href="#"
+              // href="/hosted-payloads"
               className={styles.cta}
             >
               Learn more

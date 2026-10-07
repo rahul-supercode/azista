@@ -63,7 +63,7 @@ export default function April() {
           through advanced image processing, analytics, and data-driven
           intelligence.
         </p>
-        <Button variant="framed" href="/april">
+        <Button variant="framed" href="#">
           Explore April
         </Button>
       </div>

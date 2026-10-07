@@ -30,7 +30,7 @@ export default function TermsContent() {
         </div>
 
         <div className={styles.block}>
-          <h2 className={`text-2 text-trim-cap ${styles.blockTitle}`}>
+          <h2 className={`text-2 text-1-md text-trim-cap ${styles.blockTitle}`}>
             {termsOfUse.title}
           </h2>
           <p className={`text-1 text-1-md text-trim-cap ${styles.blockIntro}`}>

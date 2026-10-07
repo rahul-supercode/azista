@@ -111,3 +111,23 @@
     padding-block: 200px 120px;
   }
 }
+
+@media (max-width: 768px)
+{
+  .innerSection
+  {
+    padding: 0 20px;
+  }
+  .list
+  {
+    padding-left: 20px; 
+  }
+  .divider
+  {
+    margin-top: 20px; 
+  }
+  .intro
+  {
+    margin-top: 20px;
+  }
+}

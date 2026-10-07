@@ -1,5 +1,5 @@
 .section {
-  margin-top: 48px;
+  margin-top: 80px;
 }
 
 .frame {
@@ -31,9 +31,15 @@
   }
 }
 
-@media (min-width: 1280px) {
-  .section {
-    margin-top: 80px;
+@media (max-width: 1280px) {
+  .section
+  {
+    margin-top: 60px;
+  }
+  .frame
+  {
+    padding: 124px 16px;
+    min-height: 100%;
   }
 }
 

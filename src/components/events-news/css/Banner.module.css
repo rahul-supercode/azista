@@ -10,7 +10,7 @@
 
 .grid {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 32px;
 }
 
@@ -130,7 +130,10 @@
     flex-direction: column;
     gap: 10px;
   }
-
+  .grid
+  {
+    flex-direction: column;
+  }
   .newsMedia {
     flex: none;
     width: 100%;

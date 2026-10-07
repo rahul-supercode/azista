@@ -64,7 +64,6 @@ export const legalNav = [
 ];
 
 export const socialLinks = [
- 
   { label: "X", icon: "x", href: "https://x.com/azistaspace" },
   {
     label: "LinkedIn",

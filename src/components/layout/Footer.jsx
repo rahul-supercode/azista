@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site";
 
 import styles from "./css/Footer.module.css";
 
-const SOCIAL_ICONS = {  x: "/assets/x.svg", linkedin: "/assets/linkedin.svg" };
+const SOCIAL_ICONS = { x: "/assets/x.svg", linkedin: "/assets/linkedin.svg" };
 
 /** Figma: Group 1000011438 (2977:11712). */
 export default function Footer() {

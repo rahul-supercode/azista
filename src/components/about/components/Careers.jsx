@@ -57,8 +57,12 @@ export default function Careers() {
           ))}
         </ul>
         <div className={styles.cta}>
-          {/* TODO: point at the LinkedIn jobs page once the URL is known. */}
-          <Button variant="linkedin" href="/careers">
+          <Button
+            variant="linkedin"
+            href="https://www.linkedin.com/company/azista-space/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             View Openings
           </Button>
         </div>

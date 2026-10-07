@@ -14,10 +14,6 @@
   object-fit: cover;
 }
 
-.imageDesktop {
-  display: none;
-}
-
 /* 20% shade; on smaller screens a fade to black behind the title instead. */
 .section::after {
   content: "";
@@ -40,14 +36,6 @@
   .content {
     padding-bottom: 70px;
   }
-
-  .imageMobile {
-    display: none;
-  }
-
-  .imageDesktop {
-    display: block;
-  }
 }
 
 @media (min-width: 1280px) {
@@ -64,7 +52,4 @@
   .content {
     padding-bottom: 91px;
   }
-}
-
-@media (max-width: 768px) {
 }

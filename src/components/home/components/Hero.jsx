@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ArtDirectedImage from "@/components/ui/ArtDirectedImage";
 
 import styles from "../css/Hero.module.css";
 
@@ -10,21 +10,12 @@ export default function Hero() {
       aria-labelledby="home-hero-heading"
       className={styles.section}
     >
-      <Image
-        src="/assets/hero-banner-md.jpg"
+      <ArtDirectedImage
+        mobileSrc="/assets/hero-banner-md.jpg"
+        desktopSrc="/assets/homepage-banner.jpg"
         alt="Azista space hardware: a gold electronics unit, an antenna test chamber, a satellite in orbit and Earth imagery from space"
-        fill
-        preload
-        sizes="(min-width: 768px) 0px, 100vw"
-        className={`${styles.banner} ${styles.bannerMobile}`}
-      />
-      <Image
-        src="/assets/homepage-banner.jpg"
-        alt="Azista space hardware: a gold electronics unit, an antenna test chamber, a satellite in orbit and Earth imagery from space"
-        fill
-        preload
-        sizes="100vw"
-        className={`${styles.banner} ${styles.bannerDesktop}`}
+        priority
+        className={styles.banner}
       />
       <div className={`container ${styles.content}`}>
         <h1

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ArtDirectedImage from "@/components/ui/ArtDirectedImage";
 
 import styles from "../css/Banner.module.css";
 
@@ -10,21 +10,12 @@ export default function Banner() {
       aria-labelledby="about-heading"
       className={styles.section}
     >
-      <Image
-        src="/assets/about/about-banner-md.jpg"
+      <ArtDirectedImage
+        mobileSrc="/assets/about/about-banner-md.jpg"
+        desktopSrc="/assets/about/about-banner.jpg"
         alt="Azista cleanroom with satellite test equipment and engineers at work"
-        fill
-        preload
-        sizes="(min-width: 768px) 0px, 100vw"
-        className={`${styles.image} ${styles.imageMobile}`}
-      />
-      <Image
-        src="/assets/about/about-banner.jpg"
-        alt="Azista cleanroom with satellite test equipment and engineers at work"
-        fill
-        preload
-        sizes="100vw"
-        className={`${styles.image} ${styles.imageDesktop}`}
+        priority
+        className={styles.image}
       />
       <div className={`container ${styles.content}`}>
         <h1 id="about-heading" className="heading-2 heading-1-md text-trim-cap">

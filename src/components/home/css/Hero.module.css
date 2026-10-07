@@ -15,10 +15,6 @@
   object-fit: cover;
 }
 
-.bannerDesktop {
-  display: none;
-}
-
 .section::after {
   content: "";
   position: absolute;
@@ -47,14 +43,6 @@
 @media (min-width: 768px) {
   .content {
     padding-bottom: 64px;
-  }
-
-  .bannerMobile {
-    display: none;
-  }
-
-  .bannerDesktop {
-    display: block;
   }
 }
 

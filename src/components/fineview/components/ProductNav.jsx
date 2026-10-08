@@ -65,19 +65,28 @@ export default function ProductNav({ label, items }) {
 
     // Slide the nav down by the visible height of the header, so it follows
     // the header when it is on view and goes back to top: 0 when it hides.
+    // Only retweens on an actual change, so a touch drag on the horizontal
+    // list below (e.g. scrolling between products on mobile) isn't fighting
+    // a transform that's being rewritten on every single frame.
     const moveTo = gsap.quickTo(inner, "y", {
       duration: 0.25,
       ease: "power3.out",
     });
+    let lastOffset = -1;
     const update = () => {
+      let offset = lastOffset;
       if (trigger.isActive) {
         const header = document.querySelector(HEADER_SELECTOR);
         const bottom = header ? header.getBoundingClientRect().bottom : 0;
-        moveTo(Math.max(0, Math.round(bottom)));
+        offset = Math.max(0, Math.round(bottom));
       } else if (trigger.progress === 0) {
-        moveTo(0);
+        offset = 0;
       }
       // progress === 1: keep the last offset so the release doesn't jump.
+      if (offset !== lastOffset) {
+        lastOffset = offset;
+        moveTo(offset);
+      }
     };
     gsap.ticker.add(update);
 

@@ -46,7 +46,7 @@
   text-shadow: 0 0 200px rgb(0 0 0 / 0.3);
 }
 
-/* Mobile-only scroll cue, bottom-right corner. */
+/* Scroll cue, bottom-right corner; the icon swaps at tablet/desktop. */
 .scrollCue {
   position: absolute;
   right: 16px;
@@ -62,14 +62,22 @@
   }
 }
 
+.scrollCueDesktop {
+  display: none;
+}
+
 .end {
   position: absolute;
   bottom: 0;
 }
 
 @media (min-width: 768px) {
-  .scrollCue {
+  .scrollCueMobile {
     display: none;
+  }
+
+  .scrollCueDesktop {
+    display: block;
   }
 }
 

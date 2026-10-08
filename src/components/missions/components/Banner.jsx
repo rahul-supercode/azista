@@ -1,13 +1,14 @@
 import Image from "next/image";
 
-import gridLines from "@/assets/icons/grid-lines-dark.svg";
+import bannerArrow from "@/assets/icons/mission-banner-arrow.svg";
+import gridLines from "@/assets/icons/mission-banner-grid.svg";
 import scrollDown from "@/assets/icons/scroll-down.svg";
 
 import styles from "../css/Banner.module.css";
 import LensReveal from "./LensReveal";
 
 const BANNER_IMAGE = {
-  src: "/assets/mission-banner.jpg",
+  src: "/assets/missions/mission-banner.jpg",
   width: 3024,
   height: 1600,
   sizes: "100vw",
@@ -41,8 +42,13 @@ export default function Banner() {
           Building the Future of Earth Observation
         </h1>
       </div>
-      <a href="#missions-banner-end" className={styles.scrollCue}>
-        <Image src={scrollDown} alt="Scroll to content" />
+      <a
+        href="#missions-banner-end"
+        aria-label="Scroll to content"
+        className={styles.scrollCue}
+      >
+        <Image src={scrollDown} alt="" className={styles.scrollCueMobile} />
+        <Image src={bannerArrow} alt="" className={styles.scrollCueDesktop} />
       </a>
       <span id="missions-banner-end" className={styles.end} />
     </section>

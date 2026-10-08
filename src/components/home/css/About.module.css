@@ -8,9 +8,9 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
-  min-height: 100vh;
-  min-height: 100svh;
-  padding: 64px 16px;
+  /* min-height: 100vh;
+  min-height: 100svh; */
+  padding: 171px 16px;
 }
 
 .statement {

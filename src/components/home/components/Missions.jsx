@@ -19,8 +19,8 @@ const MISSIONS = [
   },
   {
     title: "Focus",
-    image: "/assets/hp-focus.jpg",
-    mobileImage: "/assets/mission-2-md.png",
+    video: "/assets/Focus-Noise.mp4",
+    image: "/assets/hp-mission-focus.png",
     imageAlt: "Wireframe render of the Focus satellite",
     theme: "dark",
     specs: [
@@ -30,8 +30,8 @@ const MISSIONS = [
   },
   {
     title: "Panorama",
-    image: "/assets/hp-panorama.jpg",
-    mobileImage: "/assets/mission-3-md.png",
+    video: "/assets/Panorama_Grid.mp4",
+    image: "/assets/hp-mission-panorama.png",
     imageAlt: "Wireframe render of the Panorama satellite structure",
     specs: [
       { label: "Status", value: "Under Development" },

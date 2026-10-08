@@ -1,6 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .media {
@@ -29,6 +30,10 @@
   max-width: 384px;
   margin-top: 16px;
   opacity: 0.6;
+  /* Grows to absorb the extra height some cards get from grid stretch, so
+   * the datasheet row below lands at the same offset from the card's
+   * bottom in every card of the row instead of tracking description length. */
+  flex-grow: 1;
 }
 
 .datasheet {
@@ -36,6 +41,7 @@
   align-items: center;
   gap: 12px;
   align-self: stretch;
+  width: 100%;
   margin-top: 24px;
   padding-top: 20px;
   border-top: 1px solid #f3f3f3;

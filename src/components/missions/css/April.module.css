@@ -11,24 +11,31 @@
   text-align: center;
 }
 
-/* Two copies of the list slide left forever; one copy's width per loop. */
 .strip {
   --gap: 10px;
 
   display: flex;
   gap: var(--gap);
-  width: max-content;
   margin-top: 40px;
-  animation: scroll 60s linear infinite;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
 }
 
-.track {
-  display: flex;
-  gap: var(--gap);
+.strip:active {
+  cursor: grabbing;
+}
+
+.strip::-webkit-scrollbar {
+  display: none;
 }
 
 .item {
   position: relative;
+  flex-shrink: 0;
   width: 80vw;
   aspect-ratio: 735 / 402;
   overflow: hidden;
@@ -49,12 +56,6 @@
 .intro {
   max-width: 630px;
   opacity: 0.8;
-}
-
-@keyframes scroll {
-  to {
-    translate: calc(-50% - var(--gap) / 2) 0;
-  }
 }
 
 @media (min-width: 768px) {

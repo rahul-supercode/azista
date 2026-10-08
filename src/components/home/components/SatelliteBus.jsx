@@ -26,7 +26,7 @@ export default function SatelliteBus() {
           <Button
             variant="framed"
             // href="/satellite-bus/subsystems"
-             href="#"
+            href="#"
             className={styles.cta}
           >
             Explore subsystems

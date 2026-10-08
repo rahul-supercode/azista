@@ -1,3 +1,14 @@
+/* .pin is pinned by ScrollTrigger; .inner is slid down below the header. */
+.pin {
+  position: relative;
+  z-index: 10;
+}
+
+.inner {
+  padding-top: 16px;
+  background: var(--background, #fff);
+}
+
 .list {
   display: flex;
   gap: 32px;

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from "../css/MissionCard.module.css";
 
@@ -6,7 +7,7 @@ import styles from "../css/MissionCard.module.css";
  * `theme`: text colour for the background behind it. `specsAt`: "top"
  * (beside the title) or "bottom". `video`, if set, plays behind the card
  * instead of `image`/`mobileImage`, and `image` (if also set) is overlaid on
- * top of it instead.
+ * top of it instead. The whole card links to the Missions page.
  */
 export default function MissionCard({
   title,
@@ -19,7 +20,8 @@ export default function MissionCard({
   specsAt = "bottom",
 }) {
   return (
-    <article
+    <Link
+      href="/missions"
       className={`${styles.card} ${theme === "dark" ? styles.dark : ""}`}
     >
       {video ? (
@@ -81,6 +83,6 @@ export default function MissionCard({
           </div>
         ))}
       </dl>
-    </article>
+    </Link>
   );
 }

@@ -33,8 +33,12 @@ export default function SmoothScroll({ children }) {
     return () => smoother.kill();
   });
 
-  // New page content: recalculate every trigger and the scroll height.
+  // New page content: snap back to the top instantly (a route change resets
+  // native scroll, but not the smoother's own eased offset, which would
+  // otherwise glide up from wherever the previous page was scrolled to) and
+  // recalculate every trigger and the scroll height.
   useEffect(() => {
+    ScrollSmoother.get()?.scrollTo(0, false);
     ScrollTrigger.refresh();
   }, [pathname]);
 

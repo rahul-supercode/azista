@@ -1,9 +1,6 @@
-import Image from "next/image";
-
-import gridLines from "@/assets/icons/grid-lines-upcoming.svg";
-
 import styles from "../css/UpcomingMissions.module.css";
 import UpcomingMission from "./UpcomingMission";
+import UpcomingMissionsGrid from "./UpcomingMissionsGrid";
 
 const MISSIONS = [
   {
@@ -44,7 +41,7 @@ export default function UpcomingMissions() {
       aria-labelledby="upcoming-missions-heading"
       className={styles.section}
     >
-      <Image src={gridLines} alt="" fill className={styles.lines} />
+      <UpcomingMissionsGrid />
       <div className="container">
         <h2
           id="upcoming-missions-heading"

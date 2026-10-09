@@ -19,7 +19,7 @@ const PAYLOADS = [
     title: "Wide-swath optical payload for Earth observation",
     href: "#",
     // href: "/eo-payloads/vista",
-    image: "/assets/hp-panorama.jpg",
+    image: "/assets/vista-hp.png",
     mobileImage: "/assets/mission-3-md.png",
     imageAlt: "Wireframe render of an Azista satellite structure",
     dark: true,

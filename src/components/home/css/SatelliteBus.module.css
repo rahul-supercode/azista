@@ -4,9 +4,57 @@
   overflow: hidden;
 }
 
-.lines {
-  z-index: -1;
+/* Soft horizontal fade behind the animated grid lines. */
+.gridGlow {
+  z-index: -2;
   object-fit: cover;
+  pointer-events: none;
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Each line fades out and back in on its own cycle; JSX staggers the start
+   (left→right for verticals, top→bottom for horizontals) so the fades sweep
+   across the grid instead of every line pulsing together. */
+.vLine,
+.hLine {
+  position: absolute;
+  background: rgb(26 26 26 / 0.1);
+  opacity: 0.05;
+}
+
+.vLine {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+.hLine {
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .vLine,
+  .hLine {
+    animation: line-fade 4s ease-in-out infinite;
+  }
+}
+
+@keyframes line-fade {
+  0%,
+  100% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .inner {

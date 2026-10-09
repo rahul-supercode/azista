@@ -8,34 +8,12 @@
 .heading {
   max-width: 684px;
   margin-inline: auto;
+  margin-bottom: 40px;
   text-align: center;
-}
-
-.strip {
-  --gap: 10px;
-
-  display: flex;
-  gap: var(--gap);
-  margin-top: 40px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
-  touch-action: pan-y;
-  user-select: none;
-}
-
-.strip:active {
-  cursor: grabbing;
-}
-
-.strip::-webkit-scrollbar {
-  display: none;
 }
 
 .item {
   position: relative;
-  flex-shrink: 0;
   width: 80vw;
   aspect-ratio: 735 / 402;
   overflow: hidden;
@@ -79,8 +57,8 @@
     padding-block: 131px 120px;
   }
 
-  .strip {
-    margin-top: 81px;
+  .heading {
+    margin-bottom: 81px;
   }
 
   .item {

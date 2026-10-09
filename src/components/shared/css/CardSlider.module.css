@@ -24,11 +24,30 @@
   backface-visibility: hidden;
 }
 
+/* Splide's screen-reader-only slide-change announcer, appended after the
+   list — visually hidden in Splide's own default CSS, which this project
+   doesn't import, so it's replicated here instead. */
+:global(.splide__sr) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+/*
+ * Sized by its own child's width, not a fixed width here — each consumer
+ * (e.g. MissionCard, April's .item) sets that itself per breakpoint. No
+ * margin-right here either — Splide's own `gap` option already applies it
+ * via an injected stylesheet; duplicating it caused the two to briefly
+ * disagree mid-transition, flickering the gap between slides.
+ */
 .slide {
   position: relative;
   flex-shrink: 0;
-  width: calc(100vw - 56px);
-  margin-right: 10px;
   backface-visibility: hidden;
 }
 
@@ -44,19 +63,11 @@
   .track {
     --edge: max(24px, calc((100vw - 1512px) / 2 + 24px));
   }
-
-  .slide {
-    width: calc(100vw - 112px);
-  }
 }
 
 @media (min-width: 1280px) {
   .track {
     --edge: max(50px, calc((100vw - 1512px) / 2 + 50px));
-  }
-
-  .slide {
-    width: min(1130px, calc(100vw - 140px));
   }
 }
 

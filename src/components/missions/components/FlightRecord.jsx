@@ -6,6 +6,8 @@ import imagingIcon from "@/assets/icons/stat-imaging.svg";
 import massIcon from "@/assets/icons/stat-mass.svg";
 import missionLifeIcon from "@/assets/icons/stat-mission-life.svg";
 import orbitIcon from "@/assets/icons/stat-orbit.svg";
+import SplitText from "@/components/shared/components/SplitText";
+import { splitTextDuration } from "@/components/shared/components/splitTextDuration";
 import Button from "@/components/ui/Button";
 
 import styles from "../css/FlightRecord.module.css";
@@ -76,10 +78,12 @@ export default function FlightRecord() {
               <div key={item.label} className={styles.row}>
                 <dt className={`text-5 text-4-md ${styles.label}`}>
                   <Image src={bullet} alt="" />
-                  {item.label}
+                  <SplitText>{item.label}</SplitText>
                 </dt>
                 <dd className={`${styles?.value} text-5 text-4-md `}>
-                  {item.value}
+                  <SplitText delay={splitTextDuration(item.label)}>
+                    {item.value}
+                  </SplitText>
                 </dd>
               </div>
             ))}

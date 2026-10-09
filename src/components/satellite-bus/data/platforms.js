@@ -139,4 +139,4 @@ export const platforms = [
   },
 ];
 
-export const defaultPlatformId = "azista-100";
+export const defaultPlatformId = "leos-50";

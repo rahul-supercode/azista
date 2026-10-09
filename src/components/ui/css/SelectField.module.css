@@ -43,7 +43,7 @@
   color: var(--primary);
 }
 
-.field:has(.select:not(:has(option[value=""]:checked))) .label {
+.field:has(.select option:checked:not([value=""])) .label {
   translate: 0 -10px;
   scale: 0.75;
 }
@@ -78,8 +78,7 @@
   color: rgb(26 26 26 / 0.6);
 }
 
-.stacked .label,
-.stacked:has(.select:not(:has(option[value=""]:checked))) .label {
+.stacked .label {
   position: static;
   opacity: 1;
   translate: none;

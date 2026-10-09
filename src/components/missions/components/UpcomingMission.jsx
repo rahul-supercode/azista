@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 import bullet from "@/assets/icons/bullet-triangle.svg";
+import SplitText from "@/components/shared/components/SplitText";
+import { splitTextDuration } from "@/components/shared/components/splitTextDuration";
 
 import styles from "../css/UpcomingMission.module.css";
 
@@ -49,10 +51,12 @@ export default function UpcomingMission({
             <div key={spec.label} className={styles.spec}>
               <dt className={`text-5 text-4-md ${styles.label}`}>
                 <Image src={bullet} alt="" />
-                {spec.label}
+                <SplitText>{spec.label}</SplitText>
               </dt>
               <dd className={`text-5 text-4-md ${styles.value}`}>
-                {spec.value}
+                <SplitText delay={splitTextDuration(spec.label)}>
+                  {spec.value}
+                </SplitText>
               </dd>
             </div>
           ))}

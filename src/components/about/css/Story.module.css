@@ -48,7 +48,7 @@
   flex-direction: column;
   gap: 40px;
   max-width: 1160px;
-  color: rgb(26 26 26 / 0.4);
+  /* color: rgb(26 26 26 / 0.4); */
 }
 
 .lead {

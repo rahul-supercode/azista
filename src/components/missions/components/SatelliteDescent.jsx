@@ -72,10 +72,13 @@ export default function SatelliteDescent({
         { scale: () => to().width / from().width, ease: "none", duration: 1 },
         0,
       )
-      // Swings over to the centre in the first half, banking as it turns.
+      // Swings over to the centre, fastest early on but still easing in
+      // across the full duration (matching y's), so there's always some
+      // horizontal motion blended with the descent — one continuous curve
+      // rather than a diagonal leg that stops dead partway down.
       .to(
         el,
-        { x: () => to().cx - from().cx, ease: "sine.inOut", duration: 0.55 },
+        { x: () => to().cx - from().cx, ease: "power2.out", duration: 1 },
         0,
       )
       .to(el, { rotation: BANK, ease: "sine.out", duration: 0.3 }, 0)
@@ -86,8 +89,8 @@ export default function SatelliteDescent({
       timeline.fromTo(
         rings,
         { "--orbit-gap": `${ORBIT_GAP}deg` },
-        { "--orbit-gap": "0deg", ease: "power1.inOut", duration: 0.45 },
-        0.55,
+        { "--orbit-gap": "0deg", ease: "power1.inOut", duration: 0.35 },
+        0.65,
       );
     }
   });

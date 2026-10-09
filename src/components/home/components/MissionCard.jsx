@@ -22,6 +22,7 @@ export default function MissionCard({
   return (
     <Link
       href="/missions"
+      draggable={false}
       className={`${styles.card} ${theme === "dark" ? styles.dark : ""}`}
     >
       {video ? (

@@ -67,7 +67,7 @@
       "form media"
       "details .";
     grid-template-columns: minmax(0, 733fr) minmax(0, 577fr);
-    column-gap: clamp(40px, 6.75vw, 102px);
+    column-gap: clamp(40px, 3.75vw, 102px);
     row-gap: 0;
   }
 

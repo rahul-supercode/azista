@@ -53,6 +53,7 @@ export default function Missions() {
         label="Missions"
         cursorLabel="Explore Missions"
         slideLabels={MISSIONS.map((mission) => mission.title)}
+        autoplay
       >
         {MISSIONS.map((mission) => (
           <MissionCard key={mission.title} {...mission} />

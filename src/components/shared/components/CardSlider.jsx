@@ -15,16 +15,22 @@ const MOMENTUM_TAIL = 2;
 const SWIPE_THRESHOLD = 0.1;
 // Travel (px) before a gesture is locked to horizontal or vertical.
 const AXIS_LOCK = 10;
+// Default autoplay interval (ms).
+const AUTOPLAY_INTERVAL = 3000;
 
 /**
  * Splide carousel with the active card centred and the ends aligned to the
  * page container. `slideLabels` names each child for screen readers;
  * `cursorLabel` is an optional hint that follows the mouse over the cards.
+ * `autoplay` loops it on a timer (pausing on hover/focus, and skipped for
+ * prefers-reduced-motion) on top of the manual drag/swipe, which always
+ * works regardless.
  */
 export default function CardSlider({
   label,
   slideLabels,
   cursorLabel,
+  autoplay = false,
   children,
 }) {
   const slides = Children.toArray(children);
@@ -49,8 +55,13 @@ export default function CardSlider({
       li.setAttribute("aria-label", slideAriaRef.current[i]),
     );
 
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Loop mode so autoplay can wrap seamlessly from the last slide back to
+    // the first instead of stopping dead at the end.
+    const loop = autoplay && !reduced;
+
     const splide = new Splide(root, {
-      type: "slide",
+      type: loop ? "loop" : "slide",
       autoWidth: true,
       focus: "center",
       trimSpace: true,
@@ -68,6 +79,10 @@ export default function CardSlider({
       pagination: false,
       keyboard: "focused",
       slideFocus: false,
+      autoplay: loop,
+      interval: AUTOPLAY_INTERVAL,
+      pauseOnHover: true,
+      pauseOnFocus: true,
       label,
     });
     splide.on("click", (slide) => splide.go(slide.index));
@@ -162,7 +177,7 @@ export default function CardSlider({
       loader.disconnect();
       splide.destroy();
     };
-  }, [label]);
+  }, [label, autoplay]);
 
   // ── Cursor label ──────────────────────────────────────────────────────
 
@@ -223,7 +238,7 @@ export default function CardSlider({
             </li>
           ))}
         </ul>
-        {cursorLabel ? (
+        {/* {cursorLabel ? (
           <span
             ref={cursorRef}
             aria-hidden="true"
@@ -231,7 +246,7 @@ export default function CardSlider({
           >
             {cursorLabel}
           </span>
-        ) : null}
+        ) : null} */}
       </div>
     </div>
   );

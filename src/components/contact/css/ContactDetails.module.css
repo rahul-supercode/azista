@@ -52,13 +52,14 @@
 @media (min-width: 768px) {
   .frame {
     flex-direction: row;
-    gap: 50px;
+    gap: 30px;
     padding: 6px 19px 7px;
+    width: fit-content;
   }
 
   .item + .item {
     padding-top: 0;
-    padding-left: 50px;
+    padding-left: 30px;
     border-top: 0;
     border-left: 0.4px solid rgb(0 0 0 / 0.4);
   }

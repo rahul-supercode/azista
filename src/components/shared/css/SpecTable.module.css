@@ -10,7 +10,13 @@
   gap: 5px;
 }
 
-.label span {
+/*
+ * Not `.label span` — that also matched SplitText's own internal spans
+ * (including `.char`), and its higher specificity overrode SplitText's
+ * `opacity: 0` resting state, so the label sat visible before the reveal
+ * animation ever played.
+ */
+.labelText {
   opacity: 0.6;
 }
 

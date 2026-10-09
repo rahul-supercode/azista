@@ -10,22 +10,88 @@
   contain: paint;
 }
 
+/*
+ * Scaled up so the drift below never exposes an edge; `.root`'s own
+ * `overflow: hidden` clips it, which is why the drift can't just move
+ * `.root` itself.
+ */
+.parallax {
+  position: absolute;
+  inset: 0;
+  scale: 1.08;
+  translate: var(--parallax-x, 0px) var(--parallax-y, 0px);
+  will-change: translate;
+}
+
 .sharp,
 .lens {
   position: absolute;
   pointer-events: none;
+  opacity: 0;
+  scale: 0;
+  /*
+   * A gentle "back out" curve (a soft overshoot past 1 before settling) —
+   * `cubic-bezier(0.22, 1, 0.36, 1)` reaches ~1 almost immediately and only
+   * creeps for the rest of the duration, which reads as an abrupt snap
+   * rather than a smooth ease despite technically being non-linear.
+   */
+  transition:
+    opacity 450ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    scale 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Sharp copy, clipped to the lens. LensReveal.jsx animates --lens-x/-y. */
+.root[data-active] .sharp,
+.root[data-active] .lens {
+  opacity: 1;
+  scale: 1;
+}
+
+/* The frame lags the image in on hover (not on the way out, where they
+   should disappear together), so it reads as appearing after it. */
+.root[data-active] .lens {
+  transition-delay: 120ms;
+}
+
+/*
+ * Sharp copy, revealed under the lens. LensReveal.jsx animates --lens-x/-y.
+ * A `mask-image` (not `clip-path`, which can only cut a hard edge) fades the
+ * reveal out toward the lens's own edge for a soft rather than sharp border.
+ * Two linear gradients (one per axis), intersected, keep that edge a square
+ * — a single radial gradient would fade it into an oval instead.
+ * `.sharp` covers the whole area (so the mask's position lines up), so its
+ * scale-in needs an origin pinned to the lens's own centre — not the default
+ * 50%/50%, which is the area's centre — to grow from the right spot.
+ */
 .sharp {
   inset: 0;
-  clip-path: inset(
-    var(--lens-y, var(--lens-top))
-      calc(100% - var(--lens-x, var(--lens-left)) - var(--lens-w))
-      calc(100% - var(--lens-y, var(--lens-top)) - var(--lens-h))
-      var(--lens-x, var(--lens-left))
+  --lens-fade-x: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
   );
-  will-change: clip-path;
+  --lens-fade-y: linear-gradient(
+    to bottom,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: var(--lens-fade-x), var(--lens-fade-y);
+  mask-repeat: no-repeat;
+  mask-position: var(--lens-x, var(--lens-left)) var(--lens-y, var(--lens-top));
+  mask-size: var(--lens-w) var(--lens-h);
+  mask-composite: intersect;
+  -webkit-mask-image: var(--lens-fade-x), var(--lens-fade-y);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: var(--lens-x, var(--lens-left))
+    var(--lens-y, var(--lens-top));
+  -webkit-mask-size: var(--lens-w) var(--lens-h);
+  -webkit-mask-composite: source-in;
+  transform-origin: calc(var(--lens-x, var(--lens-left)) + var(--lens-w) / 2)
+    calc(var(--lens-y, var(--lens-top)) + var(--lens-h) / 2);
+  will-change: mask-position;
 }
 
 .lens {

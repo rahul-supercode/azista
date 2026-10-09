@@ -7,6 +7,28 @@ import Button from "@/components/ui/Button";
 
 import styles from "./css/SiteNav.module.css";
 import NavDropdown from "./NavDropdown";
+import ScrambleText from "../scramble/ScrambleText";
+
+/**
+ * Splits text into per-letter spans so each letter can appear in turn.
+ * Screen readers get the full word via the sr-only span.
+ */
+function SplitText({ children }) {
+  const text = String(children);
+
+  return (
+    <>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true" className={styles.split}>
+        {Array.from(text).map((char, index) => (
+          <span key={index} className={styles.char} style={{ "--c": index }}>
+            {char === " " ? "\u00A0" : char}
+          </span>
+        ))}
+      </span>
+    </>
+  );
+}
 
 /**
  * One nav for every breakpoint: inline from desktop, a toggleable panel below it.
@@ -75,7 +97,7 @@ export default function SiteNav({ items, cta }) {
               {item.items ? (
                 <NavDropdown
                   id={`${id}-menu-${index}`}
-                  label={item.label}
+                  label={<ScrambleText text={item.label}/>}
                   href={item.href}
                   items={item.items}
                   open={openDropdown === item.label}
@@ -91,7 +113,8 @@ export default function SiteNav({ items, cta }) {
                 />
               ) : (
                 <Link href={item.href} className={styles.link}>
-                  {item.label}
+                  {/* <SplitText>{item.label}</SplitText> */}
+                  <ScrambleText text={item.label}/>
                 </Link>
               )}
             </li>

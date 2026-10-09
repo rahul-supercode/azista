@@ -29,10 +29,14 @@
   will-change: transform;
 }
 
+/* Scaled up so the parallax drift below (set by LensReveal, on `.section`,
+   its and `.imagery`'s shared parent) never exposes an edge. */
 .lines {
   z-index: -1;
   object-fit: cover;
   pointer-events: none;
+  scale: 1.08;
+  translate: var(--parallax-x, 0px) var(--parallax-y, 0px);
 }
 
 .content {

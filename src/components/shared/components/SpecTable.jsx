@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import bulletTriangle from "@/assets/icons/bullet-triangle.svg";
 
+import SplitText from "./SplitText";
+import { splitTextDuration } from "./splitTextDuration";
 import styles from "../css/SpecTable.module.css";
 
 function Spec({ label, value }) {
@@ -9,9 +11,11 @@ function Spec({ label, value }) {
     <div className={styles.spec}>
       <dt className={`text-5 text-4-md ${styles.label}`}>
         <Image src={bulletTriangle} alt="" />
-        <span>{label}</span>
+        <SplitText className={styles.labelText}>{label}</SplitText>
       </dt>
-      <dd className={`text-5 text-4-md ${styles.value}`}>{value}</dd>
+      <dd className={`text-5 text-4-md ${styles.value}`}>
+        <SplitText delay={splitTextDuration(label)}>{value}</SplitText>
+      </dd>
     </div>
   );
 }

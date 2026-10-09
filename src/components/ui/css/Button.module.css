@@ -36,10 +36,10 @@
 }
 
 @media (hover: hover) {
-  .primary:hover,
+  /* .primary:hover,
   .framed:hover {
     opacity: 0.85;
-  }
+  } */
 
   .link:hover {
     opacity: 0.7;

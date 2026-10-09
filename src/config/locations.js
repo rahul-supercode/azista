@@ -22,9 +22,8 @@ export const locations = [
   {
     id: "bengaluru",
     city: "Bengaluru",
-    // TODO: placeholder; replace with the real Bengaluru address.
     addressLines: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, Bengaluru, Karnataka, India – 560 000",
+      "Signet, Embassy TechSquare, A Wing, Ground Floor, Kadubeesanahalli, Bengaluru, Karnataka 560103",
     ],
   },
 ];

@@ -10,7 +10,9 @@
 .toggle {
   transition: opacity 150ms ease;
 }
-
+.link p{
+  width: 110px;
+}
 @media (hover: hover) {
   .link:hover,
   .toggle:hover {

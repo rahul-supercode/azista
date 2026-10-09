@@ -15,9 +15,7 @@ export default function ContactDetails() {
               <dt className={`text-trim-cap ${styles.term}`}>Mail :</dt>
               <dd className="text-trim-cap">
                 <a href={`mailto:${email}`} className={styles.link}>
-                  {/* Wrap a long address before the @, not mid-word. */}
-                  {email.split("@")[0]}
-                  <wbr />@{email.split("@")[1]}
+                  partnerships@azista.space
                 </a>
               </dd>
             </div>
